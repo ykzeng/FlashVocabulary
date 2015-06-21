@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0059)file:///R:/Workspace/Front-End/FlashVocabulary/recital.html -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="css/basics.css">
+<script type="text/javascript">
+	/*global@wordSet json data
+	  global@count the number of the current word in the word set
+	  global@true_id the current true number of answers
+	*/
+	var count = 0;
+	function init(){
+        wordSet = {
+        	"0":{position : 0,
+
+            c_trans : "n. 狂热；放任 vt. 遗弃；放弃|n. 狂热；放任 vt. 遗弃；放弃|n. 狂热；放任 vt. 遗弃；放弃",
+
+            synonyms : "unconstraint, uninhibitedness, unrestraint|indulge, surrender, give up|abort, drop, repeal, rescind, revoke, call off|", 
+
+            antonyms : "salvage 救援|keep, continue, maintain, carry on 继续",
+
+            usages : "added spices to the stew with complete abandon|added spices to the stew with complete abandon", 
+
+            sen_trans : "肆无忌惮地向炖菜里面加调料|肆无忌惮地向炖菜里面加调料",
+
+            status : 2,  
+
+            trans : "1 vt. 遗弃；放弃|n. 狂热；放任 vt. 遗弃；放弃|n. 狂热；放任 vt. 遗弃；放弃|n. 狂热；放任 vt. 遗弃；放弃"},
+            "1":{position : 1,
+
+            c_trans : "n. 狂热；放任 vt. 遗弃；放弃|n. 狂热；放任 vt. 遗弃；放弃|n. 狂热；放任 vt. 遗弃；放弃",
+
+            synonyms : "unconstraint, uninhibitedness, unrestraint|indulge, surrender, give up|abort, drop, repeal, rescind, revoke, call off|", 
+
+            antonyms : "salvage 救援|keep, continue, maintain, carry on 继续",
+
+            usages : "added spices to the stew with complete abandon|added spices to the stew with complete abandon", 
+
+            sen_trans : "肆无忌惮地向炖菜里面加调料|肆无忌惮地向炖菜里面加调料",
+
+            status : 2,  
+
+            trans : "2 vt. 遗弃；放弃|n. 狂热；放任 vt. 遗弃；放弃|n. 狂热；放任 vt. 遗弃；放弃|n. 狂热；放任 vt. 遗弃；放弃"},
+            "2":{position : 2,
+
+            c_trans : "n. 狂热；放任 vt. 遗弃；放弃|n. 狂热；放任 vt. 遗弃；放弃|n. 狂热；放任 vt. 遗弃；放弃",
+
+            synonyms : "unconstraint, uninhibitedness, unrestraint|indulge, surrender, give up|abort, drop, repeal, rescind, revoke, call off|", 
+
+            antonyms : "salvage 救援|keep, continue, maintain, carry on 继续",
+
+            usages : "added spices to the stew with complete abandon|added spices to the stew with complete abandon", 
+
+            sen_trans : "肆无忌惮地向炖菜里面加调料|肆无忌惮地向炖菜里面加调料",
+
+            status : 2,  
+
+            trans : "3 vt. 遗弃；放弃|n. 狂热；放任 vt. 遗弃；放弃|n. 狂热；放任 vt. 遗弃；放弃|n. 狂热；放任 vt. 遗弃；放弃"}
+            }
+            //document.write(temp[0].sim_trans);
+            var answers = new Array();
+            answers = wordSet[count].trans.split("|");
+            for (var i = 0; i <= 3; i++) {
+        		document.getElementById("a" + i).innerText = answers[i];
+        	}
+    		true_id = "a"+wordSet[count].position;
+    		window.sessionStorage.count = 0;
+    		window.sessionStorage.wordSet = wordSet;
+
+    }
+</script>
+</head>
+
+<body class="uni_background" onload="init()">
+<div id="answer_div">
+	<a class="right_side" onclick="toDetails()" style="display:none;" id="a_next"><img src="images/right-arrow.png"></a>
+	<div class="flashcard">
+    	<div class="word_label">
+			<h1>impertinent</h1>
+			<h3>[im'pә:tinәnt]</h3>
+		</div>
+		<div class="answers">
+			<ul style="width:100%;list-style-type:none;text-align:center;padding:0px;font-size:1.2em;">
+				<li>
+					<a id="a0" onclick="answer_click(this.id)">n. 狂热；放任 vt. 遗弃；放弃</a>
+				</li>
+				<li>
+					<a id="a1" onclick="answer_click(this.id)">n. 狂热；放任 vt. 遗弃；放弃</a>
+				</li>
+				<li>
+					<a id="a2" onclick="answer_click(this.id)">n. 狂热；放任 vt. 遗弃；放弃</a>
+				</li>
+				<li>
+					<a id="a3" onclick="answer_click(this.id)">n. 狂热；放任 vt. 遗弃；放弃</a>
+				</li>
+			</ul>
+		</div>
+    </div>
+</div>
+<div id="detail_div" style="display:none">
+	<a id="detail_next" class="right_side" onclick="toNext()"><img src="images/right-arrow.png"></a>
+	<div class="flashcard">
+    	<div class="word_label">
+			<h1>abandon</h1>
+			<h3>[ə’bændən]</h3>
+		</div>
+		<div class="sentence_card" style="margin-top:4%;">
+				<h3>Translations</h3>
+				<ol>
+					<li>
+						<span>n. 狂热；放任 vt. 遗弃；放弃</span>
+					</li>
+					<li>
+						<span>n. 狂热；放任 vt. 遗弃；放弃</span>
+					</li>
+					<li>
+						<span>n. 狂热；放任 vt. 遗弃；放弃</span>
+					</li>
+				</ol>
+			</div>
+		<div class="trans_container">
+			<div class="trans_card">
+				<h3>Synonyms</h3>
+				<ol>
+					<li>
+						unconstraint, uninhibitedness, unrestraint
+					</li>
+					<li>
+						indulge, surrender, give up
+					</li>
+					<li>
+						abort, drop, repeal, rescind, revoke, call off
+					</li>
+				</ol>
+			</div>
+			<div class="trans_card" style="float:right">
+				<h3>Antonyms</h3>
+				<ol>
+					<li>
+						stymie, frustrate, obstruct, thwart, impede, forestall , hinder
+					</li>
+				</ol>
+			</div>
+		</div>
+
+		<div class="sentence_card">
+			<h2>Usages</h2>
+				<ol class="sentence_list">
+					<li>
+					<span>added spices to the stew with complete <strong>abandon</strong></span><br>
+					<p>肆无忌惮地向炖菜里面加调料</p>
+					</li>
+					<li>
+					<span>added spices to the stew with complete <strong>abandon</strong></span><br>
+					<p>肆无忌惮地向炖菜里面加调料</p>
+					</li>
+					<li>
+					<span>added spices to the stew with complete <strong>abandon</strong></span><br>
+					<p>肆无忌惮地向炖菜里面加调料</p>
+					</li>
+				</ol>
+		</div>
+    </div>
+</div>
+<div style="display:none" id="sum_div">
+<a class="right_side" onclick="to_next_set()"><img src="images/right-arrow.png"></a>
+	<div class="flashcard">
+    <div class="trans_container" style="overflow:visible;">
+    <div style="width:49%;min-height:80px;float:left;position:relative;">
+        <div class="review_card" style="width:100%">
+            <h3>abandon</h3>
+            <div>added spices to the stew with complete <strong>abandon</strong></div>
+            <a onclick="show_trans(this.id)" id="word_1"><img src="images/close_icon.png"></a>
+            <div id="trans_w1" style="display:none;">肆无忌惮地向炖菜里面加调料</div>
+        </div>
+        <div class="review_card" style="width:100%">
+            <h3>abandon</h3>
+            <div>added spices to the stew with complete <strong>abandon</strong></div>
+            <a onclick="show_trans(this.id)" id="word_2"><img src="images/close_icon.png"></a>
+            <div id="trans_w2" style="display:none;">肆无忌惮地向炖菜里面加调料</div>
+        </div>
+    </div>
+    <div style="width:49%;min-height:80px;float:right;position:relative;">
+        <div class="review_card" style="width:100%">
+            <h3>abandon</h3>
+            <div>added spices to the stew with complete <strong>abandon</strong></div>
+            <a onclick="show_trans(this.id)" id="word_5"><img src="images/close_icon.png"></a>
+            <div id="trans_w5" style="display:none;">肆无忌惮地向炖菜里面加调料</div>
+        </div>
+    </div>
+            
+        </div>
+    </div>
+</div>
+	
+    <label style="display:none;" id="a_label">a2</label>
+    <script type="text/javascript">
+        function to_next_set(){
+            count = 0;
+            document.getElementById("sum_div").style.display="none";
+            toNext();
+        }
+
+    	function answer_click (choice){
+    		choice_id = choice;
+    		//correct one->choice becomes green
+    		document.getElementById(true_id).style.background = "limegreen";
+    		document.getElementById(true_id).style.color = "white";
+    		//wrong choice->choice becomes red
+    		if (choice != true_id) {
+    			document.getElementById(choice).style.background = "red";
+    			document.getElementById(choice).style.color = "white";
+    		}
+    		//forbid onclick after choosed
+    		//made all the wrong choice to show red when hover,
+    		//except the choosed one, which is set to show red always
+    		for (var i = 0; i <= 3; i++) {
+    			var temp = "a"+i;
+    			document.getElementById(temp).onclick= function(){ return false; };
+				if (temp==true_id||temp==choice) {
+					document.getElementById(temp).onmouseover=function(){
+					  	return;
+					} ;
+					document.getElementById(temp).onmouseout=function(){
+						return;
+					} ;
+				}
+				else{
+					document.getElementById(temp).onmouseover=function(){
+					  this.style.backgroundColor="red";
+					  this.style.color="white";
+					} ;
+					document.getElementById(temp).onmouseout=function(){
+						this.style.backgroundColor="white";
+						this.style.color="black";
+					} ;
+				}
+    		};
+    		//show next button
+    		document.getElementById("a_next").style.display = "inline";
+    	}
+
+    	function toDetails(){
+    		//switch answer and detail div
+    		document.getElementById("answer_div").style.display = "none";
+    		document.getElementById("detail_div").style.display = "block";
+            document.getElementById("detail_next").style.display = "block";
+    	}
+
+    	function toNext(){
+    		//restore the init visual style of choice cards
+    		document.getElementById(true_id).style.background = "white";
+    		document.getElementById(true_id).style.color = "black";
+    		document.getElementById(choice_id).style.background = "white";
+    		document.getElementById(choice_id).style.color = "black";
+    		//is all words in the word set recited
+    		if (++count > 2)//Goto the result div
+    		{
+    			document.getElementById("answer_div").style.display = "none";
+    			document.getElementById("detail_div").style.display = "none";
+    			document.getElementById("sum_div").style.display = "block";
+    			document.getElementById("detail_next").style.display="none";
+    			document.getElementById("a_next").style.display="none";
+                return;
+    		}
+    		//switch answer and detail div
+    		document.getElementById("answer_div").style.display = "block";
+    		document.getElementById("detail_div").style.display = "none";
+    		//get new translation choices and write to the choice cards
+    		var answers = new Array();
+            answers = wordSet[count].trans.split("|");
+            for (var i = 0; i <= 3; i++) {
+        		document.getElementById("a" + i).innerText = answers[i];
+        	}
+        	//set the true choice number
+    		true_id = "a"+wordSet[count].position;
+    		//restore all visual styles of choice cards
+    		uncertain_card();
+    		document.getElementById("a_next").style.display="none";
+
+    	}
+
+    	function uncertain_card(){
+    		for (var i = 0; i <= 3; i++) {
+    			var temp = "a"+i;
+    			document.getElementById(temp).onclick= function(){
+    				answer_click(this.id);
+    			};
+    			document.getElementById(temp).onmouseover=function(){
+					  this.style.backgroundColor="limegreen";
+					  this.style.color="white";
+					} ;
+				document.getElementById(temp).onmouseout=function(){
+					this.style.backgroundColor="white";
+					this.style.color="black";
+				} ;	
+    		}
+    	}
+
+    	function show_trans(id){
+	        var number = id.split("_")[1];
+	        var target = "trans_w" + number;
+	        document.getElementById(target).style.display = "block";
+    	}
+    </script>
+</body></html>
