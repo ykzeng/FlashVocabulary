@@ -16,11 +16,6 @@ public class UserInfoService {
 //			e.printStackTrace();
 //		}
 //	}
-	
-	/**
-	 * 用户注册
-	 * @param 用户类
-	 */
 	public void userRegister(User user)  //@代号：ljt 
 	{
 		try {
@@ -32,12 +27,7 @@ public class UserInfoService {
 		//return true;
 	}
 	
-	/**
-	 * 用户登陆
-	 * @param 用户类.
-	 * @return boolean
-	 */
-	public boolean userLogin(User user)  //@代号：ljt 
+	public User userLogin(User user)  //@代号：ljt 
 	{
 		String username = "";
 		String password = "";
@@ -46,8 +36,8 @@ public class UserInfoService {
 		User userFromDB = userDao.getEntryByUname(username);
 		if(username.equals(userFromDB.getUname()) && password.equals(userFromDB.getPwd()))
 		{
-			return true;
+			return userFromDB;
 		}
-		return false;
+		return null;
 	}
 }
