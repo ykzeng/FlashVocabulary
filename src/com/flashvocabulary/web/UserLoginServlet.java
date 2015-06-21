@@ -28,10 +28,11 @@ public class UserLoginServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		User user=WebUtils.write2Bean(request, User.class);
+		User userFromDB = null;
 		String currentLibname = " - -";
 		int todayCount=0,todayNoFinished=0, currentLibCount=0,currentLibFinished=0,dayToFinish=0;
 		try {
-			if(userInfoService.userLogin(user)){
+			if((userFromDB = userInfoService.userLogin(user)) != null){
 
 				currentLibname = todayWordService.getUserCurrentLibName(25);
 				int [] values = todayWordService.getUserTodayWordInfo(25);
@@ -47,6 +48,7 @@ public class UserLoginServlet extends HttpServlet {
 				request.setAttribute("dayToFinish", dayToFinish);
 				request.setAttribute("currentLibname", currentLibname);
 				request.getRequestDispatcher("/index.jsp").forward(request, response);
+				request.getSession().setAttribute("user", userFromDB);
 			}
 			else 
 			{
