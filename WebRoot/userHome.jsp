@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8" isELIgnored="false"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -27,13 +27,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="center_left">
         <div class="lib_status_card hover_hand" id="collection_card" onclick="location.href='index.html';">
             <h3 style="color:#707070;">COLLECTIONS</h3>
-            <h3 style="font-weight:bold;font-size:36px;margin-top:20px;">TOTAL<strong style="color:black;"> 100</strong></h3>
+            <h3 style="font-weight:bold;font-size:36px;margin-top:20px;">TOTAL<strong style="color:black;"> ${userCollectCount}</strong></h3>
             <h3 style="font-size:36px;text-align:right;color:#2dbe60">RECITE'EM NOW</h3>
         </div>
         <div class="today_status_card hover_hand" id="lib_card" onclick="location.href='libChange.html';">
             <h3 style="color:#707070;">WORD LIB</h3>
             <h3 style="font-size:36px;"><span>CURRENT</span></h3>
-            <h3 style="font-weight:normal;font-size:36px;"><span style="color:#2dbe60">GRE3000</span></h3>
+            <h3 style="font-weight:normal;font-size:36px;"><span style="color:#2dbe60">${libName}</span></h3>
             <h3 style="font-weight:normal;text-align:right;margin-right:16px;font-size:36px;"><span style="color:red;">CLICK TO CHANGE</span></h3>
         </div>
     </div>

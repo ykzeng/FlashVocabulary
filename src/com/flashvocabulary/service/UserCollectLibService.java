@@ -27,7 +27,7 @@ public class UserCollectLibService {
 	 * @param int(用户ID).
 	 * @return 词库中所有单词
 	 */
-	public List<Word> getUserCollectLibByUid(String uid)  //@代号：ljt 
+	public List<Word> getUserCollectLibByUid(int uid)  //@代号：ljt 
 	{
 		List<UserCollectLib> ucl= new ArrayList<UserCollectLib>();
 		List<Word> wordList = new ArrayList<Word>();
