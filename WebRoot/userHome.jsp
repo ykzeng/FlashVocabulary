@@ -40,8 +40,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="center_right" style="background:#ecf2f3;">
         <div class="today_status_card hover_hand" id="checkin_card">
             <h3 style="color:#707070;">CHECK IN DAYS</h3>
-            <h3 style="font-size:36px;margin-top:20px;">TOTAL<strong style="color:black;"> 100</strong></h3>
-            <h3 style="font-size:36px;">CONTINUATION<strong style="color:#2dbe60"> 85</strong></h3>
+            <h3 style="font-size:36px;margin-top:20px;">TOTAL<strong style="color:black;"> ${checkinDays}</strong></h3>
+            <h3 style="font-size:36px;">CONTINUATION<strong style="color:#2dbe60"> ${continuation}</strong></h3>
             <h3 style="font-weight:normal;text-align:right;margin-right:16px;font-size:36px;"><span style="color:red;">SEE MY CHECKINS</span></h3>
         </div>
         <div class="lib_status_card hover_hand" id="setting_card">

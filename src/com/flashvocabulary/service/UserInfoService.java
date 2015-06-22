@@ -94,4 +94,17 @@ public class UserInfoService {
 			e.printStackTrace();
 		}
 	}
+	
+	public int getContinueCheckinDays(int uid)
+	{
+		try {
+			int days = userDao.getEntry(uid).getCheckin();
+			return days;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
 }

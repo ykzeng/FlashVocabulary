@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
 
 import com.flashvocabulary.dto.User;
+import com.flashvocabulary.service.CheckInService;
 import com.flashvocabulary.service.UserCollectLibService;
 import com.flashvocabulary.service.UserInfoService;
 import com.flashvocabulary.service.WordLibService;
@@ -17,10 +18,11 @@ public class UserHomeAction implements Action {
 	private UserCollectLibService userCollectLibService = new UserCollectLibService();
 	private UserInfoService userInfoService = new UserInfoService();
 	private WordLibService wordLibService = new WordLibService();
+	private CheckInService checkInService = new CheckInService();
 	@Override
 	public String execute() throws Exception {
 		HttpServletRequest request = ServletActionContext.getRequest();
-		HttpServletResponse response = ServletActionContext.getResponse();
+		//HttpServletResponse response = ServletActionContext.getResponse();
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");
 		int uid = user.getId();
@@ -29,8 +31,13 @@ public class UserHomeAction implements Action {
 		String libName = wordLibService.getLibNameByLibid(
 				userInfoService.getCurrentUserInfo(uid).getCurrentLib());
 		if(libName==null) libName = "Empty Now!";
+		int continuation = userInfoService.getContinueCheckinDays(uid);
+		int checkinDays = checkInService.getCheckinDays(uid);
 		request.setAttribute("userCollectCount", userCollectCount);
 		request.setAttribute("libName", libName);
+		request.setAttribute("continuation", continuation);
+		request.setAttribute("checkinDays", checkinDays);
+		
 		
 		return "toUserHome";
 	}

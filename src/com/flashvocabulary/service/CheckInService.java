@@ -36,4 +36,16 @@ public class CheckInService {
 			e.printStackTrace();
 		}
 	}
+	
+	public int getCheckinDays(int uid)
+	{
+		try {
+			int days = checkInDao.getCheckinDays(uid);
+			return days;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }
