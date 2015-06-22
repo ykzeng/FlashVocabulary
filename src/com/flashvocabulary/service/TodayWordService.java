@@ -292,4 +292,85 @@ public class TodayWordService {
 		return new Random().nextInt(4);
 	}
 	
+	public JSONArray getFlashCard(int uid)
+	{
+		List<Word> wl= new ArrayList<Word>();
+		try {
+			List<TodayWord> twList = todayWordDao.getEntrys("select * from tb_todayword where uid = ?", uid);
+			int len = twList.size();
+			int [] arr = new int[10];
+			arr[0] = new Random().nextInt(len);
+			if(len>=10 && len<30)
+			{
+				for(int i=1;i<10;i++)
+				{
+					arr[i] = arr[0] + i;
+					if(arr[i]>=len)
+					{
+						arr[i] = arr[i]-10;
+					}
+				}	
+				
+			}
+			else if(len >= 30 && arr[0]>=0 && arr[0]<len/2)
+			{
+				for(int i=1;i<10;i++)
+				{
+					arr[i] = arr[0] + i + 1 + len/5;
+				}	
+			}
+			else if(len>30 && len <=100 && arr[0]>=len/2)
+			{
+				for(int i=1;i<10;i++)
+				{
+					arr[i] = arr[0] - i - 1 - len/(i+3);
+				}	
+			}
+			else if(len>100 && arr[0]>=len/2)
+			{
+				for(int i=1;i<10;i++)
+				{
+					arr[i] = arr[0] - i - 3 - len/(i+3);
+				}	
+			}
+			else
+			{
+				for(int i=1;i<len;i++)
+				{
+					arr[i] = arr[0] + i;
+				}
+				for(int j=len;j<10;j++)
+				{
+					arr[j] = 0;
+				}
+			}
+			
+			List<TodayWord> twTemp = new ArrayList<TodayWord>();
+			for(int i=0;i<10;i++)
+			{
+				twTemp.add(twList.get(arr[i]));
+			}
+			
+			wl = getWordGroupInfo1(twTemp);
+			
+			JSONArray jsonArray = new JSONArray();
+			JSONObject jsonObject = new JSONObject();
+			for(int j=0;j<10;j++)
+			{
+				jsonObject.put("wordID", wl.get(j).getId());
+				jsonObject.put("word", wl.get(j).getWord());
+				jsonObject.put("phonetics", wl.get(j).getPhonetics());
+				jsonObject.put("trans", wl.get(j).getTranslation());
+				jsonArray.add(jsonObject);
+			}
+			return jsonArray;
+			
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+
 }

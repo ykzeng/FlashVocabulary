@@ -1,16 +1,26 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false"%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0059)file:///R:/Workspace/Front-End/FlashVocabulary/recital.html -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>无标题文档</title>
+<title>FlashVocabulary-Boost your vocabulary online!</title>
 <link rel="stylesheet" type="text/css" href="css/basics.css">
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
+    function init(){
+    	alert("trying");
+    	
+        $.getJSON("RandomFlashCardAction", null, getJson);
+    }
+    function getJson(data){
+        alert("test");
+        alert(data.RFlashCard[0].trans);
+    }
 </script>
 </head>
 
-<body class="uni_background" >
+<body class="uni_background" onload="init()">
+<jsp:include  page="include/header.jsp"/>
 <a id="to_recite" href="answer.html"><img src="images/right-arrow.png"></a>
     <div class="left_card">
     <a class="right_side" style="right:-7px;top:65%;"><img src="images/rs_arrow.png" style="width:60%;"></a>

@@ -14,7 +14,7 @@
 	<h1>Flash Vocabulary</h1>
 	<h2 style="color:#2dbe60;">REGISTER</h2>
 </div>
-	<form action="RegisterServlet" method="post">
+	<form action="RegisterAction" method="post">
 	<div class="login_div">
 		<div style="height:100%;margin:10%;">
 			<div style="width:100%">

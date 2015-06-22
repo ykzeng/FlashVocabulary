@@ -16,4 +16,15 @@ public class UserlibDaoImpl extends BaseDaoImpl<UserLib> implements BaseDao<User
 		}
 		return userLibList;
 	}
+	public UserLib getEntryByUidAndWid(Integer uid,Integer wid)
+	{
+		UserLib userLib = null;
+		try {
+			userLib = super.getEntry("select * from tb_userlib where uid = ? and wid = ?", uid, wid);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return userLib;
+	}
 }

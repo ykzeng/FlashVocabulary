@@ -14,27 +14,27 @@
 	<h1>Flash Vocabulary</h1>
 	<h2 style="color:#2dbe60;">LOG IN</h2>
 </div>
-	<form action="UserLoginServlet" method="post">
+	<form action="LoginAction" method="post">
 	<div class="login_div">
 		<div style="height:100%;margin:10%;">
 			<div style="width:100%">
 				<h3>UserName</h3>
 			</div>
 			<div class="input_div">
-				<input type="text" name="uname"/>
+				<input type="text" name="uname" value="zengyukun"/>
 			</div>
 			<div style="width:100%">
 				<h3>Password</h3>
 			</div>
 			<div class="input_div">
-				<input type="password" name="pwd"/>
+				<input type="password" name="pwd" value="doubi"/>
 			</div>
 			<div class="input_div" style="margin-top:40px;">
 				<input type="submit" value="Login" style="width:90.5%;background-color:#28a956;border-color:#1fae52;color:white;cursor:pointer;"/>
 			</div>
 			<div class="input_div">
 				No Account?
-				<a href="#" style="color:#2dbe60">Sign up</a>
+				<a href="register.jsp" style="color:#2dbe60">Sign up</a>
 			</div>
 		</div>
 	</div>

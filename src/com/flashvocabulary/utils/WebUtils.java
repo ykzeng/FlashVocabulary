@@ -1,5 +1,6 @@
 package com.flashvocabulary.utils;
 
+import java.io.BufferedReader;
 import java.security.MessageDigest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -89,5 +90,20 @@ public class WebUtils {
 	{
 		return UUID.randomUUID().toString();
 	}
+	
+	public static String readJsonString(HttpServletRequest request) {
+		StringBuffer json  =   new  StringBuffer();  
+            String line  =   null ;  
+            try   {  
+                BufferedReader reader  =  request.getReader();  
+                while ((line  =  reader.readLine())  !=   null )  {  
+                    json.append(line);  
+                }   
+            }   
+            catch (Exception e)  {  
+                System.out.println( "Error reading JSON string:  "   +  e.toString());  
+            }   
+            return  json.toString();  
+        }
 
 }
