@@ -4,7 +4,7 @@
 <c3p0-config>
 	<default-config>
 		<property name="driverClass">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-		<property name="jdbcUrl">jdbc:sqlserver://172.29.128.68:1433;databasename=FlashVocabulary</property>
+		<property name="jdbcUrl">jdbc:sqlserver://172.29.128.86:1433;databasename=FlashVocabulary</property>
 		<property name="user">sa</property>
 		<property name="password">789456123</property>
 		

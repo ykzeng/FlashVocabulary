@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.flashvocabulary.dto.TodayWord;
+import com.flashvocabulary.dto.User;
 import com.flashvocabulary.service.FinishAGroupService;
 import com.flashvocabulary.utils.WebUtils;
 
@@ -51,7 +52,7 @@ public class FinishAGroupServlet extends HttpServlet {
 		Integer uid = null;
 		try {
 			HttpSession session=request.getSession();
-			uid = Integer.parseInt(session.getAttribute("id").toString());
+			uid = ((User)session.getAttribute("user")).getId();
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("session error" + e.getMessage());
