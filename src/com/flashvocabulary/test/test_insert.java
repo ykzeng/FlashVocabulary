@@ -48,7 +48,6 @@ public class test_insert {
 //			System.out.println(new Random().nextInt(4));
 //			i++;
 //		}
-
 		
 		TodayWordService todayWordservice = new TodayWordService();
 			int uid = 18;
