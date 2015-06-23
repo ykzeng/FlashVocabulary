@@ -33,11 +33,11 @@ public class TodayWordService {
 	public JSONArray getWordGroupInfoToJason(List<TodayWord> twList)
 	{
 		List<Word> wordList = getWordGroupInfo1(twList);
-		//List<WordSentenceView> wsvList = getWordGroupInfo2(twList);
-		List<String> sentencesList = getWordGroupInfo3(twList);
-		List<String> sentencesTransList = getWordGroupInfo4(twList);
+		List<WordSentenceView> wsvList = getWordGroupInfo2(twList);
+		List<String> sentenceAndtransList = getWordGroupInfo3(twList);
+
 		Word word = null;
-		//WordSentenceView wsv = null;
+		WordSentenceView wsv = null;
 		JSONArray jsonArray = new JSONArray();
 		JSONObject jsonObject = new JSONObject();
 		
@@ -52,8 +52,8 @@ public class TodayWordService {
 		String wordSentence = "";
 		String sentenceTran = "";
 		String spell = "";
-		String sentences="";
-		String sentencesTrans = "";
+		String sentenceAndtrans="";
+
 		for(int i=0; i<wordList.size() ; i++)
 		{
 			idOfTodayWordLib = twList.get(i).getId();
@@ -69,15 +69,11 @@ public class TodayWordService {
 			
 			transElection = get3RandomTranEletion(wordID,position);
 			
-			//wsv = wsvList.get(i);
-			//wordSentence = wsv.getSentence();
-			//sentenceTran = wsv.getTranslation();
+			wsv = wsvList.get(i);
+			wordSentence = wsv.getSentence();
+			sentenceTran = wsv.getTranslation();
 			
-			sentences = sentencesList.get(i);
-			sentencesTrans = sentencesTransList.get(i);
-			
-			wordSentence = sentences.split("\\|")[0];
-			sentenceTran = sentencesTrans.split("\\|")[0];
+			sentenceAndtrans = sentenceAndtransList.get(i);
 			
 			jsonObject.put("spell", spell);
 			jsonObject.put("idOfTodayWordLib", idOfTodayWordLib);
@@ -90,8 +86,7 @@ public class TodayWordService {
 			jsonObject.put("trans", transElection);
 			jsonObject.put("usages",wordSentence );
 			jsonObject.put("sen_trans",sentenceTran );
-			jsonObject.put("sentences",sentences );
-			jsonObject.put("sentencesTrans",sentencesTrans );
+			jsonObject.put("sentences",sentenceAndtrans );
 			jsonArray.add(jsonObject);
 		}
 		
@@ -154,27 +149,27 @@ public class TodayWordService {
 	 * @param TodayWord类-List
 	 * @return WordSentenceView类-List
 	 */
-//	public List<WordSentenceView> getWordGroupInfo2(List<TodayWord> twList)
-//	{
-//		List<WordSentenceView> wsvList = new ArrayList<WordSentenceView>();
-//		WordSentenceView wsv = null;
-//		try {
-//			for(int i=0;i<twList.size();i++)
-//			{
-//				wsv = wordSentenceViewDao.getEntry(twList.get(i).getWid());
-//				wsvList.add(wsv);
-//			}
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return wsvList;
-//	}
+	public List<WordSentenceView> getWordGroupInfo2(List<TodayWord> twList)
+	{
+		List<WordSentenceView> wsvList = new ArrayList<WordSentenceView>();
+		WordSentenceView wsv = null;
+		try {
+			for(int i=0;i<twList.size();i++)
+			{
+				wsv = wordSentenceViewDao.getEntry(twList.get(i).getWid());
+				wsvList.add(wsv);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return wsvList;
+	}
 	
 	/**
 	 * 获得所有例句
 	 * @param TodayWord类-List
-	 * @return 多个例句的String拼接
+	 * @return 多个例句,与翻译的String拼接
 	 */
 	public List<String> getWordGroupInfo3(List<TodayWord> twList)
 	{
@@ -188,7 +183,9 @@ public class TodayWordService {
 						"where wid = ?", twList.get(i).getWid());
 				for(int j=0;j<wsvlist.size();j++)
 				{
-					sentences = sentences+"|"+wsvlist.get(j).getSentence();
+					sentences = "<li><span>"+wsvlist.get(j).getSentence()+"</span><br/><p>"
+							+wsvlist.get(j).getTranslation()+"</p></li>";
+							
 				}
 				wsvString.add(sentences);
 			}
@@ -199,33 +196,6 @@ public class TodayWordService {
 		return wsvString;
 	}
 	
-	/**
-	 * 获得所有例句翻译
-	 * @param TodayWord类-List
-	 * @return 多个翻译的String拼接
-	 */
-	public List<String> getWordGroupInfo4(List<TodayWord> twList)
-	{
-		List<String> wsvString = new ArrayList<String>();
-		List<WordSentenceView> wsvlist = new ArrayList<WordSentenceView>();
-		String sentence_trans = "";
-		try {
-			for(int i=0;i<twList.size();i++)
-			{
-				wsvlist = wordSentenceViewDao.getEntrys("select * from tb_wordsentenceview " +
-						"where wid = ?", twList.get(i).getWid());
-				for(int j=0;j<wsvlist.size();j++)
-				{
-					sentence_trans = sentence_trans+"|"+wsvlist.get(j).getTranslation();
-				}
-				wsvString.add(sentence_trans);
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return wsvString;
-	}
 	
 	/**
 	 * 获得一组单词翻译选项（4个）
