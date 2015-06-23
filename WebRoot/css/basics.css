@@ -114,14 +114,12 @@
 	vertical-align:middle;
 }
 .answers ul li a{
+	overflow:hidden;
+	text-overflow:ellipsis; 
 	line-height:60px;
 	display:block;
 	white-space: nowrap;
-	overflow:hidden;
-	text-overflow:ellipsis; 
-	padding: 0px 15px 0px 15px;
 }
-
 .answers ul li:hover{
 	background: limegreen;
 	color:white;
@@ -182,8 +180,11 @@
 .trans_card div{
 	width:95%;padding:0 2.5% 0 2.5%;margin-bottom:5px;
 }
+.review_div_left{
+	width:49%;min-height:80px;float:left;position:relative;
+}
 .review_card{
-	width:49%;background-color:#f5f5f5;
+	width:100%;background-color:#f5f5f5;
 	min-height:80px;float:left;
 	border: 1px solid #e3e3e3;
 	border-radius: 5px;

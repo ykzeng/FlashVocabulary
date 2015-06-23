@@ -22,19 +22,19 @@ public class GetWordSetAction implements Action {
     @Override
     public String execute() throws Exception {
 	// TODO Auto-generated method stub
-	int lastWid = 0;
+	int lastTid = 0;
 	HttpServletRequest request = ServletActionContext.getRequest();
 	HttpSession session = request.getSession();
-	if (session.getAttribute("lastWid") == null) {
-	    session.setAttribute("lastWid", 0);
+	if (session.getAttribute("lastTid") == null) {
+	    session.setAttribute("lastTid", 0);
 	}
 	else {
-	    lastWid = (Integer)session.getAttribute("lastWid");
+	    lastTid = (Integer)session.getAttribute("lastTid");
 	}
 	User user = (User)session.getAttribute("user");
 	int uid = user.getId();
 	//lastID = request.getParameter("");
-	List<TodayWord> twList = todayWordservice.getUserTodayWordById(uid, lastWid);
+	List<TodayWord> twList = todayWordservice.getUserTodayWordById(uid, lastTid);
 	wordSet  = todayWordservice.getWordGroupInfoToJason(twList);
 	
 	return SUCCESS;

@@ -24,14 +24,51 @@
     		true_id = "a"+wordSet[count].position;
     		window.sessionStorage.count = 0;
     		window.sessionStorage.wordSet = wordSet;*/
-
     }
     function getWordSet(data){
         var wordSet = data.wordSet;
+        var totalCount = wordSet.length - 1;
+
         setContent(wordSet[0]);
+
+        for (var i = 0; i <= totalCount ; i++) {
+            var tempWord = wordSet[i];
+            var aId = "word_" + (i+1);
+            var divId = "div_w" + (i+1);
+            var transId = "trans_w" + (i+1);
+            document.getElementById(divId).innerHTML = "<h3>" + tempWord.spell + "</h3><div>"
+            +tempWord.usages+"</div><a onclick=\"show_trans(this.id)\" id=\"" + aId 
+            + "\"><img src=\"images/close_icon.png\"></a><div style=\"display:none;\" id=\"" + transId
+            + "\">" + tempWord.sen_trans + "</div>";
+            document.getElementById(divId).style.display = "block";
+        }
+        if (totalCount < 6) {
+            for (var i = totalCount + 1; i < 7; i++) {
+                document.getElementById("div_w" + i).style.display = "none";
+            }
+        }
+
+        initResult(wordSet, totalCount);
         window.sessionStorage.count = 0;
-        window.sessionStorage.totalCount = wordSet.length;
+        window.sessionStorage.totalCount = totalCount;
         window.sessionStorage.wordSet = JSON.stringify(wordSet);
+    }
+    function initResult(wordSet, totalCount){
+        var resultData = {setResult:
+                        [{"tid":"70", "wid":"1", "isCheck":"0"}, 
+                        {"tid":"71", "wid":"1", "isCheck":"0"},
+                        {"tid":"70", "wid":"1", "isCheck":"0"},
+                        {"tid":"70", "wid":"1", "isCheck":"0"},
+                        {"tid":"70", "wid":"1", "isCheck":"0"},
+                        {"tid":"70", "wid":"1", "isCheck":"0"},
+                        {"tid":"70", "wid":"1", "isCheck":"0"}],
+                        setCount: (totalCount + 1)};
+        for (var i = 0; i <= totalCount ; i++) {
+            resultData.setResult[i].wid = wordSet[i].id;
+            resultData.setResult[i].tid = wordSet[i].idOfTodayWordLib;
+        }
+        window.sessionStorage.resultData = JSON.stringify(resultData);
+        var temp = JSON.parse(window.sessionStorage.resultData);
     }
     function setContent(wordToShow){
         document.getElementById("spell").innerText = wordToShow.spell;
@@ -83,6 +120,12 @@
         var wordSet = JSON.parse(window.sessionStorage.wordSet);
         var next_word = wordSet[count];
         setContent(next_word);
+    }
+    function postResult(){
+        alert("I'm in function!");
+
+        var setResult = {data:JSON.stringify(initData)};
+        $.post("SetCompleteAction", setResult);
     }
 </script>
 </head>
@@ -182,30 +225,53 @@
 <div style="display:none" id="sum_div">
 <a class="right_side" onclick="to_next_set()"><img src="images/right-arrow.png"></a>
 	<div class="flashcard">
-    <div class="trans_container" style="overflow:visible;">
-    <div style="width:49%;min-height:80px;float:left;position:relative;">
-        <div class="review_card" style="width:100%">
-            <h3>abandon</h3>
-            <div>added spices to the stew with complete <strong>abandon</strong></div>
-            <a onclick="show_trans(this.id)" id="word_1"><img src="images/close_icon.png"></a>
-            <div id="trans_w1" style="display:none;">肆无忌惮地向炖菜里面加调料</div>
-        </div>
-        <div class="review_card" style="width:100%">
-            <h3>abandon</h3>
-            <div>added spices to the stew with complete <strong>abandon</strong></div>
-            <a onclick="show_trans(this.id)" id="word_2"><img src="images/close_icon.png"></a>
-            <div id="trans_w2" style="display:none;">肆无忌惮地向炖菜里面加调料</div>
-        </div>
-    </div>
-    <div style="width:49%;min-height:80px;float:right;position:relative;">
-        <div class="review_card" style="width:100%">
-            <h3>abandon</h3>
-            <div>added spices to the stew with complete <strong>abandon</strong></div>
-            <a onclick="show_trans(this.id)" id="word_5"><img src="images/close_icon.png"></a>
-            <div id="trans_w5" style="display:none;">肆无忌惮地向炖菜里面加调料</div>
-        </div>
-    </div>
-            
+        <div class="trans_container" style="overflow:visible;">
+            <div class="review_div_left">
+                <div class="review_card" id="div_w1">
+                    <h3>abandon</h3>
+                    <div>added spices to the stew with complete <strong>abandon</strong></div>
+                    <a onclick="show_trans(this.id)" id="word_1"><img src="images/close_icon.png"></a>
+                    <div id="trans_w1" style="display:none;">肆无忌惮地向炖菜里面加调料</div>
+                </div>
+                <div class="review_card" id="div_w3">
+                    <h3>abandon</h3>
+                    <div>added spices to the stew with complete <strong>abandon</strong></div>
+                    <a onclick="show_trans(this.id)" id="word_3"><img src="images/close_icon.png"></a>
+                    <div id="trans_w3" style="display:none;">肆无忌惮地向炖菜里面加调料</div>
+                </div>
+                <div class="review_card" id="div_w5">
+                    <h3>abandon</h3>
+                    <div>added spices to the stew with complete <strong>abandon</strong></div>
+                    <a onclick="show_trans(this.id)" id="word_5"><img src="images/close_icon.png"></a>
+                    <div id="trans_w5" style="display:none;">肆无忌惮地向炖菜里面加调料</div>
+                </div>
+                <div class="review_card" id="div_w7">
+                    <h3>abandon</h3>
+                    <div>added spices to the stew with complete <strong>abandon</strong></div>
+                    <a onclick="show_trans(this.id)" id="word_7"><img src="images/close_icon.png"></a>
+                    <div id="trans_w7" style="display:none;">肆无忌惮地向炖菜里面加调料</div>
+                </div>
+            </div>
+            <div class="review_div_left" style="float:right">
+                <div class="review_card" id="div_w2">
+                    <h3>abandon</h3>
+                    <div>added spices to the stew with complete <strong>abandon</strong></div>
+                    <a onclick="show_trans(this.id)" id="word_2"><img src="images/close_icon.png"></a>
+                    <div id="trans_w2" style="display:none;">肆无忌惮地向炖菜里面加调料</div>
+                </div>
+                <div class="review_card" id="div_w4">
+                    <h3>abandon</h3>
+                    <div>added spices to the stew with complete <strong>abandon</strong></div>
+                    <a onclick="show_trans(this.id)" id="word_4"><img src="images/close_icon.png"></a>
+                    <div id="trans_w4" style="display:none;">肆无忌惮地向炖菜里面加调料</div>
+                </div>
+                <div class="review_card" id="div_w6">
+                    <h3>abandon</h3>
+                    <div>added spices to the stew with complete <strong>abandon</strong></div>
+                    <a onclick="show_trans(this.id)" id="word_6"><img src="images/close_icon.png"></a>
+                    <div id="trans_w6" style="display:none;">肆无忌惮地向炖菜里面加调料</div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -213,9 +279,10 @@
     <label style="display:none;" id="a_label">a2</label>
     <script type="text/javascript">
         function to_next_set(){
-            count = 0;
-            document.getElementById("sum_div").style.display="none";
-            toNext();
+            var resultData = JSON.parse(window.sessionStorage.resultData);
+            var setResult = {data:JSON.stringify(resultData)};
+            $.post("SetCompleteAction", setResult);
+            window.location.href = "GoReciteAction";
         }
 
     	function answer_click (choice){
@@ -228,6 +295,9 @@
     			document.getElementById(choice).style.background = "red";
     			document.getElementById(choice).style.color = "white";
     		}
+            else{
+
+            }
     		//forbid onclick after choosed
     		//made all the wrong choice to show red when hover,
     		//except the choosed one, which is set to show red always
@@ -265,6 +335,12 @@
     	}
 
     	function toNext(){
+            //set the check status in the result to return
+            var resultData = JSON.parse(window.sessionStorage.resultData);
+            if (true_id == choice_id) {
+                resultData.setResult[window.sessionStorage.count].isCheck = 1;
+                window.sessionStorage.resultData = JSON.stringify(resultData);
+            }
     		//restore the init visual style of choice cards
             var count = window.sessionStorage.count;
             var totalCount = window.sessionStorage.totalCount;
