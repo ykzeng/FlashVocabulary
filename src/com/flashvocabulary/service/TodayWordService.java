@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import org.apache.commons.dbutils.handlers.ArrayHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -31,9 +33,11 @@ public class TodayWordService {
 	public JSONArray getWordGroupInfoToJason(List<TodayWord> twList)
 	{
 		List<Word> wordList = getWordGroupInfo1(twList);
-		List<WordSentenceView> wsvList = getWordGroupInfo2(twList);
+		//List<WordSentenceView> wsvList = getWordGroupInfo2(twList);
+		List<String> sentencesList = getWordGroupInfo3(twList);
+		List<String> sentencesTransList = getWordGroupInfo4(twList);
 		Word word = null;
-		WordSentenceView wsv = null;
+		//WordSentenceView wsv = null;
 		JSONArray jsonArray = new JSONArray();
 		JSONObject jsonObject = new JSONObject();
 		
@@ -48,6 +52,8 @@ public class TodayWordService {
 		String wordSentence = "";
 		String sentenceTran = "";
 		String spell = "";
+		String sentences="";
+		String sentencesTrans = "";
 		for(int i=0; i<wordList.size() ; i++)
 		{
 			idOfTodayWordLib = twList.get(i).getId();
@@ -63,9 +69,15 @@ public class TodayWordService {
 			
 			transElection = get3RandomTranEletion(wordID,position);
 			
-			wsv = wsvList.get(i);
-			wordSentence = wsv.getSentence();
-			sentenceTran = wsv.getTranslation();
+			//wsv = wsvList.get(i);
+			//wordSentence = wsv.getSentence();
+			//sentenceTran = wsv.getTranslation();
+			
+			sentences = sentencesList.get(i);
+			sentencesTrans = sentencesTransList.get(i);
+			
+			wordSentence = sentences.split("\\|")[0];
+			sentenceTran = sentencesTrans.split("\\|")[0];
 			
 			jsonObject.put("spell", spell);
 			jsonObject.put("idOfTodayWordLib", idOfTodayWordLib);
@@ -78,6 +90,8 @@ public class TodayWordService {
 			jsonObject.put("trans", transElection);
 			jsonObject.put("usages",wordSentence );
 			jsonObject.put("sen_trans",sentenceTran );
+			jsonObject.put("sentences",sentences );
+			jsonObject.put("sentencesTrans",sentencesTrans );
 			jsonArray.add(jsonObject);
 		}
 		
@@ -140,21 +154,77 @@ public class TodayWordService {
 	 * @param TodayWord类-List
 	 * @return WordSentenceView类-List
 	 */
-	public List<WordSentenceView> getWordGroupInfo2(List<TodayWord> twList)
+//	public List<WordSentenceView> getWordGroupInfo2(List<TodayWord> twList)
+//	{
+//		List<WordSentenceView> wsvList = new ArrayList<WordSentenceView>();
+//		WordSentenceView wsv = null;
+//		try {
+//			for(int i=0;i<twList.size();i++)
+//			{
+//				wsv = wordSentenceViewDao.getEntry(twList.get(i).getWid());
+//				wsvList.add(wsv);
+//			}
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return wsvList;
+//	}
+	
+	/**
+	 * 获得所有例句
+	 * @param TodayWord类-List
+	 * @return 多个例句的String拼接
+	 */
+	public List<String> getWordGroupInfo3(List<TodayWord> twList)
 	{
-		List<WordSentenceView> wsvList = new ArrayList<WordSentenceView>();
-		WordSentenceView wsv = null;
+		List<String> wsvString = new ArrayList<String>();
+		List<WordSentenceView> wsvlist = new ArrayList<WordSentenceView>();
+		String sentences = "";
 		try {
 			for(int i=0;i<twList.size();i++)
 			{
-				wsv = wordSentenceViewDao.getEntry(twList.get(i).getWid());
-				wsvList.add(wsv);
+				wsvlist = wordSentenceViewDao.getEntrys("select * from tb_wordsentenceview " +
+						"where wid = ?", twList.get(i).getWid());
+				for(int j=0;j<wsvlist.size();j++)
+				{
+					sentences = sentences+"|"+wsvlist.get(j).getSentence();
+				}
+				wsvString.add(sentences);
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return wsvList;
+		return wsvString;
+	}
+	
+	/**
+	 * 获得所有例句翻译
+	 * @param TodayWord类-List
+	 * @return 多个翻译的String拼接
+	 */
+	public List<String> getWordGroupInfo4(List<TodayWord> twList)
+	{
+		List<String> wsvString = new ArrayList<String>();
+		List<WordSentenceView> wsvlist = new ArrayList<WordSentenceView>();
+		String sentence_trans = "";
+		try {
+			for(int i=0;i<twList.size();i++)
+			{
+				wsvlist = wordSentenceViewDao.getEntrys("select * from tb_wordsentenceview " +
+						"where wid = ?", twList.get(i).getWid());
+				for(int j=0;j<wsvlist.size();j++)
+				{
+					sentence_trans = sentence_trans+"|"+wsvlist.get(j).getTranslation();
+				}
+				wsvString.add(sentence_trans);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return wsvString;
 	}
 	
 	/**
@@ -256,20 +326,21 @@ public class TodayWordService {
 		// 0 : todayCount,1 : todayNoFinished, 2: currentLibCount, 3: currentLibFinished
 		int [] values = new int[4];
 		try {
-			values[0] = todayWordDao.getEntrys("select * from tb_todayword where uid = ?", uid).size();
+			values[0] = (Integer)todayWordDao.excSql_retValue("select count(*) from tb_todayword where uid = ?",
+					new ScalarHandler(), uid);
 			
-			values[1] = todayWordDao.getEntrys("select * from tb_todayword where uid = ? " +
-					"and ischeck = 0", uid).size();
-			//values[1] = (Integer)(todayWordDao.excSql_retValue("select count(*) from tb_todayword " +
-			//		"where uid = ? and ischeck = 0",new ArrayHandler(), uid));
+//			values[1] = todayWordDao.getEntrys("select * from tb_todayword where uid = ? " +
+//					"and ischeck = 0", uid).size();
+			values[1] = (Integer)(todayWordDao.excSql_retValue("select count(*) from tb_todayword " +
+					"where uid = ? and ischeck = 0",new ScalarHandler(), uid));
 			
 			TodayWord tw = todayWordDao.getEntry("select top 1 * from tb_todayword where uid = ?", uid);
 			int libID = wordDao.getEntry(tw.getWid()).getLib_id();
-			values[2] = wordDao.getEntrys("select * from tb_word where lib_id = ?", libID).size();
+			values[2] = (Integer)wordDao.excSql_retValue("select count(*) from tb_word where lib_id = ?",new ScalarHandler() ,libID);
 			UserlibWordViewImpl userlibWordViewDao = new UserlibWordViewImpl();
 			
-			values[3] = userlibWordViewDao.getEntrys("select * from tb_UserlibWordView " +
-					"where lib_id = ? and uid = ? and status = 5", libID,uid).size();
+			values[3] = (Integer)userlibWordViewDao.excSql_retValue("select count(*) from tb_UserlibWordView " +
+					"where lib_id = ? and uid = ? and status > 4",new ScalarHandler(), libID,uid);
 			
 			return values;
 		} catch (Exception e) {
