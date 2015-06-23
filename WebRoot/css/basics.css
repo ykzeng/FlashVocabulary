@@ -325,3 +325,21 @@ margin-top: 20px;
 .lib_div div div img{
 	width: 80%;
 }
+
+.usersetting-div {
+    margin:0% 5% 0% 5%;
+}
+
+.usersetting-div .row {
+    border-bottom: 1px solid #EBEBEB;
+    margin-bottom: 12px;
+    padding-bottom: 11px;
+}
+.usersetting-div .row .head{
+    margin:0% 2% 0% 2%;
+    height:50px;
+}
+.usersetting-div .row .inputarea{
+    margin:0% 2% 0% 2%;
+    
+}
