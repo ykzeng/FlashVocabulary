@@ -4,6 +4,7 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import com.flashvocabulary.dao.BaseDao;
 import com.flashvocabulary.dto.TodayWord;
+import com.flashvocabulary.dto.UserLib;
 
 public class TodayWordDaoImpl extends BaseDaoImpl<TodayWord> implements BaseDao<TodayWord> {
 
@@ -18,5 +19,18 @@ public class TodayWordDaoImpl extends BaseDaoImpl<TodayWord> implements BaseDao<
 			e.printStackTrace();
 		}
 		return ret;
+	}
+	
+	public TodayWord getEntryByUidAndWid(int uid,int wid)
+	{
+		String sql = "select * from tb_todayword where uid = ? and wid = ?";
+		TodayWord todayWord = null;
+		try {
+			todayWord = super.getEntry(sql, uid, wid);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return todayWord;
 	}
 }

@@ -25,7 +25,7 @@ public class UserCollectAction implements Action {
 	if(request.getParameter("getCollect")!=null)
 	{
 		//String uid = request.getParameter("uid").toString();
-		wordList = userCollectLibService.getUserCollectLibByUid("18");
+		wordList = userCollectLibService.getUserCollectLibByUid(18);
 		String showstr1 = "四级: ";
 		String showstr2 = "六级: ";
 		String showstr3 = "要你命3000: ";

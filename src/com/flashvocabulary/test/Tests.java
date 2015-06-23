@@ -1,6 +1,9 @@
 package com.flashvocabulary.test;
 
+import java.sql.Date;
+
 import org.junit.Test;
+
 import com.flashvocabulary.service.*;;
 
 public class Tests {
@@ -12,4 +15,10 @@ public class Tests {
 		arrangeWordService.ArrangeWord(25);
 	}
 	
+	@Test
+	public void test1() throws Exception
+	{
+		
+		
+	}
 }
