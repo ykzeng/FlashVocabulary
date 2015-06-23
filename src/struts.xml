@@ -25,6 +25,12 @@
 			<result name="sessionExpired">message.jsp</result>
 			<result name="alreadyExist">message.jsp</result>
 		</action>
+		<action name="UserSettingAction" class="com.flashvocabulary.action.UserSettingAction" method="execute">
+			<result name="saveChangeSuccess">message.jsp</result>
+		</action>
+		<action name="UserHomeAction" class="com.flashvocabulary.action.UserHomeAction" method="execute">
+			<result name="toUserHome">userHome.jsp</result>
+		</action>
 	</package>
 	<package name="json" extends="json-default">
 		<action name="RandomFlashCardAction" class="com.flashvocabulary.action.RandomFlashCardAction" method="execute">

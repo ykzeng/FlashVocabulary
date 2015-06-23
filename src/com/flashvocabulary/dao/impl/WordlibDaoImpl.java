@@ -12,7 +12,8 @@ public class WordlibDaoImpl extends BaseDaoImpl<Wordlib>{
 	public String getLibNameByLibid(int libId)  //@代号：ljt 
 	{
 		try {
-			return getEntry(libId).getName();
+			String libName = getEntry(libId).getName();
+			return libName;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

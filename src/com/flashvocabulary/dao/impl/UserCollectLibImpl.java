@@ -27,7 +27,7 @@ public class UserCollectLibImpl extends BaseDaoImpl<UserCollectLib> {
 	 * @param int(用户ID).
 	 * @return 词库中所有单词
 	 */
-	public List<UserCollectLib> getUserCollectLibByUid(String uid)  //@代号：ljt 
+	public List<UserCollectLib> getUserCollectLibByUid(int uid)  //@代号：ljt 
 	{
 		try {
 			return getEntrys("select * from tb_usercollectlib where uid = ?", uid);

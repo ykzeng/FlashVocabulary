@@ -6,7 +6,7 @@
         <h1 style="margin-top:15px;margin-left:5px;font-size:40px;">Flash Vocabulary</h1>
     </div>
     <div style="width:50%;float:right;text-align:right;margin-top:8px;">
-    <div style="cursor:pointer;"><%=((User)(request.getSession().getAttribute("user"))).getUname()%></div>
+    <div style="cursor:pointer;" onclick="location.href='UserHomeAction'"><%=((User)(request.getSession().getAttribute("user"))).getUname()%></div>
    <div style="float:right;width:50%;margin-top:3px;">
    		<form action="SearchAction" method="post">
     	<div style="width:88%;float:left;">
