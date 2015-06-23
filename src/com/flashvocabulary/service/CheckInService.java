@@ -2,7 +2,8 @@ package com.flashvocabulary.service;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 import com.flashvocabulary.dao.impl.CheckInDaoImpl;
 import com.flashvocabulary.dao.impl.UserDaoImpl;
@@ -23,7 +24,7 @@ public class CheckInService {
 	
 	public boolean isFirstCheckIn(int uid)
 	{
-		int counts = checkInDao.getEntryCounts(uid, new Date());
+		int counts = checkInDao.getEntryCounts(uid);
 		if (0 == counts)
 		{
 			return true;
@@ -34,7 +35,7 @@ public class CheckInService {
 	
 	public void checkIn(int uid,String post)
 	{
-		CheckIn checkIn = new CheckIn(post,uid,new Date());
+		CheckIn checkIn = new CheckIn(post,uid,new Timestamp(System.currentTimeMillis()));
 		try {
 			checkInDao.saveEntry(checkIn);
 		} catch (Exception e) {

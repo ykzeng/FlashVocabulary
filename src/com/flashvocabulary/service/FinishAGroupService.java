@@ -2,9 +2,7 @@ package com.flashvocabulary.service;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-
-import javax.net.ssl.SSLEngineResult.Status;
+import java.sql.Date;
 
 import com.flashvocabulary.dao.impl.TodayWordDaoImpl;
 import com.flashvocabulary.dao.impl.UserlibDaoImpl;
@@ -47,13 +45,13 @@ public class FinishAGroupService {
 			if (tw.getIsCheck() == IConstants.isCheckisTrue)
 			{
 				if (userLib.getStatus() == 0)
-					userLib.setFirstDate(new Date());
+					userLib.setFirstDate(new java.sql.Date(new java.util.Date().getTime()));
 				
 				int status = userLib.getStatus();
 				Calendar cal = Calendar.getInstance();
-				cal.setTime(new Date());
+				cal.setTime(new java.sql.Date(new java.util.Date().getTime()));
 				cal.add(Calendar.DATE, IConstants.reciteIntervals[status]);
-				userLib.setNextDate(cal.getTime());
+				userLib.setNextDate(new Date(cal.getTime().getTime()));
 				userLib.setStatus(status+1);
 				try {
 					userlibDao.updateEntry(userLib);	

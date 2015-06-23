@@ -51,7 +51,6 @@ public class BaseDaoImpl<T> implements BaseDao<T>{
 
 	@Override
 	public void saveEntry(T t) throws Exception {
-		System.out.println("___________");
 		String simpleName=clazz.getSimpleName();
 		StringBuilder sb=new StringBuilder();
 		//insert into User (id,username,password,phone,cellphone,address,email)  values (?,?,?,?,?,?,?)
@@ -88,7 +87,7 @@ public class BaseDaoImpl<T> implements BaseDao<T>{
 		attr=attr.substring(0, attr.lastIndexOf(','));
 		lastsql=lastsql.substring(0, lastsql.lastIndexOf(','));
 		sb.append(attr).append(')').append(lastsql).append(')');
-		System.out.println("saveSql:"+sb.toString()+"sadasd");
+		//System.out.println("saveSql:"+sb.toString());
 		excSql(sb.toString(),params.toArray());
 	}
 

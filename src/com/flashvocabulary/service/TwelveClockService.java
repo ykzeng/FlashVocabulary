@@ -2,8 +2,9 @@ package com.flashvocabulary.service;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+//import java.util.Date;
 import java.util.List;
+import java.sql.Date;
 
 import com.flashvocabulary.dao.impl.CheckInDaoImpl;
 import com.flashvocabulary.dao.impl.TodayWordDaoImpl;
@@ -42,7 +43,7 @@ public class TwelveClockService {
 		for (User user : userList)
 		{
 			int id = user.getId();
-			int counts = checkInDao.getEntryCounts(id, new Date());
+			int counts = checkInDao.getEntryCounts(id);
 			if (counts == 0)
 			{
 				try {
@@ -78,7 +79,7 @@ public class TwelveClockService {
 				Calendar calendar = Calendar.getInstance();
 				calendar.setTime(date);
 				calendar.add(Calendar.DATE, 1);
-				userLib.setNextDate(calendar.getTime());
+				userLib.setNextDate(new Date(calendar.getTime().getTime()));
 				try {
 					userlibDao.updateEntry(userLib);
 				} catch (Exception e) {

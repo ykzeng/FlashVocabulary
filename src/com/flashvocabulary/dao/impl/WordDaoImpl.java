@@ -22,5 +22,18 @@ public class WordDaoImpl extends BaseDaoImpl<Word> {
 		}
 		return wordList;
 	}
+	
+	public ArrayList<Word> getWordsByLibId(int libId)
+	{
+		String sql = "select * from tb_word where lib_id = ?";
+		ArrayList<Word> wordsList = null;
+		try {
+			wordsList = (ArrayList<Word>)super.getEntrys(sql, libId);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return wordsList;
+	}
 
 }
