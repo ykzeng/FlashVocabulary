@@ -1,5 +1,6 @@
 package com.flashvocabulary.service;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -61,5 +62,10 @@ public class CheckInService {
 		}
 		return 0;
 	}
-
+	
+	public ArrayList<CheckIn> getAllCheckIn(int uid)
+	{
+		return checkInDao.getAllEntryByUserId(uid);
+	}
+	
 }

@@ -1,5 +1,6 @@
 package com.flashvocabulary.dao.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.apache.commons.dbutils.handlers.ScalarHandler;
@@ -28,6 +29,19 @@ public class CheckInDaoImpl extends BaseDaoImpl<CheckIn> implements BaseDao<Chec
 		Integer ret = null;
 		try {
 			ret = (Integer)super.excSql_retValue(sql, new ScalarHandler(), uid);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return ret;
+	}
+	
+	public ArrayList<CheckIn> getAllEntryByUserId(int uid)
+	{
+		String sql = "select * from tb_checkin where uid = ?";
+		ArrayList<CheckIn> ret = null;
+		try {
+			ret = (ArrayList<CheckIn>)super.getEntrys(sql, uid);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

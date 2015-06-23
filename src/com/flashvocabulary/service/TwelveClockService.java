@@ -88,4 +88,18 @@ public class TwelveClockService {
 			}
 		}
 	}
+	
+	public void resetTodayWord()
+	{
+		ArrayList<TodayWord> todayWordList = null;
+		try {
+			todayWordList = (ArrayList<TodayWord>)todayWordDao.getAllEntrys();
+			for (TodayWord todayWord : todayWordList)
+			{
+				todayWordDao.deleteEntry(todayWord.getId());
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 }
