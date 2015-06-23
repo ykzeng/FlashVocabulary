@@ -1,5 +1,7 @@
 package com.flashvocabulary.dao.impl;
 
+import java.util.ArrayList;
+
 import com.flashvocabulary.dto.Wordlib;
 
 public class WordlibDaoImpl extends BaseDaoImpl<Wordlib>{
@@ -19,4 +21,5 @@ public class WordlibDaoImpl extends BaseDaoImpl<Wordlib>{
 		}
 		return null;
 	}
+	 
 }

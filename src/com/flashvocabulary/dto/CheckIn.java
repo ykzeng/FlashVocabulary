@@ -1,21 +1,21 @@
 package com.flashvocabulary.dto;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class CheckIn implements BaseEntry{
 	
 	private int id;
 	private String post;
 	private int uid;
-	private Date date;
+	private Timestamp time;
 	
 	public CheckIn() {}
 	
-	public CheckIn(String post, int uid, Date date)
+	public CheckIn(String post, int uid, Timestamp time)
 	{
 		this.post = post;
 		this.uid = uid;
-		this.date = date;
+		this.time = time;
 	}
 	
 	public int getId() {
@@ -36,11 +36,11 @@ public class CheckIn implements BaseEntry{
 	public void setUid(int uid) {
 		this.uid = uid;
 	}
-	public Date getDate() {
-		return date;
+	public Timestamp getTime() {
+		return time;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setTime(Timestamp time) {
+		this.time = time;
 	}
 	public String getPrimaryKey() {	
 		return "id";

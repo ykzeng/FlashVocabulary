@@ -30,7 +30,6 @@ import com.flashvocabulary.utils.JDBCUtils;
 public class BaseDaoImpl<T> implements BaseDao<T>{
 	
 	private Class<T> clazz;
-	
 	private String primaryKey;
 	private Boolean increment;
 	
@@ -88,7 +87,7 @@ public class BaseDaoImpl<T> implements BaseDao<T>{
 		attr=attr.substring(0, attr.lastIndexOf(','));
 		lastsql=lastsql.substring(0, lastsql.lastIndexOf(','));
 		sb.append(attr).append(')').append(lastsql).append(')');
-		System.out.println("saveSql:"+sb.toString());
+		//System.out.println("saveSql:"+sb.toString());
 		excSql(sb.toString(),params.toArray());
 	}
 
@@ -209,7 +208,6 @@ public class BaseDaoImpl<T> implements BaseDao<T>{
 		QueryRunner qr=new QueryRunner();
 		return qr.query(JDBCUtils.getConnection(),sql,sh,objs);
 	}
-	
-	
+
 
 }

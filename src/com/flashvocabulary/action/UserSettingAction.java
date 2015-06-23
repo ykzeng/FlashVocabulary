@@ -17,7 +17,7 @@ public class UserSettingAction implements Action {
 	public String execute() throws Exception {
 		
 		HttpServletRequest request = ServletActionContext.getRequest();
-		HttpServletResponse response = ServletActionContext.getResponse();
+		//HttpServletResponse response = ServletActionContext.getResponse();
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");
 		int uid = user.getId();
@@ -26,11 +26,12 @@ public class UserSettingAction implements Action {
 			String originalPassword = request.getParameter("originalPassword");
 			String newPassword = request.getParameter("newPassword");
 			String newWordNum = request.getParameter("newWordNum").trim();
-			if(originalPassword!=null && newPassword!=null)
+			if(originalPassword!=null && newPassword!=null && !originalPassword.equals("") && !newPassword.equals(""))
 			{
 				int flag = userInfoService.modifyUserPassword(uid, originalPassword, newPassword);
 				if(flag==1)
 				{
+					user.setPwd(newPassword);
 					request.setAttribute("message", "修改成功！");	
 				}
 				else if(flag == 0)
@@ -45,6 +46,7 @@ public class UserSettingAction implements Action {
 			else if(newWordNum != null)
 			{
 				userInfoService.setDailyNewWordCount(uid, Integer.parseInt(newWordNum));
+				user.setDailyCount(Integer.parseInt(newWordNum));
 				request.setAttribute("message", "新词设置成功："+"  "+userInfoService.getDailyNewWordCount(uid));
 			}
 			return "saveChangeSuccess";

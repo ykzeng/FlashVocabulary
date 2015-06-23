@@ -1,6 +1,8 @@
 package com.flashvocabulary.dto;
 
-import java.util.Date;
+import java.sql.Date;
+
+import com.flashvocabulary.utils.IConstants;
 
 public class UserLib implements BaseEntry{
 
@@ -10,6 +12,18 @@ public class UserLib implements BaseEntry{
 	private int status;
 	private Date firstDate;
 	private Date nextDate;
+
+	public UserLib() {
+		
+	}
+	
+	public UserLib(int uid, int wid, int status) {
+		this.uid = uid;
+		this.wid = wid;
+		this.status = status;
+		this.firstDate = IConstants.defaultDate;
+		this.nextDate = IConstants.defaultDate;
+	}
 	
 	public Date getNextDate() {
 		return nextDate;

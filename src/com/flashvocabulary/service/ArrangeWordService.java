@@ -2,7 +2,7 @@ package com.flashvocabulary.service;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
+import java.sql.Date;
 
 import com.flashvocabulary.dao.impl.UserlibDaoImpl;
 import com.flashvocabulary.dao.impl.UserDaoImpl;
@@ -31,7 +31,7 @@ public class ArrangeWordService {
 		for (UserLib userLib : userLibList)
 		{
 			Date nextDate = userLib.getNextDate();
-			if (nextDate.compareTo(new Date())!=0)
+			if (nextDate.compareTo(new java.sql.Date(new java.util.Date().getTime()))!=0)
 			{
 				wordsList.add(userLib.getWid());
 			}
