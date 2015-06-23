@@ -1,17 +1,22 @@
 package com.flashvocabulary.service;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import com.flashvocabulary.dao.impl.CheckInDaoImpl;
+import com.flashvocabulary.dao.impl.UserDaoImpl;
 import com.flashvocabulary.dto.CheckIn;
+import com.flashvocabulary.dto.User;
 
 public class CheckInService {
 	
 	private CheckInDaoImpl checkInDao;
+	private UserDaoImpl userDao;
 	
 	public CheckInService()
 	{
 		checkInDao = new CheckInDaoImpl();
+		userDao = new UserDaoImpl();
 	}
 	
 	
@@ -35,5 +40,14 @@ public class CheckInService {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
+		
+		try {
+			User user = userDao.getEntry(uid);
+			user.setCheckin(user.getCheckin()+1);
+			userDao.updateEntry(user);
+		} catch (Exception e) {
+				// TODO: handle exception
+		}
 	}
+	
 }

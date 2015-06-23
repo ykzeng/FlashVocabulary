@@ -9,7 +9,16 @@ public class User implements BaseEntry{
 	private int privilege_id = 0;
 	private int dailyCount;
 	private int currentLib;
+	private int checkin;
 	
+	public int getCheckin() {
+		return checkin;
+	}
+
+	public void setCheckin(int checkin) {
+		this.checkin = checkin;
+	}
+
 	public int getCurrentLib() {
 		return currentLib;
 	}

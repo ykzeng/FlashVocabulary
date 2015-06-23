@@ -1,5 +1,5 @@
 #!/bin/sh
-/build/
+/build
 /.classpath
 /.project
 /.settings/

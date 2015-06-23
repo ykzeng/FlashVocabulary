@@ -20,4 +20,5 @@ public class CheckInDaoImpl extends BaseDaoImpl<CheckIn> implements BaseDao<Chec
 		}
 		return ret;
 	}
+	
 }

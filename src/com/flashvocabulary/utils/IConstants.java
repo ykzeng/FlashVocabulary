@@ -14,5 +14,6 @@ public class IConstants {
     public static Integer[] reciteIntervals = {1, 2, 4, 7, 15};
 	public static Integer defaultGroupLength = 7;
 	public static Integer isCheckisTrue = 1;
+	public static Integer isCheckisFalse = 0;
 	public static String GET_COLLECTION = "getCollection";
 }
