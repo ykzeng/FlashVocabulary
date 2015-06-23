@@ -9,28 +9,28 @@ import org.apache.struts2.ServletActionContext;
 
 import net.sf.json.JSONArray;
 
+import com.flashvocabulary.dto.User;
 import com.flashvocabulary.service.TodayWordService;
 import com.opensymphony.xwork2.Action;
 
 public class RandomFlashCardAction implements Action {
     private TodayWordService todayWordservice = new TodayWordService();
-    private String rFlashCard = null;
+    private JSONArray rFlashCard = null;
     @Override
     public String execute() throws Exception {
 	// TODO Auto-generated method stub
-	int uid = 25;
+	HttpServletRequest request = ServletActionContext.getRequest();
+	User user = (User)request.getSession().getAttribute("user");
 	
-	HttpServletResponse response = ServletActionContext.getResponse();
-	
-	rFlashCard  = todayWordservice.getFlashCard(uid).toString();
+	rFlashCard  = todayWordservice.getFlashCard(user.getId());
 	System.out.println("I'm being accessed!");
 	return SUCCESS;
     }
     
-    public String getRFlashCard() {
+    public JSONArray getRFlashCard() {
 	return rFlashCard;
     }
-    public void setRFlashCard(String rFlashCard) {
+    public void setRFlashCard(JSONArray rFlashCard) {
 	this.rFlashCard = rFlashCard;
     }
     

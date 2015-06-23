@@ -8,39 +8,86 @@
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
     function init(){
-    	alert("trying");
-    	
         $.getJSON("RandomFlashCardAction", null, getJson);
     }
     function getJson(data){
-        alert("test");
-        alert(data.RFlashCard[0].trans);
+        var flashCards = data.RFlashCard;
+        window.sessionStorage.flashCards = JSON.stringify(flashCards);
+        //alert(flashCards[0].word);
+        //var test = JSON.parse(sessionStorage.flashCards);
+        //alert(test[0].word);
+        window.sessionStorage.count = 0;
+        var initCard = flashCards[0];
+        document.getElementById("spell").innerText = initCard.word;
+        document.getElementById("phonetics").innerText = initCard.phonetics;
+        var trans = new Array();
+        trans = initCard.trans.split("|");
+        for (var i = 0; i < trans.length; i++) {
+            if (trans[i] != "") {
+                document.getElementById("a"+i).innerText = trans[i];
+                var newA = document.createElement("a");
+                var text = document.createTextNode(trans[i]);
+                newA.appendChild(text);
+                document.getElementById("transList").appendChild(newA);
+            }
+        }
+    }
+    function lastCard(){
+        if (sessionStorage.count > 0) {
+            var currentCount = (--sessionStorage.count);
+            var next_card = (JSON.parse(sessionStorage.flashCards))[currentCount];
+            document.getElementById("spell").innerText = next_card.word;
+            document.getElementById("phonetics").innerText = next_card.phonetics;
+            document.getElementById("transList").innerHTML="";
+            var trans = new Array();
+            trans = next_card.trans.split("|");
+            for (var i = 0; i < trans.length; i++) {
+                if (trans[i] != "") {
+                    var newLi = document.createElement("li");
+                    var text = document.createTextNode(trans[i]);
+                    newLi.appendChild(text);
+                    document.getElementById("transList").appendChild(newLi);
+                }
+            }
+        }
+    }
+    function nextCard(){
+        if (sessionStorage.count < 9) {
+            sessionStorage.count++;
+            var currentCount = sessionStorage.count;
+            var next_card = (JSON.parse(sessionStorage.flashCards))[currentCount];
+            document.getElementById("spell").innerText = next_card.word;
+            document.getElementById("phonetics").innerText = next_card.phonetics;
+            document.getElementById("transList").innerHTML="";
+            var trans = new Array();
+            trans = next_card.trans.split("|");
+            for (var i = 0; i < trans.length; i++) {
+                if (trans[i] != "") {
+                    var newLi = document.createElement("li");
+                    var text = document.createTextNode(trans[i]);
+                    newLi.appendChild(text);
+                    document.getElementById("transList").appendChild(newLi);
+                }
+            }
+        }
     }
 </script>
 </head>
 
 <body class="uni_background" onload="init()">
 <jsp:include  page="include/header.jsp"/>
-<a id="to_recite" href="answer.html"><img src="images/right-arrow.png"></a>
+<a id="to_recite" href="GoReciteAction"><img src="images/right-arrow.png"></a>
     <div class="left_card">
-    <a class="right_side" style="right:-7px;top:65%;"><img src="images/rs_arrow.png" style="width:60%;"></a>
-    <a class="left_side"><img src="images/ls_arrow.png" style="width:60%;"></a>
+    <a class="right_side" style="right:-7px;top:65%;" onclick="nextCard()"><img src="images/rs_arrow.png" style="width:60%;"></a>
+    <a class="left_side" onclick="lastCard()"><img src="images/ls_arrow.png" style="width:60%;"></a>
         <div class="lib_status_card">
             <h3 style="color:#707070;text-align:center">FLASHCARD</h3>
         </div>
         <div class="today_status_card" style="text-align:center;">
-            <h1 style="margin-top:0px;color:black;margin-bottom:0px;">abandon</h1>
-            <h4 style="margin-top:0px;">[im'pә:tinәnt]</h4>
-            <ol class="left_card_list">
-                <li>
-                    n. 狂热；放任 vt. 遗弃；放弃
-                </li>
-                <li>
-                    n. 狂热；放任 vt. 遗弃；放弃
-                </li>
-                <li>
-                    n. 狂热；放任 vt. 遗弃；放弃
-                </li>
+            <h1 style="margin-top:0px;color:black;margin-bottom:0px;" id="spell">abandon</h1>
+            <h4 style="margin-top:0px;" id="phonetics">[im'pә:tinәnt]</h4>
+            <ol class="left_card_list" id="transList">
+                
             </ol>
         </div>
     </div>

@@ -25,11 +25,19 @@
 			<result name="sessionExpired">message.jsp</result>
 			<result name="alreadyExist">message.jsp</result>
 		</action>
+		<action name="GoReciteAction" class="com.flashvocabulary.action.GoReciteAction" method="execute">
+			<result name="success">recital.jsp</result>
+		</action>
 	</package>
 	<package name="json" extends="json-default">
 		<action name="RandomFlashCardAction" class="com.flashvocabulary.action.RandomFlashCardAction" method="execute">
 			<result type="json">
 				<param name="rFlashCard">rFlashCard</param>
+			</result>
+		</action>
+		<action name="GetWordSetAction" class="com.flashvocabulary.action.GetWordSetAction" method="execute">
+			<result type="json">
+				<param name="wordSet">wordSet</param>
 			</result>
 		</action>
 	</package>

@@ -47,6 +47,7 @@ public class TodayWordService {
 		String transElection = "";
 		String wordSentence = "";
 		String sentenceTran = "";
+		String spell = "";
 		for(int i=0; i<wordList.size() ; i++)
 		{
 			idOfTodayWordLib = twList.get(i).getId();
@@ -58,6 +59,7 @@ public class TodayWordService {
 			phonetics = word.getPhonetics();
 			antonym = word.getAntonym();
 			synonym = word.getSynonym();
+			spell = word.getWord();
 			
 			transElection = get3RandomTranEletion(wordID,position);
 			
@@ -65,6 +67,7 @@ public class TodayWordService {
 			wordSentence = wsv.getSentence();
 			sentenceTran = wsv.getTranslation();
 			
+			jsonObject.put("spell", spell);
 			jsonObject.put("idOfTodayWordLib", idOfTodayWordLib);
 			jsonObject.put("position", position);
 			jsonObject.put("id", wordID);
