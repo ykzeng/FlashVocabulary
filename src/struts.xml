@@ -29,7 +29,8 @@
 			<result name="success">recital.jsp</result>
 			</action>
 		<action name="UserSettingAction" class="com.flashvocabulary.action.UserSettingAction" method="execute">
-			<result name="saveChangeSuccess">message.jsp</result>
+			<result name="saveChangeSuccess">userHome.jsp</result>
+			<result name="failure">message.jsp</result>
 		</action>
 		<action name="UserHomeAction" class="com.flashvocabulary.action.UserHomeAction" method="execute">
 			<result name="toUserHome">userHome.jsp</result>

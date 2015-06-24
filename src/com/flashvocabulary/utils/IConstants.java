@@ -12,6 +12,8 @@ public class IConstants {
     public static String ALREADY_EXIST = "alreadyExist";
     public static String ADD_SUCCESS = "addSuccess";
     public static String GET_COLLECTION = "getCollection";
+    public static String SAVE_SUCCESS = "saveChangeSuccess";
+    public static String FAILURE = "failure";
     
     public static Integer[] reciteIntervals = {1, 2, 4, 7, 15};
 	public static Integer defaultGroupLength = 7;

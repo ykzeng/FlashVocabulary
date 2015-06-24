@@ -9,7 +9,9 @@
 <script type="text/javascript">
     function init(){
         $.getJSON("RandomFlashCardAction", null, getJson);
+        document.getElementById("progress_bar").style.width= parseInt(document.getElementById("cLF").innerText)/parseInt(document.getElementById("cLC").innerText) + "%";
     }
+
     function getJson(data){
         var flashCards = data.RFlashCard;
         window.sessionStorage.flashCards = JSON.stringify(flashCards);
@@ -100,7 +102,7 @@
                 FINISHED <strong style="color:#2dbe60">${currentLibFinished}</strong> / ${currentLibCount}
             </p>
             <div class="progress_back">
-                <div style="width:33.3%;"></div>
+                <div id="progress_bar" style="width:33.3%;"></div>
             </div>
         </div>
         <div class="today_status_card">
@@ -109,6 +111,8 @@
             <h3 style="font-weight:normal;text-align:right;margin-right:16px;"><span style="color:red;">${todayNoFinished}</span> TO GO</h3>
         </div>
     </div>
+    <label id="cLC" style="display:none;">${currentLibCount}</label>
+    <label id="cLF" style="display:none;">${currentLibFinished}</label>
 
     <script type="text/javascript">
         function test(){

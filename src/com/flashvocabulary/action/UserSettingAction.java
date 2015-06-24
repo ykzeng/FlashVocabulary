@@ -8,6 +8,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.flashvocabulary.dto.User;
 import com.flashvocabulary.service.UserInfoService;
+import com.flashvocabulary.utils.IConstants;
 import com.opensymphony.xwork2.Action;
 
 public class UserSettingAction implements Action {
@@ -37,10 +38,12 @@ public class UserSettingAction implements Action {
 				else if(flag == 0)
 				{
 					request.setAttribute("message", "原始密码输入有误！");
+					return IConstants.FAILURE;
 				}
 				else
 				{
 					request.setAttribute("message", "修改失败！");
+					return IConstants.FAILURE;
 				}
 			}
 			else if(newWordNum != null)
@@ -49,7 +52,7 @@ public class UserSettingAction implements Action {
 				user.setDailyCount(Integer.parseInt(newWordNum));
 				request.setAttribute("message", "新词设置成功："+"  "+userInfoService.getDailyNewWordCount(uid));
 			}
-			return "saveChangeSuccess";
+			return IConstants.SAVE_SUCCESS;
 			
 		}
 		return null;

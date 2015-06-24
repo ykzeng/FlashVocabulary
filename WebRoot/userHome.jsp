@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <h3 style="font-size:36px;">CONTINUATION<strong style="color:#2dbe60"> ${continuation}</strong></h3>
             <h3 style="font-weight:normal;text-align:right;margin-right:16px;font-size:36px;"><span style="color:red;">SEE MY CHECKINS</span></h3>
         </div>
-        <div class="lib_status_card hover_hand" id="setting_card">
+        <div class="lib_status_card hover_hand" id="setting_card" onclick="location.href='userSetting.jsp';">
             <h3 style="color:#707070;">SETTINGS</h3>
             <h3 style="font-weight:normal;font-size:36px;"><span>SET YOUR</span></h3>
             <h3 style="font-weight:normal;font-size:36px;"><span style="color:#2dbe60">PASSWORD</span></h3>
