@@ -51,10 +51,10 @@ public class test_insert {
 		
 		TodayWordService todayWordservice = new TodayWordService();
 			int uid = 18;
-			int lastID = 0;
+			int lastID = 77;
 			List<TodayWord> twList = todayWordservice.getUserTodayWordById(uid, lastID);
 			JSONArray jsonArray = todayWordservice.getWordGroupInfoToJason(twList);
-			System.out.println(jsonArray.toString());
+			System.out.println(jsonArray.get(0).toString());
 	}
 	
 

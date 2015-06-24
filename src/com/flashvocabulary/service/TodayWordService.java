@@ -33,11 +33,9 @@ public class TodayWordService {
 	public JSONArray getWordGroupInfoToJason(List<TodayWord> twList)
 	{
 		List<Word> wordList = getWordGroupInfo1(twList);
-		List<WordSentenceView> wsvList = getWordGroupInfo2(twList);
-		List<String> sentenceAndtransList = getWordGroupInfo3(twList);
+		List<String> sentenceAndtransList = getWordGroupInfo2(twList);
 
 		Word word = null;
-		WordSentenceView wsv = null;
 		JSONArray jsonArray = new JSONArray();
 		JSONObject jsonObject = new JSONObject();
 		
@@ -68,12 +66,12 @@ public class TodayWordService {
 			spell = word.getWord();
 			
 			transElection = get3RandomTranEletion(wordID,position);
-			
-			wsv = wsvList.get(i);
-			wordSentence = wsv.getSentence();
-			sentenceTran = wsv.getTranslation();
-			
+						
 			sentenceAndtrans = sentenceAndtransList.get(i);
+			
+			String tempStr = sentenceAndtrans.split("</p></li><li><span>")[0].split("<li><span>")[1];//substring(10);
+			wordSentence = tempStr.split("</span><br/><p>")[0];
+			sentenceTran = tempStr.split("</span><br/><p>")[1].split("</p></li>")[0];
 			
 			jsonObject.put("spell", spell);
 			jsonObject.put("idOfTodayWordLib", idOfTodayWordLib);
@@ -145,33 +143,11 @@ public class TodayWordService {
 	}
 	
 	/**
-	 * 获得例句和例句翻译
-	 * @param TodayWord类-List
-	 * @return WordSentenceView类-List
-	 */
-	public List<WordSentenceView> getWordGroupInfo2(List<TodayWord> twList)
-	{
-		List<WordSentenceView> wsvList = new ArrayList<WordSentenceView>();
-		WordSentenceView wsv = null;
-		try {
-			for(int i=0;i<twList.size();i++)
-			{
-				wsv = wordSentenceViewDao.getEntry(twList.get(i).getWid());
-				wsvList.add(wsv);
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return wsvList;
-	}
-	
-	/**
 	 * 获得所有例句
 	 * @param TodayWord类-List
 	 * @return 多个例句,与翻译的String拼接
 	 */
-	public List<String> getWordGroupInfo3(List<TodayWord> twList)
+	public List<String> getWordGroupInfo2(List<TodayWord> twList)
 	{
 		List<String> wsvString = new ArrayList<String>();
 		List<WordSentenceView> wsvlist = new ArrayList<WordSentenceView>();
@@ -185,7 +161,6 @@ public class TodayWordService {
 				{
 					sentences = "<li><span>"+wsvlist.get(j).getSentence()+"</span><br/><p>"
 							+wsvlist.get(j).getTranslation()+"</p></li>";
-							
 				}
 				wsvString.add(sentences);
 			}
