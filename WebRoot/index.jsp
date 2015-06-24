@@ -26,11 +26,15 @@
         trans = initCard.trans.split("|");
         for (var i = 0; i < trans.length; i++) {
             if (trans[i] != "") {
-                document.getElementById("a"+i).innerText = trans[i];
+            var newLi = document.createElement("li");
+                    var text = document.createTextNode(trans[i]);
+                    newLi.appendChild(text);
+                    document.getElementById("transList").appendChild(newLi);
+                /*document.getElementById("a"+i).innerText = trans[i];
                 var newA = document.createElement("a");
                 var text = document.createTextNode(trans[i]);
                 newA.appendChild(text);
-                document.getElementById("transList").appendChild(newA);
+                document.getElementById("transList").appendChild(newA);*/
             }
         }
     }
