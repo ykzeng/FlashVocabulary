@@ -26,6 +26,7 @@ public class TodayWordService {
 	private WordDaoImpl wordDao = new WordDaoImpl();
 	private WordSentenceViewImpl wordSentenceViewDao = new WordSentenceViewImpl();
 	private WordlibDaoImpl wordLibDao = new WordlibDaoImpl();
+	private UserInfoService userInfoService = new UserInfoService();
 	/**
 	 * 封装一组TodayWord为Json数据。
 	 * @param TodayWord类-List
@@ -274,13 +275,12 @@ public class TodayWordService {
 			values[0] = (Integer)todayWordDao.excSql_retValue("select count(*) from tb_todayword where uid = ?",
 					new ScalarHandler(), uid);
 			
-//			values[1] = todayWordDao.getEntrys("select * from tb_todayword where uid = ? " +
-//					"and ischeck = 0", uid).size();
 			values[1] = (Integer)(todayWordDao.excSql_retValue("select count(*) from tb_todayword " +
 					"where uid = ? and ischeck = 0",new ScalarHandler(), uid));
 			
 			TodayWord tw = todayWordDao.getEntry("select top 1 * from tb_todayword where uid = ?", uid);
-			int libID = wordDao.getEntry(tw.getWid()).getLib_id();
+			int libID = userInfoService.getCurrentUserInfo(uid).getCurrentLib();
+					//wordDao.getEntry(tw.getWid()).getLib_id();
 			values[2] = (Integer)wordDao.excSql_retValue("select count(*) from tb_word where lib_id = ?",new ScalarHandler() ,libID);
 			UserlibWordViewImpl userlibWordViewDao = new UserlibWordViewImpl();
 			

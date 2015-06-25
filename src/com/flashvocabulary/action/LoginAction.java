@@ -8,6 +8,7 @@ import com.flashvocabulary.dto.User;
 import com.flashvocabulary.service.ArrangeWordService;
 import com.flashvocabulary.service.TodayWordService;
 import com.flashvocabulary.service.UserInfoService;
+import com.flashvocabulary.service.WordLibService;
 import com.flashvocabulary.utils.IConstants;
 import com.flashvocabulary.utils.WebUtils;
 import com.opensymphony.xwork2.Action;
@@ -18,6 +19,7 @@ import net.sf.json.JSONArray;
 public class LoginAction implements Action{
     private UserInfoService userInfoService = new UserInfoService();
     private TodayWordService todayWordService = new TodayWordService();
+    private WordLibService wordLibService = new WordLibService();
     @Override
     public String execute() throws Exception {
 	// TODO Auto-generated method stub
@@ -35,7 +37,7 @@ public class LoginAction implements Action{
 			    arrangeWordService.ArrangeWord(uid);
 			}
 		    	
-			currentLibname = todayWordService.getUserCurrentLibName(uid);
+			currentLibname = wordLibService.getLibNameByLibid(userFromDB.getCurrentLib());
 			int [] values = todayWordService.getUserTodayWordInfo(uid);
 			todayCount = values[0];
 			todayNoFinished = values[1];

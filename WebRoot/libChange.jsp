@@ -11,6 +11,7 @@
 </head>
 
 <body class="uni_background">
+	<form action="ChooseWordLibAction" method="post">
     <div class="center_div">
     <div class="lib_div">
         <h1 style="font-size:40px;color:#707070">LIB CHANGE</h1>
@@ -18,4 +19,5 @@
         
     </div>
     </div>
+    </form>
 </body></html>

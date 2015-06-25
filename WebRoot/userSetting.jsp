@@ -20,15 +20,15 @@
         <div class="row">
 		<div class="head"><h3>密码修改</h3></div>
 		<div class="inputarea">
-		<p>当前密码:<input type="password" name="originalPassword"/><p>
-		<p>新密码:<input type="password" name="newPassword"/></p>
-		<p>新密码确认:<input type="password" name="confirmNewPassword"/></p>
+		<p>当前密码:&nbsp;&nbsp;<input type="password" name="originalPassword"/><p>
+		<p>新密码:&nbsp;&nbsp;<input type="password" name="newPassword"/></p>
+		<p>新密码确认:&nbsp;&nbsp;<input type="password" name="confirmNewPassword"/></p>
         </div>
 		<hr>
 		<div class="head"><h3>新词设置</h3></div>
 		<div class="inputarea">
-        <p>当前每日新词数:<%=((User)request.getSession().getAttribute("user")).getDailyCount() %></p>
-		<p>设置新词数为:<input type="text" name="newWordNum"/></p>
+        <p>当前每日新词数:&nbsp;&nbsp;<%=((User)request.getSession().getAttribute("user")).getDailyCount() %></p>
+		<p>设置新词数为:&nbsp;&nbsp;<input type="text" name="newWordNum"/></p>
 		<input style="background:#e77e23;" type="submit" value="确认修改" name="saveChange"/>
         </div> 
         </div>

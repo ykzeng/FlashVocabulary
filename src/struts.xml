@@ -44,6 +44,9 @@
 		<action name="ToChooseWordLibAction" class="com.flashvocabulary.action.ToChooseWordLibAction" method="execute"> 
 			<result name="ToChooseWordLib">libChange.jsp</result>
 		</action>
+		<action name="ChooseWordLibAction" class="com.flashvocabulary.action.ChooseWordLibAction" method="execute"> 
+			<result name="chooseSuccess" type="redirectAction">UserHomeAction</result>
+		</action>
 	</package>
 	<package name="json" extends="json-default">
 		<action name="RandomFlashCardAction" class="com.flashvocabulary.action.RandomFlashCardAction" method="execute">

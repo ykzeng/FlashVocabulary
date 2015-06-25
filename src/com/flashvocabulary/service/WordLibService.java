@@ -1,7 +1,6 @@
 package com.flashvocabulary.service;
 
 import java.util.ArrayList;
-
 import com.flashvocabulary.dao.impl.UserlibDaoImpl;
 import com.flashvocabulary.dao.impl.WordDaoImpl;
 import com.flashvocabulary.dao.impl.WordlibDaoImpl;
@@ -13,6 +12,7 @@ public class WordLibService {
 	private WordlibDaoImpl wordlibDao = new WordlibDaoImpl();
 	private UserlibDaoImpl userlibDao = new UserlibDaoImpl();
 	private WordDaoImpl wordDao = new WordDaoImpl();
+	private UserInfoService userInfoService = new UserInfoService();
 	
 	/**
 	 * 获取词库名
@@ -67,5 +67,7 @@ public class WordLibService {
 				e.printStackTrace();
 			}
 		}
+		
+		userInfoService.setUserCurrentLib(uid, libId);
 	}
 }

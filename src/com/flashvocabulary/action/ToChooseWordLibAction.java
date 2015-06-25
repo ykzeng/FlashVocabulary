@@ -34,8 +34,8 @@ public class ToChooseWordLibAction implements Action {
 		String description="";
 		String imgSrc = "";
 		String inputcolor = "";
-		String inputvalue = "Switch";
-		String disable = "false";
+		String inputvalue = "";
+		String disable = "";
 		int inputname = -1;
 		int wordCount = 0;
 		String longSTR = "";
@@ -47,20 +47,24 @@ public class ToChooseWordLibAction implements Action {
 			description = Lib.getDescription();
 			wordCount = wordLibService.getLibCountById(libId);
 			imgSrc = "images/gre_3k.jpg";
-			inputcolor = "";
-			inputvalue =  "Switch";
-			disable = "false";
+			
 			if(libId==currentlibID)
 			{
 				inputcolor = "style=\"background:#e77e23;\"";
 				inputvalue = "Using";
-				disable = "true";
+				disable = " disabled=\"true\"";
+			}
+			else
+			{
+				inputcolor = "";
+				inputvalue =  "Switch";
+				disable = "";
 			}
 			inputname = libId;
 			longSTR += "<div><div><img src=\""+ imgSrc + "\"></div><div><h3>"
 					+libname+"</h3><p>"+description+"</p>Total: <span>"
 					+wordCount+"</span><br></br><input "+inputcolor
-					+"\" type=\"submit\" value=\""+inputvalue+"\" disabled=\""+disable+"\" name=\""
+					+"type=\"submit\" value=\""+inputvalue+"\""+disable+"\" name=\"lib"
 					+inputname+"\"/></div></div>";
 		}
 		request.setAttribute("longSTR", longSTR);
