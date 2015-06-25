@@ -1,8 +1,9 @@
 package com.flashvocabulary.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 import com.flashvocabulary.dao.impl.CheckInDaoImpl;
@@ -33,6 +34,22 @@ public class CheckInService {
 			return false;
 	}
 	
+	public boolean isTodayCheckedIn(int uid,Timestamp time)
+	{
+		try {
+			int count = 0;
+			count = checkInDao.getEntrys("select * from tb_checkin where uid = ? " +
+					"and CONVERT(varchar(100), time, 23) = ? ", uid,getTime(time)).size();
+			if(count==1)
+			{
+				return true;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
 	public void checkIn(int uid,String post)
 	{
 		CheckIn checkIn = new CheckIn(post,uid,new Timestamp(System.currentTimeMillis()));
@@ -69,4 +86,12 @@ public class CheckInService {
 		return checkInDao.getAllEntryByUserId(uid);
 	}
 	
+	public String getTime(Timestamp time)
+	{
+		Date currentTime = time;
+		    //SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		String dateString = format.format(currentTime);
+		return dateString;
+	}
 }

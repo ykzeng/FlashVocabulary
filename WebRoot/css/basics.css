@@ -301,6 +301,16 @@
 	background: #ecf2f3;
 	min-height: 300px;
 }
+
+.center_div_small{
+	left: 20%;
+	position:absolute;
+	top: 20%;
+	width:60%;
+	background: #ecf2f3;
+	min-height: 300px;
+}
+
 .lib_div{
 	margin:0% 5% 0% 5%;
 }
@@ -326,4 +336,39 @@ margin-top: 20px;
 }
 .lib_div div div img{
 	width: 80%;
+}
+
+.usersetting-div {
+    margin:0% 5% 0% 5%;
+}
+
+.usersetting-div .row {
+    border-bottom: 1px solid #EBEBEB;
+    margin-bottom: 12px;
+    padding-bottom: 11px;
+}
+.usersetting-div .row .head{
+    margin:0% 2% 0% 2%;
+    height:50px;
+}
+.usersetting-div .row .inputarea{
+    margin:0% 2% 0% 2%;
+    
+}
+
+.usercheckin-div {
+    margin:0% 6% 0% 6%;
+}
+
+.usercheckin-div .hr{
+    margin:0% 0% 0% 0%;
+	height:20px;
+	width:450px;
+	float:left;
+}
+.usercheckin-div .checkdays{
+    margin:0% 2% 0% 451px;
+	height:20px;
+	width:100px;
+	float:right;
 }

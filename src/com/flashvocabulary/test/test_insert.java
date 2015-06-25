@@ -1,5 +1,8 @@
 package com.flashvocabulary.test;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -49,15 +52,29 @@ public class test_insert {
 //			i++;
 //		}
 		
-		TodayWordService todayWordservice = new TodayWordService();
-			int uid = 18;
-			int lastID = 77;
-			List<TodayWord> twList = todayWordservice.getUserTodayWordById(uid, lastID);
-			JSONArray jsonArray = todayWordservice.getWordGroupInfoToJason(twList);
-			System.out.println(jsonArray.get(0).toString());
+//		TodayWordService todayWordservice = new TodayWordService();
+//			int uid = 18;
+//			int lastID = 77;
+//			List<TodayWord> twList = todayWordservice.getUserTodayWordById(uid, lastID);
+//			JSONArray jsonArray = todayWordservice.getWordGroupInfoToJason(twList);
+//			System.out.println(jsonArray.get(0).toString());
+		
+		Timestamp time = new Timestamp(System.currentTimeMillis());
+		System.out.println(System.currentTimeMillis());
+		Date date2 = new Date();
+		String str = getTime(time);
+		System.out.println(str);
+		
 	}
 	
+	public static String getTime(Timestamp timestamp) {
 
+	    Date currentTime = timestamp;
+	    //SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+	 String dateString = format.format(currentTime);
+	 return dateString;
+	 }
 }
 
 
