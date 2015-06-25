@@ -13,7 +13,7 @@
 <body class="uni_background">
 	<jsp:include  page="include/header.jsp"/>
 	<form action="UserSettingAction" method="POST">
-    <div class="center_div">
+    <div class="center_div_small">
     <div class="usersetting-div">
         <h1 style="font-size:40px;color:#707070">USER SETTING</h1>
         <hr>

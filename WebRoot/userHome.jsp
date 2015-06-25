@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
     </div>
     <div class="center_right" style="background:#ecf2f3;">
-        <div class="today_status_card hover_hand" id="checkin_card">
+        <div class="today_status_card hover_hand" id="checkin_card" onclick="location.href='ToCheckInAction';">
             <h3 style="color:#707070;">CHECK IN DAYS</h3>
             <h3 style="font-size:36px;margin-top:20px;">TOTAL<strong style="color:black;"> ${checkinDays}</strong></h3>
             <h3 style="font-size:36px;">CONTINUATION<strong style="color:#2dbe60"> ${continuation}</strong></h3>

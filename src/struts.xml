@@ -47,6 +47,13 @@
 		<action name="ChooseWordLibAction" class="com.flashvocabulary.action.ChooseWordLibAction" method="execute"> 
 			<result name="chooseSuccess" type="redirectAction">UserHomeAction</result>
 		</action>
+		<action name="CheckInAction" class="com.flashvocabulary.action.CheckInAction" method="execute"> 
+			<result name="checkinSuccess" type="redirectAction">UserHomeAction</result>
+			<result name="failure">message.jsp</result>
+		</action>
+		<action name="ToCheckInAction" class="com.flashvocabulary.action.ToCheckInAction" method="execute"> 
+			<result name="toCheckinSuccess" >userCheckin.jsp</result>
+		</action>
 	</package>
 	<package name="json" extends="json-default">
 		<action name="RandomFlashCardAction" class="com.flashvocabulary.action.RandomFlashCardAction" method="execute">
