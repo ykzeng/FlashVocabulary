@@ -2,6 +2,7 @@
 	background:#e4e4e4;
 	font-family:Arial, 'Microsoft YaHei UI';
 	font-weight:normal;
+	margin: 0%;
 }
 .progress_back{
 	background:#e4e4e4;height:25px;width:97%;
@@ -14,7 +15,7 @@
 }
 
 .left_card{
-	top:12%;left:10%;position:absolute;
+	top:16%;left:10%;position:absolute;
 	width:35%;min-height: 150px;
 	background:#ecf2f3;
 	/*background: #ecf2f3;*/
@@ -34,7 +35,7 @@
 	font-weight: bold;
 }
 .status_card{
-	top:12%;right:10%;position:absolute;
+	top:16%;right:10%;position:absolute;
 	width:40%;min-height: 150px;
 	background:#ecf2f3;
 	/*background: #ecf2f3;*/
@@ -53,7 +54,7 @@
 	font-weight: bold;
 }
 .flashcard{
-	top:12%;left:15%;position:absolute;
+	top:16%;left:15%;position:absolute;
 	width:70%;min-height: 450px;
 	background:#ecf2f3;
 	/*background: #ecf2f3;*/
@@ -261,7 +262,7 @@
 	width: 140%;
 }
 .center_left{
-	top:12%;left:8%;position:absolute;
+	top:16%;left:8%;position:absolute;
 	width:40%;min-height: 150px;
 	background:#ecf2f3;
 	/*background: #ecf2f3;*/
@@ -269,7 +270,7 @@
 	border-radius: 8px;
 }
 .center_right{
-	top:12%;right:8%;position:absolute;
+	top:16%;right:8%;position:absolute;
 	width:40%;min-height: 150px;
 	background:white;
 	/*background: #ecf2f3;*/
@@ -325,22 +326,4 @@ margin-top: 20px;
 }
 .lib_div div div img{
 	width: 80%;
-}
-
-.usersetting-div {
-    margin:0% 5% 0% 5%;
-}
-
-.usersetting-div .row {
-    border-bottom: 1px solid #EBEBEB;
-    margin-bottom: 12px;
-    padding-bottom: 11px;
-}
-.usersetting-div .row .head{
-    margin:0% 2% 0% 2%;
-    height:50px;
-}
-.usersetting-div .row .inputarea{
-    margin:0% 2% 0% 2%;
-    
 }
