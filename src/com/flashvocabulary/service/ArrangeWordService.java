@@ -31,7 +31,7 @@ public class ArrangeWordService {
 		for (UserLib userLib : userLibList)
 		{
 			Date nextDate = userLib.getNextDate();
-			if (nextDate.compareTo(new java.sql.Date(new java.util.Date().getTime()))!=0)
+			if (nextDate.compareTo(new java.sql.Date(new java.util.Date().getTime())) == 0)
 			{
 				wordsList.add(userLib.getWid());
 			}

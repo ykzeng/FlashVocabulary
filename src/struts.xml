@@ -20,11 +20,14 @@
 			<result name="expired">message.jsp</result>-->
 		</action>
 		<action name="UserCollectAction" class="com.flashvocabulary.action.UserCollectAction" method="execute">
-			<result name="getCollection">message.jsp</result>
 			<result name="addSuccess">message.jsp</result>
 			<result name="sessionExpired">message.jsp</result>
 			<result name="alreadyExist">message.jsp</result>
 		</action>
+		<action name="GetUserCollectAction" class="com.flashvocabulary.action.GetUserCollectAction" method="execute">
+			<result name="getCollection">message.jsp</result>
+		</action>
+
 		<action name="GoReciteAction" class="com.flashvocabulary.action.GoReciteAction" method="execute">
 			<result name="success">recital.jsp</result>
 			</action>
@@ -37,6 +40,9 @@
 		</action>
 		<action name="SetCompleteAction" class="com.flashvocabulary.action.SetCompleteAction" method="execute"> 
 			<result name="success">message.jsp</result>
+		</action>
+		<action name="ToChooseWordLibAction" class="com.flashvocabulary.action.ToChooseWordLibAction" method="execute"> 
+			<result name="ToChooseWordLib">libChange.jsp</result>
 		</action>
 	</package>
 	<package name="json" extends="json-default">

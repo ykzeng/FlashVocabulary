@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 
 import com.flashvocabulary.dto.User;
+import com.flashvocabulary.service.ArrangeWordService;
 import com.flashvocabulary.service.TodayWordService;
 import com.flashvocabulary.service.UserInfoService;
 import com.flashvocabulary.utils.IConstants;
@@ -27,9 +28,15 @@ public class LoginAction implements Action{
 	int todayCount=0,todayNoFinished=0, currentLibCount=0,currentLibFinished=0,dayToFinish=0;
 	try {
 		if((userFromDB = userInfoService.userLogin(user)) != null){
-
-			currentLibname = todayWordService.getUserCurrentLibName(25);
-			int [] values = todayWordService.getUserTodayWordInfo(25);
+		    	int uid = userFromDB.getId();
+		    	
+			ArrangeWordService arrangeWordService = new ArrangeWordService();
+			if (arrangeWordService.isFirstLogin(uid)) {
+			    arrangeWordService.ArrangeWord(uid);
+			}
+		    	
+			currentLibname = todayWordService.getUserCurrentLibName(uid);
+			int [] values = todayWordService.getUserTodayWordInfo(uid);
 			todayCount = values[0];
 			todayNoFinished = values[1];
 			currentLibCount = values[2];
@@ -42,6 +49,7 @@ public class LoginAction implements Action{
 			request.setAttribute("dayToFinish", dayToFinish);
 			request.setAttribute("currentLibname", currentLibname);
 			request.getSession().setAttribute("user", userFromDB);
+			
 			return IConstants.LOGIN_SUCCESS;
 		}
 		else 

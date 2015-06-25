@@ -5,7 +5,16 @@ public class Wordlib implements BaseEntry {
 	private int id;
 	private String name;
 	private String img;
+	private String description;
 	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public String getImg() {
 		return img;
 	}

@@ -9,7 +9,7 @@
 <script type="text/javascript">
     function init(){
         $.getJSON("RandomFlashCardAction", null, getJson);
-        document.getElementById("progress_bar").style.width= parseInt(document.getElementById("cLF").innerText)/parseInt(document.getElementById("cLC").innerText) + "%";
+        document.getElementById("progress_bar").style.width= 100*parseInt(document.getElementById("cLF").innerText)/parseInt(document.getElementById("cLC").innerText) + "%";
     }
 
     function getJson(data){

@@ -24,13 +24,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <body class="uni_background">
+    <jsp:include  page="include/header.jsp"/>
     <div class="center_left">
-        <div class="lib_status_card hover_hand" id="collection_card" onclick="location.href='index.html';">
+        <div class="lib_status_card hover_hand" id="collection_card" onclick="location.href='GetUserCollectAction';">
             <h3 style="color:#707070;">COLLECTIONS</h3>
             <h3 style="font-weight:bold;font-size:36px;margin-top:20px;">TOTAL<strong style="color:black;"> ${userCollectCount}</strong></h3>
             <h3 style="font-size:36px;text-align:right;color:#2dbe60">RECITE'EM NOW</h3>
         </div>
-        <div class="today_status_card hover_hand" id="lib_card" onclick="location.href='libChange.html';">
+        <div class="today_status_card hover_hand" id="lib_card" onclick="location.href='ToChooseWordLibAction';">
             <h3 style="color:#707070;">WORD LIB</h3>
             <h3 style="font-size:36px;"><span>CURRENT</span></h3>
             <h3 style="font-weight:normal;font-size:36px;"><span style="color:#2dbe60">${libName}</span></h3>
