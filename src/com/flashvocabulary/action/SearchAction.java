@@ -33,9 +33,7 @@ public class SearchAction implements Action{
 	try {
 		result = searchservice.findAllWordInfoByWord(word);
 		wsvList = sentenceService.getSentencesByWord(word);
-//		request.setAttribute("message", "OK!");
-//		dispatcher = request.getRequestDispatcher("/message.jsp");
-//		dispatcher.forward(request, response);
+
 		request.setAttribute("result", result);
 		request.setAttribute("wsvList", wsvList);
 		return SUCCESS;

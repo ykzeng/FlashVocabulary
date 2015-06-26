@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.flashvocabulary.dao.impl.SentenceDaoImpl;
+import com.flashvocabulary.dao.impl.WordDaoImpl;
 import com.flashvocabulary.dao.impl.WordSentenceViewImpl;
 import com.flashvocabulary.dto.WordSentenceView;
 
 public class SentenceService {
 	private SentenceDaoImpl sentenceDao = new SentenceDaoImpl();
 	private WordSentenceViewImpl wordSentenceDao  = new WordSentenceViewImpl();
+	private WordDaoImpl wordDao = new WordDaoImpl();
 	
 	/**
 	 * 通过单词名获得所有例句
@@ -20,7 +22,8 @@ public class SentenceService {
 	{
 		List<WordSentenceView> wsvList = new ArrayList<WordSentenceView>();
 		try {
-			wsvList = wordSentenceDao.getEntrys("select * from tb_wordsentenceview where word = ?", word);
+			int wid = wordDao.getEntry("select top 1 * from tb_word where word = ?", word).getId();
+			wsvList = wordSentenceDao.getEntrys("select * from tb_wordsentenceview where wid = ?", wid);
 			if(wsvList.size()>0) 
 				return wsvList;
 			return null;

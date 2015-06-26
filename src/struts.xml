@@ -27,7 +27,9 @@
 		<action name="GetUserCollectAction" class="com.flashvocabulary.action.GetUserCollectAction" method="execute">
 			<result name="getCollection">userCollectList.jsp</result>
 		</action>
-
+		<action name="GetWordDetailsAction" class="com.flashvocabulary.action.GetWordDetailsAction" method="execute">
+			<result name="success">myCollectWordDetail.jsp</result>
+		</action>
 		<action name="GoReciteAction" class="com.flashvocabulary.action.GoReciteAction" method="execute">
 			<result name="success">recital.jsp</result>
 			</action>
