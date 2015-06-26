@@ -30,14 +30,14 @@ public class ChooseWordLibAction implements Action {
 			{
 				libId = wordlib.get(i).getId();
 				user.setCurrentLib(libId);
-				//System.out.println(libId);
+				
 				wordLibService.setUserLib(uid, libId);
 				
-				//request.setAttribute("libName", wordLibService.getLibNameByLibid(libId));
+				
 			}
 		}
 		
-		//new UserHomeAction();
+		
 		return "chooseSuccess";
 	}
 

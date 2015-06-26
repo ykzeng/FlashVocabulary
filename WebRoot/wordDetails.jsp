@@ -27,6 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	searchResult result = (searchResult)request.getAttribute("result");
 	List<String> wordLibNameList = result.getWordlib_name();
 	List<tranList> libTransList = result.getEveryTranList();
+	List<Integer> idList = result.getIdList();
 	List<WordSentenceView> wsvList = (List<WordSentenceView>) request.getAttribute("wsvList");
  %>
 
@@ -42,7 +43,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<% for(int i = 0; i < wordLibNameList.size(); i ++) {
 		String [] tranList = libTransList.get(i).getEveryTran();%>
 			<div class="trans_card" <%if(i%2 == 0){ %>style="margin-right:1.5%"<%} %>>
-				<a class="fav_btn button icon favorite"  onclick="document.getElementById('collectSubmit').submit();">Collect</a>
+				<input type="hidden" name="wid<%=i%>" value="<%=idList.get(i) %>"/>
+				<!--input class="fav_btn button icon favorite"  onclick="document.getElementById('collectSubmit').submit();"Collect/-->
+				<input class="fav_btn button icon favorite" value="Collect" type="submit" name="<%=i%>"/>
 				<h3><%=wordLibNameList.get(i)%></h3>
 				<ol>
 				<%for(int j = 0; j < tranList.length; j++){%>

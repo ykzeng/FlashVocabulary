@@ -52,7 +52,7 @@ public class WordLibService {
 			try {
 				userlibDao.deleteEntry(userLib.getId());
 			} catch (Exception e) {
-				// TODO: handle exception
+				
 			}
 		}
 		

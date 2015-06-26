@@ -22,21 +22,28 @@ public class SearchAction implements Action{
     
     @Override
     public String execute() throws Exception {
-	// TODO Auto-generated method stub
+
 	HttpServletRequest request = ServletActionContext.getRequest();
 	HttpServletResponse response = ServletActionContext.getResponse();
 	String word = request.getParameter("word");
 	searchResult result = null;
 	List<WordSentenceView> wsvList = new ArrayList<WordSentenceView>();
-	//RequestDispatcher dispatcher = null;
-	PrintWriter out = response.getWriter();
+
 	try {
 		result = searchservice.findAllWordInfoByWord(word);
 		wsvList = sentenceService.getSentencesByWord(word);
-
+		if(result!=null){
 		request.setAttribute("result", result);
-		request.setAttribute("wsvList", wsvList);
-		return SUCCESS;
+			if(wsvList!=null && wsvList.size()>0)
+			request.setAttribute("wsvList", wsvList);
+			return SUCCESS;
+		}
+		else
+		{
+			request.setAttribute("message", "获取详细信息失败");
+			request.getRequestDispatcher("/message.jsp").forward(request, response);
+			return IConstants.FAILURE;
+		}
 		
 	} catch (Exception e) {
 		request.setAttribute("message", "获取详细信息失败");

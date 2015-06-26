@@ -24,6 +24,17 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements BaseDao<User>{
 		return userFromDB;
 	}
 	
+	public boolean isAcountExisted(String username)   //@代号：ljt 
+	{
+		try {
+			int a = getEntrys("select * from tb_user where uname = ?", username.trim()).size();
+			return a>0?true:false;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 	public int getDailyCount(Integer userId)
 	{
 		String sql = "select dailyCount from tb_user where id = ?";

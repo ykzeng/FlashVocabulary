@@ -23,5 +23,3 @@
 </div>
 </div>
 <!-- <%--=((User)(request.getSession().getAttribute("user"))).getUname()--%> -->
-
-

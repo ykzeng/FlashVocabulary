@@ -17,7 +17,7 @@ import com.flashvocabulary.utils.IConstants;
 import com.opensymphony.xwork2.Action;
 
 public class UserCollectAction implements Action {
-    private WordLibService wordLibService = new WordLibService();
+
     private UserCollectLibService userCollectLibService = new UserCollectLibService();
     
     public String execute() {
@@ -43,6 +43,7 @@ public class UserCollectAction implements Action {
 		else submitName = "1";
 	}
 	else submitName = "0";
+	
 	String wid = request.getParameter("wid"+submitName).toString();
 	try {
 		if(!userCollectLibService.isWordInUserCollectLib(Integer.parseInt(wid)))

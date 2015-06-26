@@ -8,7 +8,7 @@
 			<result name="loginConnFailure">message.jsp</result>
 		</action>
 		<action name="RegisterAction" class="com.flashvocabulary.action.RegisterAction" method="execute">
-			<result name="registerSuccess">login.jsp</result>
+			<result name="registerSuccess">userLogin.jsp</result>
 			<result name="registerFailure">message.jsp</result>
 		</action>
 		<!--  <action name="ToHomeAction" class="com.flashvocabulary.action.ToHomeAction" method="execute">

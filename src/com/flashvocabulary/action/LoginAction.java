@@ -22,10 +22,12 @@ public class LoginAction implements Action{
     private WordLibService wordLibService = new WordLibService();
     @Override
     public String execute() throws Exception {
-	// TODO Auto-generated method stub
+
 	HttpServletRequest request = ServletActionContext.getRequest();
-	User user = (User)request.getSession().getAttribute("user");
-	if (user != null) {
+	User user = null;
+	user = (User)request.getSession().getAttribute("user");
+	if (user !=null) 
+	{
 	    setIndexParam(request, user);
 	    return IConstants.LOGIN_SUCCESS;
 	}
@@ -64,13 +66,20 @@ public class LoginAction implements Action{
 	todayNoFinished = values[1];
 	currentLibCount = values[2];
 	currentLibFinished = values[3];
-	dayToFinish = (currentLibCount-currentLibFinished)/todayCount+1;
-	request.setAttribute("todayCount", todayCount);
-	request.setAttribute("todayNoFinished", todayNoFinished);
-	request.setAttribute("currentLibCount", currentLibCount);
-	request.setAttribute("currentLibFinished", currentLibFinished);
-	request.setAttribute("dayToFinish", dayToFinish);
-	request.setAttribute("currentLibname", currentLibname);
+	if(todayCount!=0)
+	{
+		dayToFinish = (currentLibCount-currentLibFinished)/todayCount+1;
+	}
+	else
+	{
+		dayToFinish = 99999;
+	}
+	request.setAttribute("todayCount", todayCount>-1?todayCount:0);
+	request.setAttribute("todayNoFinished", todayNoFinished>-1?todayNoFinished:0);
+	request.setAttribute("currentLibCount", currentLibCount>-1?currentLibCount:0);
+	request.setAttribute("currentLibFinished", currentLibFinished>-1?currentLibFinished:0);
+	request.setAttribute("dayToFinish", dayToFinish>-1?dayToFinish:0);
+	request.setAttribute("currentLibname", currentLibname==null?"暂无":currentLibname);
 	request.getSession().setAttribute("user", user);
     }
     
