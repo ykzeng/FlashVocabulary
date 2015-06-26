@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <jsp:include  page="include/header.jsp"/>
     <form action="CheckInAction" method="POST">
-    <div class="center_div">
+    <div class="center_div_small">
     	 <div class="usercheckin-div">
     	 <h1 style="font-size:40px;color:#707070">USER CHECKIN</h1>
     	 <div class="hr"><hr style="margin-top:10px">

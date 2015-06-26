@@ -5,9 +5,11 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.flashvocabulary.dto.User;
 import com.flashvocabulary.dto.Word;
 import com.flashvocabulary.service.UserCollectLibService;
 import com.flashvocabulary.service.WordLibService;
@@ -20,12 +22,13 @@ public class UserCollectAction implements Action {
     
     public String execute() {
 	HttpServletRequest request = ServletActionContext.getRequest();
-	HttpServletResponse response = ServletActionContext.getResponse();
+	HttpSession session = request.getSession();
+	User user = (User)session.getAttribute("user");
+	int userid = user.getId();
 	List<Word> wordList = new ArrayList<Word>();
 	if(request.getParameter("getCollect")!=null)
 	{
-		//String uid = request.getParameter("uid").toString();
-		wordList = userCollectLibService.getUserCollectLibByUid(18);
+		wordList = userCollectLibService.getUserCollectLibByUid(userid);
 		String showstr1 = "四级: ";
 		String showstr2 = "六级: ";
 		String showstr3 = "要你命3000: ";

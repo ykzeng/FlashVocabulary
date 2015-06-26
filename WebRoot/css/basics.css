@@ -370,3 +370,15 @@ margin-top: 20px;
 	width:20%;
 	float:left;
 }
+.usercollect-div {
+    margin:0% 6% 0% 6%;
+}
+
+.usercollect-div div{
+	width:100%;
+	margin:0% 5% 0% 5%;
+}
+
+.usercollect-div div div{
+	margin-top: 20px;width:100%;float:left;min-height:60px;
+}

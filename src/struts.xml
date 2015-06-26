@@ -25,7 +25,7 @@
 			<result name="alreadyExist">message.jsp</result>
 		</action>
 		<action name="GetUserCollectAction" class="com.flashvocabulary.action.GetUserCollectAction" method="execute">
-			<result name="getCollection">message.jsp</result>
+			<result name="getCollection">userCollectList.jsp</result>
 		</action>
 
 		<action name="GoReciteAction" class="com.flashvocabulary.action.GoReciteAction" method="execute">

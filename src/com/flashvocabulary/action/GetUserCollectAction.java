@@ -26,32 +26,55 @@ public class GetUserCollectAction implements Action{
 		User user = (User)session.getAttribute("user");
 		int uid = user.getId();
 		
-		wordList = userCollectLibService.getUserCollectLibByUid(18);
-		String showstr1 = "四级: ";
-		String showstr2 = "六级: ";
-		String showstr3 = "要你命3000: ";
-		String showstr4 = "TOEFL: ";
+		wordList = userCollectLibService.getUserCollectLibByUid(uid);
+		String showstr1 = "";
+		String showstr2 = "";
+		String showstr3 = "";
+		String showstr4 = "";
 		Word word = null;
+		int a=0,b=0,c=0,d=0;
+
 		for(int i=0;i<wordList.size();i++)
 		{
 			word = wordList.get(i);
 			if(word.getLib_id()==1){
-				showstr1+=word.getWord()+"   ";
+				a++;
+				request.setAttribute("libName1", "CET-4");
+				showstr1+="<div>"+a+".<a href=\"\">"+word.getWord()
+						+"&nbsp;&nbsp;"+word.getPhonetics()
+						+"&nbsp;&nbsp;"+word.getTranslation().split("\\|")[0]
+						+"</a></div>";
 			}
 			else if(word.getLib_id()==3){
-				showstr2+=word.getWord()+"   ";
+				b++;
+				request.setAttribute("libName2", "CET-6");
+				showstr2+="<div>"+b+".<a href=\"\">"+word.getWord()
+						+"&nbsp;&nbsp;"+word.getPhonetics()
+						+"&nbsp;&nbsp;"+word.getTranslation().split("\\|")[0]
+						+"</a></div>";
 			}
 			else if(word.getLib_id()==6){
-				showstr3+=word.getWord()+"   ";
+				c++;
+				request.setAttribute("libName3", "GRE3000");
+				showstr3+="<div>"+c+".<a href=\"\">"+word.getWord()
+						+"&nbsp;&nbsp;"+word.getPhonetics()
+						+"&nbsp;&nbsp;"+word.getTranslation().split("\\|")[0]
+						+"</a></div>";
 			}
 			else if(word.getLib_id()==10){
-				showstr4+=word.getWord()+"   ";
+				d++;
+				request.setAttribute("libName4", "TOEFL");
+				showstr4+="<div>"+d+".<a href=\"getWordDetails?wid="+word.getId()+">"+word.getWord()
+						+"&nbsp;&nbsp;"+word.getPhonetics()
+						+"&nbsp;&nbsp;"+word.getTranslation().split("\\|")[0]
+						+"</a></div>";
 			}
 		}
-		request.setAttribute("message", showstr1);
-		request.setAttribute("message2", showstr2);
-		request.setAttribute("message3", showstr3);
-		request.setAttribute("message4", showstr4);
+		request.setAttribute("longSTR1", showstr1);
+		request.setAttribute("longSTR2", showstr2);
+		request.setAttribute("longSTR3", showstr3);
+		request.setAttribute("longSTR4", showstr4);
+		
 		return IConstants.GET_COLLECTION;
 			
 	}
