@@ -83,7 +83,8 @@
 <body class="uni_background" onload="init()">
 <jsp:include  page="include/header.jsp"/>
 <a id="to_recite" href="GoReciteAction"><img src="images/right-arrow.png"></a>
-    <div class="left_card">
+<div style="width:100%;overflow:hidden">
+	<div class="left_card">
     <a class="right_side" style="right:-7px;top:65%;" onclick="nextCard()"><img src="images/rs_arrow.png" style="width:60%;"></a>
     <a class="left_side" onclick="lastCard()"><img src="images/ls_arrow.png" style="width:60%;"></a>
         <div class="lib_status_card">
@@ -117,7 +118,8 @@
     </div>
     <label id="cLC" style="display:none;">${currentLibCount}</label>
     <label id="cLF" style="display:none;">${currentLibFinished}</label>
-
+</div>
+<jsp:include  page="include/footer.jsp"/>
     <script type="text/javascript">
         function test(){
             var temp = document.getElementById("try_strong").innerText;

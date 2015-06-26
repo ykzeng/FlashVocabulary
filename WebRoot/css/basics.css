@@ -15,7 +15,8 @@
 }
 
 .left_card{
-	top:16%;left:10%;position:absolute;
+	float:left;
+	position:relative;margin-top:2%;margin-left:10%;
 	width:35%;min-height: 150px;
 	background:#ecf2f3;
 	/*background: #ecf2f3;*/
@@ -35,7 +36,8 @@
 	font-weight: bold;
 }
 .status_card{
-	top:16%;right:10%;position:absolute;
+	float:right;
+	margin-top:2%;margin-right:10%;position:relative;
 	width:40%;min-height: 150px;
 	background:#ecf2f3;
 	/*background: #ecf2f3;*/
@@ -263,20 +265,22 @@
 	width: 140%;
 }
 .center_left{
-	top:16%;left:8%;position:absolute;
+	margin-top:2%;margin-left:8%;position:relative;
 	width:40%;min-height: 150px;
 	background:#ecf2f3;
 	/*background: #ecf2f3;*/
 	border: 1px #e4e4e4 solid;
 	border-radius: 8px;
+	float:left;
 }
 .center_right{
-	top:16%;right:8%;position:absolute;
+	margin-top:2%;margin-right:8%;position:relative;
 	width:40%;min-height: 150px;
 	background:white;
 	/*background: #ecf2f3;*/
 	border: 1px #e4e4e4 solid;
 	border-radius: 8px;
+	float:right;
 }
 #setting_card:hover{
 	background: white;
@@ -387,4 +391,21 @@ margin-top: 20px;
 
 .usercollect-div div div{
 	margin-top: 20px;width:100%;float:left;min-height:60px;
+}
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.row {
+  margin-right: -15px;
+  margin-left: -15px;display:block;
+  padding: 2%;
+}
+.link{
+	color: #3b3b3b;
+  font-size: 14px;
+  line-height: 1.8em;
+    margin: 0 0 10px;
 }

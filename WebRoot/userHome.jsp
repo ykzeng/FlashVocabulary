@@ -25,7 +25,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <body class="uni_background">
     <jsp:include  page="include/header.jsp"/>
-    <div class="center_left">
+    <div style="width:100%;overflow:hidden">
+    	<div class="center_left">
         <div class="lib_status_card hover_hand" id="collection_card" onclick="location.href='GetUserCollectAction';">
             <h3 style="color:#707070;">COLLECTIONS</h3>
             <h3 style="font-weight:bold;font-size:36px;margin-top:20px;">TOTAL<strong style="color:black;"> ${userCollectCount}</strong></h3>
@@ -53,7 +54,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <h3 style="font-weight:normal;text-align:right;margin-right:16px;font-size:36px;"><span>ETC</span></h3>
         </div>
     </div>
-
+    </div>
+    
+<jsp:include  page="include/footer.jsp"/>
     <script type="text/javascript">
         function test(){
             var temp = document.getElementById("try_strong").innerText;
