@@ -16,6 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
+	<link rel="stylesheet" type="text/css" href="css/gh-buttons.css">
 	<link rel="stylesheet" type="text/css" href="css/basics.css">
 	<script type="text/javascript">
 	</script>
@@ -25,19 +26,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body class="uni_background">
 
     <jsp:include  page="include/header.jsp"/>
-    <form action="CheckInAction" method="POST">
+    <form action="CheckInAction" method="POST" id="checkinForm">
     <div class="center_div_small">
     	 <div class="usercheckin-div">
-    	 <h1 style="font-size:40px;color:#707070">USER CHECKIN</h1>
-    	 <div class="hr"><hr style="margin-top:10px">
-         </div><div class="checkdays">打卡第<strong>${checkinCount}</strong>天</div>
-         <div>
-    	 	<textarea rows="6" cols="50" name="mytext"></textarea>
-			<input type="submit" style="background:#e77e23;" name="checkin" value="CheckIn"> 
-    	 </div>
+    	 <h1 style="font-size:40px;color:#707070"><span style="font-weight:normal">CHECKIN DAY</span>${checkinCount}</h1>
          </div>
+         <div style="margin:0% 6%;">
+    	 	<textarea class="text_area" placeholder="How are you feeling about now?" rows="6" name="mytext"></textarea>
+			<input type="submit" class="button big check_btn" name="checkin" value="CheckIn"> 
+    	 </div>
+    </div>
+    <div class="center_div_small">
+    	 <div class="usercheckin-div">
+    	 <h1 style="font-size:40px;color:#707070"><span style="font-weight:normal">HISTORY</span></h1>
+         </div>
+         <div class="check_his">
+         	${longSTR}
+    	 </div>
+    </div>     
          <div>
-         ${longSTR}
+         
          	<!--<ul>
          		<li>
          			<p>第99天打卡日记:</p>

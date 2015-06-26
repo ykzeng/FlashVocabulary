@@ -32,7 +32,7 @@ public class ToCheckInAction implements Action {
 			checkIn = checkinList.get(i-1);
 			post = checkIn.getPost();
 			time = checkInDao.getTime(checkIn.getTime());
-			longSTR += "<li><p>第"+(i)+"天打卡日记:</p>"+post+"<p>"+time+"</p></li>"; //6月23日，2015
+			longSTR += "<li><p>第"+(i)+"天打卡日记:</p>"+post+"<p style=\"float:right\">"+time+"</p></li>"; //6月23日，2015
 		}
 		longSTR += "</ul>";
 		request.setAttribute("checkinCount", len+1);
