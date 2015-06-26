@@ -1,0 +1,14 @@
+.nav_right{
+	width:50%;float:right;text-align:right;margin-top:20px;
+}
+.nav_right input{
+	padding:4px 6px 4px 6px;height:27px;border:1px solid #ccc;border-right:0px;
+}
+.nav_right a{
+	padding:9px;border:1px solid #ccc;vertical-align:middle;color:#333;text-decoration:none;
+	border-right:0px;
+	cursor: pointer;
+}
+.navbar{
+	width:100%;background:#E0EEE0;left:0%;height:80px;border-top:5px #2dbe60 solid;
+}
