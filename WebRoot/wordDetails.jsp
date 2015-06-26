@@ -16,10 +16,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:c="http://java.sun.com/jstl/core">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
 <title>无标题文档</title>
-<link rel="stylesheet" type="text/css" href="css/gh-buttons.css">
+<link rel="stylesheet" type="text/css" href="css/gh-buttons.css"/>
 <link rel="stylesheet" type="text/css" href="css/basics.css"></link>
 </head>
 
@@ -27,6 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	searchResult result = (searchResult)request.getAttribute("result");
 	List<String> wordLibNameList = result.getWordlib_name();
 	List<tranList> libTransList = result.getEveryTranList();
+	List<Integer> idList = result.getIdList();
 	List<WordSentenceView> wsvList = (List<WordSentenceView>) request.getAttribute("wsvList");
  %>
 
@@ -42,7 +43,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<% for(int i = 0; i < wordLibNameList.size(); i ++) {
 		String [] tranList = libTransList.get(i).getEveryTran();%>
 			<div class="trans_card" <%if(i%2 == 0){ %>style="margin-right:1.5%"<%} %>>
-				<a class="fav_btn button icon favorite"  onclick="document.getElementById('collectSubmit').submit();">Collect</a>
+				<input type="hidden" name="wid<%=i%>" value="<%=idList.get(i) %>"/>
+				<!--input class="fav_btn button icon favorite"  onclick="document.getElementById('collectSubmit').submit();"Collect/-->
+				<input class="fav_btn button icon favorite" value="Collect" type="submit" name="<%=i%>"/>
 				<h3><%=wordLibNameList.get(i)%></h3>
 				<ol>
 				<%for(int j = 0; j < tranList.length; j++){%>
@@ -50,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<%} %>
 				</ol>
 			</div>
-			<%if(i%2 == 1){ %><br><%} %>
+			<%if(i%2 == 1){ %><br/><%} %>
 		<% }%>
 		</div>
 		
@@ -59,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<h2>Usages</h2>
 			<ol class="sentence_list">
 			<%for(int i=0;i<wsvList.size();i++){ %>
-				<li><span><%=wsvList.get(i).getSentence() %></span><br>
+				<li><span><%=wsvList.get(i).getSentence() %></span><br/>
 					<p><%=wsvList.get(i).getTranslation() %></p></li>
 			<%} %>
 			</ol>

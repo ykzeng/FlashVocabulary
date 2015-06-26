@@ -5,7 +5,6 @@ import com.flashvocabulary.dto.User;
 
 public class UserInfoService {
 	private UserDaoImpl userDao=new UserDaoImpl();
-	
 	public void userRegister(User user)  //@代号：ljt 
 	{
 		try {
@@ -39,6 +38,11 @@ public class UserInfoService {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public boolean isAcountExisted(String username)
+	{
+		return userDao.isAcountExisted(username);
 	}
 	
 	public int modifyUserPassword(int uid,String originalPWD,String newPWD)

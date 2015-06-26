@@ -32,7 +32,7 @@ public class CheckInAction implements Action{
 				{
 					checkInDao.checkIn(uid, post);
 					
-					return "Checkinsuccess";
+					return "checkinSuccess";
 				}
 				else
 				{

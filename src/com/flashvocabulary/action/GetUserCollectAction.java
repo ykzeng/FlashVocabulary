@@ -40,7 +40,7 @@ public class GetUserCollectAction implements Action{
 			if(word.getLib_id()==1){
 				a++;
 				request.setAttribute("libName1", "CET-4");
-				showstr1+="<div>"+a+".<a href=\"\">"+word.getWord()
+				showstr1+="<div>"+a+".<a href=\"GetWordDetailsAction?wid="+word.getId()+"&libid=1\">"+word.getWord()
 						+"&nbsp;&nbsp;"+word.getPhonetics()
 						+"&nbsp;&nbsp;"+word.getTranslation().split("\\|")[0]
 						+"</a></div>";
@@ -48,7 +48,7 @@ public class GetUserCollectAction implements Action{
 			else if(word.getLib_id()==3){
 				b++;
 				request.setAttribute("libName2", "CET-6");
-				showstr2+="<div>"+b+".<a href=\"\">"+word.getWord()
+				showstr2+="<div>"+b+".<a href=\"GetWordDetailsAction?wid="+word.getId()+"&libid=3\">"+word.getWord()
 						+"&nbsp;&nbsp;"+word.getPhonetics()
 						+"&nbsp;&nbsp;"+word.getTranslation().split("\\|")[0]
 						+"</a></div>";
@@ -56,7 +56,7 @@ public class GetUserCollectAction implements Action{
 			else if(word.getLib_id()==6){
 				c++;
 				request.setAttribute("libName3", "GRE3000");
-				showstr3+="<div>"+c+".<a href=\"\">"+word.getWord()
+				showstr3+="<div>"+c+".<a href=\"GetWordDetailsAction?wid="+word.getId()+"&libid=6\">"+word.getWord()
 						+"&nbsp;&nbsp;"+word.getPhonetics()
 						+"&nbsp;&nbsp;"+word.getTranslation().split("\\|")[0]
 						+"</a></div>";
@@ -64,7 +64,7 @@ public class GetUserCollectAction implements Action{
 			else if(word.getLib_id()==10){
 				d++;
 				request.setAttribute("libName4", "TOEFL");
-				showstr4+="<div>"+d+".<a href=\"getWordDetails?wid="+word.getId()+">"+word.getWord()
+				showstr4+="<div>"+d+".<a href=\"GetWordDetailsAction?wid="+word.getId()+"&libid=10\">"+word.getWord()
 						+"&nbsp;&nbsp;"+word.getPhonetics()
 						+"&nbsp;&nbsp;"+word.getTranslation().split("\\|")[0]
 						+"</a></div>";

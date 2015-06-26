@@ -45,19 +45,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </div>
          <div id="lib-div0" style="display:block;">
 	         <center><h2>${libName1==null?"无":libName1}</h2></center>
-	         ${longSTR1}
+	         <center>${longSTR1}</center>
          </div>
          <div id="lib-div1" style="display:none;">
 	         <center><h2>${libName2==null?"无":libName2}</h2></center>
-	         ${longSTR2}
+	         <center>${longSTR2}</center>
          </div>
          <div id="lib-div2" style="display:none;">
 	         <center><h2>${libName3==null?"无":libName3}</h2></center>
-	         ${longSTR3}
+	         <center>${longSTR3}</center>
          </div>
          <div id="lib-div3" style="display:none;">
 	         <center><h2>${libName4==null?"无":libName4}</h2></center>
-	         ${longSTR4}
+	         <center>${longSTR4}</center>
          </div>
          </div>
 </body>
