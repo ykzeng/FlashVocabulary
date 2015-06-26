@@ -16,8 +16,8 @@
 			<result name="expired">message.jsp</result>
 		</action>-->
 		<action name="SearchAction" class="com.flashvocabulary.action.SearchAction" method="execute">
-			<!--<result name="online">userHome.jsp</result>
-			<result name="expired">message.jsp</result>-->
+			<result name="success">wordDetails.jsp</result>
+			<result name="failure">message.jsp</result>
 		</action>
 		<action name="UserCollectAction" class="com.flashvocabulary.action.UserCollectAction" method="execute">
 			<result name="addSuccess">message.jsp</result>
