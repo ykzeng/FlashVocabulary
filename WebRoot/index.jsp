@@ -106,7 +106,7 @@
                 FINISHED <strong style="color:#2dbe60">${currentLibFinished}</strong> / ${currentLibCount}
             </p>
             <div class="progress_back">
-                <div id="progress_bar" style="width:33.3%;"></div>
+                <div id="progress_bar" style="width:0%;"></div>
             </div>
         </div>
         <div class="today_status_card">

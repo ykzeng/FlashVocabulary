@@ -3,6 +3,7 @@
 }
 .nav_right input{
 	padding:4px 6px 4px 6px;height:27px;border:1px solid #ccc;border-right:0px;
+	box-sizing:content-box;
 }
 .nav_right a{
 	padding:9px;border:1px solid #ccc;vertical-align:middle;color:#333;text-decoration:none;

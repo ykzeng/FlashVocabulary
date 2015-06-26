@@ -24,33 +24,22 @@ public class LoginAction implements Action{
     public String execute() throws Exception {
 	// TODO Auto-generated method stub
 	HttpServletRequest request = ServletActionContext.getRequest();
-	User user=WebUtils.write2Bean(request, User.class);
+	User user = (User)request.getSession().getAttribute("user");
+	if (user != null) {
+	    setIndexParam(request, user);
+	    return IConstants.LOGIN_SUCCESS;
+	}
+	user = WebUtils.write2Bean(request, User.class);
 	User userFromDB = null;
-	String currentLibname = " - -";
-	int todayCount=0,todayNoFinished=0, currentLibCount=0,currentLibFinished=0,dayToFinish=0;
 	try {
 		if((userFromDB = userInfoService.userLogin(user)) != null){
 		    	int uid = userFromDB.getId();
-		    	
 			ArrangeWordService arrangeWordService = new ArrangeWordService();
 			if (arrangeWordService.isFirstLogin(uid)) {
 			    arrangeWordService.ArrangeWord(uid);
 			}
 		    	
-			currentLibname = wordLibService.getLibNameByLibid(userFromDB.getCurrentLib());
-			int [] values = todayWordService.getUserTodayWordInfo(uid);
-			todayCount = values[0];
-			todayNoFinished = values[1];
-			currentLibCount = values[2];
-			currentLibFinished = values[3];
-			dayToFinish = (currentLibCount-currentLibFinished)/todayCount+1;
-			request.setAttribute("todayCount", todayCount);
-			request.setAttribute("todayNoFinished", todayNoFinished);
-			request.setAttribute("currentLibCount", currentLibCount);
-			request.setAttribute("currentLibFinished", currentLibFinished);
-			request.setAttribute("dayToFinish", dayToFinish);
-			request.setAttribute("currentLibname", currentLibname);
-			request.getSession().setAttribute("user", userFromDB);
+			setIndexParam(request, userFromDB);
 			
 			return IConstants.LOGIN_SUCCESS;
 		}
@@ -64,6 +53,25 @@ public class LoginAction implements Action{
 	    	request.setAttribute("message", "连接错误！");
 		return IConstants.LOGIN_CONN_FAILURE;
 	}
+    }
+    
+    public void setIndexParam(HttpServletRequest request, User user) {
+	String currentLibname = " - -";
+	int todayCount=0,todayNoFinished=0, currentLibCount=0,currentLibFinished=0,dayToFinish=0;
+	currentLibname = wordLibService.getLibNameByLibid(user.getCurrentLib());
+	int [] values = todayWordService.getUserTodayWordInfo(user.getId());
+	todayCount = values[0];
+	todayNoFinished = values[1];
+	currentLibCount = values[2];
+	currentLibFinished = values[3];
+	dayToFinish = (currentLibCount-currentLibFinished)/todayCount+1;
+	request.setAttribute("todayCount", todayCount);
+	request.setAttribute("todayNoFinished", todayNoFinished);
+	request.setAttribute("currentLibCount", currentLibCount);
+	request.setAttribute("currentLibFinished", currentLibFinished);
+	request.setAttribute("dayToFinish", dayToFinish);
+	request.setAttribute("currentLibname", currentLibname);
+	request.getSession().setAttribute("user", user);
     }
     
 }
