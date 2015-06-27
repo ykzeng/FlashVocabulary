@@ -14,7 +14,7 @@ public class GoReciteAction implements Action {
     public String execute() throws Exception {
 	// TODO Auto-generated method stub
 	HttpSession session = ServletActionContext.getRequest().getSession();
-	User user = (User)session.getAttribute("User");
+	User user = (User)session.getAttribute("user");
 	if (user == null) {
 	    return IConstants.SESSION_EXPIRED;
 	}
