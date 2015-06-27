@@ -49,7 +49,7 @@ public class UserCollectAction implements Action {
 	
 	String wid = request.getParameter("wid"+submitName).toString();
 	try {
-		if(!userCollectLibService.isWordInUserCollectLib(Integer.parseInt(wid)))
+		if(!userCollectLibService.isWordInUserCollectLib(Integer.parseInt(wid),uid))
 		{
 			userCollectLibService.AddwordToUserCollectLib(Integer.parseInt(wid), uid);
 			request.setAttribute("message", uid+"添加"+wid+"成功!");
