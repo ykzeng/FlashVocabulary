@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </div>
          <div style="margin:0% 6%;">
     	 	<textarea class="text_area" placeholder="How are you feeling about now?" rows="6" name="mytext"></textarea>
-			<input type="submit" class="button big check_btn" name="checkin" value="CheckIn"> 
+			<input type="submit" class="button big check_btn" name="checkin" value="CheckIn" disabled="${canCheckin}"/> 
     	 </div>
     </div>
     <div class="center_div_small">

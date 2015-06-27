@@ -9,11 +9,13 @@ import org.apache.struts2.ServletActionContext;
 import com.flashvocabulary.dto.CheckIn;
 import com.flashvocabulary.dto.User;
 import com.flashvocabulary.service.CheckInService;
+import com.flashvocabulary.service.TodayWordService;
 import com.opensymphony.xwork2.Action;
 
 public class ToCheckInAction implements Action {
 	
 	private CheckInService checkInDao = new CheckInService();
+	private TodayWordService todayWordService = new TodayWordService();
 	@Override
 	public String execute() throws Exception {
 
@@ -35,6 +37,14 @@ public class ToCheckInAction implements Action {
 			longSTR += "<li><p>第"+(i)+"天打卡日记:</p>"+post+"<p style=\"float:right\">"+time+"</p></li>"; //6月23日，2015
 		}
 		longSTR += "</ul>";
+		
+		String canCheckin = "disabled";
+		int []arr = todayWordService.getUserTodayWordInfo(uid);
+		if(arr[0] >0 && arr[1]==0 && checkInDao.isFirstCheckIn(uid))
+		{
+			canCheckin = "";
+		}
+		request.setAttribute("canCheckin", canCheckin);
 		request.setAttribute("checkinCount", len+1);
 		request.setAttribute("longSTR", longSTR);
 		return "toCheckinSuccess";
