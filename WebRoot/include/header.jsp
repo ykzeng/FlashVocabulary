@@ -13,11 +13,11 @@
 <div class="navbar">
 <div style="width:80%;left:10%;right:10%;position:absolute;">
     <div style="width:50%;float:left">
-        <h1 style="margin-top:15px;margin-left:5px;font-size:40px;">Flash Vocabulary</h1>
+        <a class="logo_title_a" href="LoginAction">Flash Vocabulary</a>
     </div>
     <div class="nav_right">
         <form id="searchForm" action="SearchAction" method="post">
-        <input name="word" placeholder="Search A Word..."><a onclick="document.getElementById('searchForm').submit();return false;"><i class="icon-search icon-large"></i></a><a href="UserHomeAction"><i class="icon-user icon-large"></i></a><a style="border-right:1px solid #ccc;" href="LoginAction"><i class="icon-home icon-large"></i></a>
+        <input name="word" placeholder="Search A Word..."><a onclick="document.getElementById('searchForm').submit();return false;"><i class="icon-search icon-large"></i></a><a href="UserHomeAction"><i class="icon-user icon-large"></i></a><a style="border-right:1px solid #ccc;" href="LogoutAction"><i class="icon-signout icon-large"></i></a>
         </form>
     </div>
 </div>

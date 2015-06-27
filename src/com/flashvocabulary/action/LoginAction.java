@@ -1,6 +1,8 @@
 package com.flashvocabulary.action;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.swing.Icon;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -55,6 +57,12 @@ public class LoginAction implements Action{
 	    	request.setAttribute("message", "连接错误！");
 		return IConstants.LOGIN_CONN_FAILURE;
 	}
+    }
+    
+    public String logout() throws Exception{
+	HttpServletRequest request = ServletActionContext.getRequest();
+	request.getSession().removeAttribute("user");
+	return IConstants.LOGOUT;
     }
     
     public void setIndexParam(HttpServletRequest request, User user) {
