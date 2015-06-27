@@ -24,6 +24,9 @@ public class GetUserCollectAction implements Action{
 		List<Word> wordList = new ArrayList<Word>();
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");
+		if (user == null) {
+		    return IConstants.SESSION_EXPIRED;
+		}
 		int uid = user.getId();
 		
 		wordList = userCollectLibService.getUserCollectLibByUid(uid);

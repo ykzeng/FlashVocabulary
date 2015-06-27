@@ -9,6 +9,7 @@ import org.apache.struts2.ServletActionContext;
 import com.flashvocabulary.dto.CheckIn;
 import com.flashvocabulary.dto.User;
 import com.flashvocabulary.service.CheckInService;
+import com.flashvocabulary.utils.IConstants;
 import com.opensymphony.xwork2.Action;
 
 public class ToCheckInAction implements Action {
@@ -20,6 +21,9 @@ public class ToCheckInAction implements Action {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");
+		if (user == null) {
+		    return IConstants.SESSION_EXPIRED;
+		}
 		int uid = user.getId();
 		CheckIn checkIn = null;
 		String post = ""; 

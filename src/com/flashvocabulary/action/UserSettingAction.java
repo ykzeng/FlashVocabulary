@@ -21,6 +21,9 @@ public class UserSettingAction implements Action {
 		//HttpServletResponse response = ServletActionContext.getResponse();
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");
+		if (user == null) {
+		    return IConstants.SESSION_EXPIRED;
+		}
 		int uid = user.getId();
 		if(request.getParameter("saveChange")!=null)
 		{

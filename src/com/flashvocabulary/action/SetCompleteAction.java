@@ -14,6 +14,7 @@ import net.sf.json.JSONObject;
 import com.flashvocabulary.dto.TodayWord;
 import com.flashvocabulary.dto.User;
 import com.flashvocabulary.service.FinishAGroupService;
+import com.flashvocabulary.utils.IConstants;
 import com.flashvocabulary.utils.WebUtils;
 import com.opensymphony.xwork2.Action;
 
@@ -34,7 +35,11 @@ public class SetCompleteAction implements Action {
 	HttpSession session = null;
 	try {
 		session=request.getSession();
-		uid = ((User)session.getAttribute("user")).getId();
+		User user = (User)session.getAttribute("User");
+		if (user == null) {
+		    return IConstants.SESSION_EXPIRED;
+		}
+		uid = user.getId();
 	} catch (Exception e) {
 		// TODO: handle exception
 		System.out.println("session error" + e.getMessage());

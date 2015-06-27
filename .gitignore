@@ -1,7 +1,0 @@
-#!/bin/sh
-/build
-/.classpath
-/.project
-/.settings/
-/WebRoot/WEB-INF/-lib
-exec /share/vim/vim74/vim "$@"

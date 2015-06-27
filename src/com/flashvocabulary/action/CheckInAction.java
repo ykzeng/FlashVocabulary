@@ -1,6 +1,5 @@
 package com.flashvocabulary.action;
 
-import java.sql.Timestamp;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -20,6 +19,9 @@ public class CheckInAction implements Action{
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");
+		if (user == null) {
+		    return IConstants.SESSION_EXPIRED;
+		}
 		int uid = user.getId();
 		String post = ""; 
 		if(request.getParameter("checkin")!=null)

@@ -16,6 +16,7 @@ import com.flashvocabulary.service.SearchService.searchResult;
 import com.flashvocabulary.service.SearchService.tranList;
 import com.flashvocabulary.service.SentenceService;
 import com.flashvocabulary.service.WordService;
+import com.flashvocabulary.utils.IConstants;
 import com.opensymphony.xwork2.Action;
 
 public class GetWordDetailsAction implements Action {
@@ -29,6 +30,9 @@ public class GetWordDetailsAction implements Action {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");
+		if (user == null) {
+		    return IConstants.SESSION_EXPIRED;
+		}
 		int uid = user.getId();
 		int wid = Integer.parseInt(request.getParameter("wid"));
 		int libId = Integer.parseInt(request.getParameter("libid"));

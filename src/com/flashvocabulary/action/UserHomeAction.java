@@ -11,6 +11,7 @@ import com.flashvocabulary.service.CheckInService;
 import com.flashvocabulary.service.UserCollectLibService;
 import com.flashvocabulary.service.UserInfoService;
 import com.flashvocabulary.service.WordLibService;
+import com.flashvocabulary.utils.IConstants;
 import com.opensymphony.xwork2.Action;
 
 public class UserHomeAction implements Action {
@@ -25,6 +26,9 @@ public class UserHomeAction implements Action {
 		//HttpServletResponse response = ServletActionContext.getResponse();
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");
+		if (user == null) {
+		    return IConstants.SESSION_EXPIRED;
+		}
 		int uid = user.getId();
 		
 		int userCollectCount = userCollectLibService.getUserCollectLibByUid(uid).size();

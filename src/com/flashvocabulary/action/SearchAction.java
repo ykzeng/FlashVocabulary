@@ -6,9 +6,11 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.flashvocabulary.dto.User;
 import com.flashvocabulary.dto.WordSentenceView;
 import com.flashvocabulary.service.SearchService;
 import com.flashvocabulary.service.SentenceService;
@@ -28,7 +30,11 @@ public class SearchAction implements Action{
 	String word = request.getParameter("word");
 	searchResult result = null;
 	List<WordSentenceView> wsvList = new ArrayList<WordSentenceView>();
-
+	HttpSession session = request.getSession();
+	User user = (User)session.getAttribute("User");
+	if (user == null) {
+	    return IConstants.SESSION_EXPIRED;
+	}
 	try {
 		result = searchservice.findAllWordInfoByWord(word);
 		wsvList = sentenceService.getSentencesByWord(word);
