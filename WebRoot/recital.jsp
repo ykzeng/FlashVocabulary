@@ -114,6 +114,9 @@
             newLi.appendChild(text);
             document.getElementById("detail_anto").appendChild(newLi);
         }
+
+        var sampleSen = wordToShow.sentences;
+        document.getElementById("detail_usage").innerHTML = sampleSen;
     }
     function nextWord(){
         var count = (++window.sessionStorage.count);

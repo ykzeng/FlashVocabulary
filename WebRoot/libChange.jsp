@@ -11,6 +11,7 @@
 </head>
 
 <body class="uni_background">
+<jsp:include  page="include/header.jsp"/>
 	<form action="ChooseWordLibAction" method="post">
     <div class="center_div">
     <div class="lib_div">
@@ -20,4 +21,5 @@
     </div>
     </div>
     </form>
+    <jsp:include  page="include/footer.jsp"/>
 </body></html>

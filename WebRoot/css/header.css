@@ -2,13 +2,26 @@
 	width:50%;float:right;text-align:right;margin-top:20px;
 }
 .nav_right input{
-	padding:4px 6px 4px 6px;height:27px;border:1px solid #ccc;border-right:0px;
+	padding:4px 6px 4px 6px;height:27px;border:1px solid #ccc;
 	box-sizing:content-box;
+	transition:border linear .2s, box-shadow linear .2s;
+	margin-right:1px;
+}
+.nav_right input:focus{
+	box-shadow:inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #2dbe60;
+	outline:0;
+	border-color:#2dbe60;
 }
 .nav_right a{
 	padding:9px;border:1px solid #ccc;vertical-align:middle;color:#333;text-decoration:none;
-	border-right:0px;
+	border-left:0px;
+	transition:all 1s;
 	cursor: pointer;
+	border-right:0px;
+}
+.nav_right a:hover{
+	background:#2dbe60;
+	color:white;
 }
 .navbar{
 	width:100%;background:#E0EEE0;left:0%;height:80px;border-top:5px #2dbe60 solid;

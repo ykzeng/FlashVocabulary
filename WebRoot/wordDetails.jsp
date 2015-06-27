@@ -45,7 +45,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="trans_card" <%if(i%2 == 0){ %>style="margin-right:1.5%"<%} %>>
 				<input type="hidden" name="wid<%=i%>" value="<%=idList.get(i) %>"/>
 				<!--input class="fav_btn button icon favorite"  onclick="document.getElementById('collectSubmit').submit();"Collect/-->
-				<input class="fav_btn button icon favorite" value="Collect" type="submit" name="<%=i%>"/>
+				<!--<input class="fav_btn button icon favorite" value="Collect" type="submit" name="<%=i%>"/>  -->
+				<button name="<%=i%>" value="Collect" class="fav_btn button icon favorite" onclick="document.getElementById(collectSubmit).submit();">Collect</button>
 				<h3><%=wordLibNameList.get(i)%></h3>
 				<ol>
 				<%for(int j = 0; j < tranList.length; j++){%>
