@@ -62,10 +62,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="sentence_card">
 			<h2>Usages</h2>
 			<ol class="sentence_list">
+			<%if(wsvList!=null) {%>
 			<%for(int i=0;i<wsvList.size();i++){ %>
 				<li><span><%=wsvList.get(i).getSentence() %></span><br/>
 					<p><%=wsvList.get(i).getTranslation() %></p></li>
-			<%} %>
+			<%} }%>
 			</ol>
 		</div>
 	</div>

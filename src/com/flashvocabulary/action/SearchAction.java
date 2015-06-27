@@ -33,7 +33,7 @@ public class SearchAction implements Action{
 		result = searchservice.findAllWordInfoByWord(word);
 		wsvList = sentenceService.getSentencesByWord(word);
 		if(result!=null){
-		request.setAttribute("result", result);
+			request.setAttribute("result", result);
 			if(wsvList!=null && wsvList.size()>0)
 			request.setAttribute("wsvList", wsvList);
 			return SUCCESS;

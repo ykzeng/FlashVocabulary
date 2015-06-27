@@ -6,6 +6,7 @@ import java.util.List;
 import com.flashvocabulary.dao.impl.SentenceDaoImpl;
 import com.flashvocabulary.dao.impl.WordDaoImpl;
 import com.flashvocabulary.dao.impl.WordSentenceViewImpl;
+import com.flashvocabulary.dto.Word;
 import com.flashvocabulary.dto.WordSentenceView;
 
 public class SentenceService {
@@ -22,10 +23,15 @@ public class SentenceService {
 	{
 		List<WordSentenceView> wsvList = new ArrayList<WordSentenceView>();
 		try {
-			int wid = wordDao.getEntry("select top 1 * from tb_word where word = ?", word).getId();
-			wsvList = wordSentenceDao.getEntrys("select * from tb_wordsentenceview where wid = ?", wid);
-			if(wsvList.size()>0) 
-				return wsvList;
+			Word w = null;
+			w = wordDao.getEntry("select top 1 * from tb_word where word = ?", word);
+			if(w!=null)
+			{
+				int wid = w.getId();
+				wsvList = wordSentenceDao.getEntrys("select * from tb_wordsentenceview where wid = ?", wid);
+				if(wsvList.size()>0) 
+					return wsvList;
+			}
 			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
