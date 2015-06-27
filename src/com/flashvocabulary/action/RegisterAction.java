@@ -23,6 +23,7 @@ public class RegisterAction implements Action{
 		if(!userInfoService.isAcountExisted(user.getUname()))
 		{
 			user.setCurrentLib(1);
+			user.setCurrentLib(30);
 			userInfoService.userRegister(user);
 			request.setAttribute("message", "注册成功！");
 			return IConstants.REGISTER_SUCCESS;
