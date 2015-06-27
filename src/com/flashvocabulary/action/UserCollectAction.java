@@ -24,6 +24,9 @@ public class UserCollectAction implements Action {
 	HttpServletRequest request = ServletActionContext.getRequest();
 	HttpSession session = request.getSession();
 	User user = (User)session.getAttribute("user");
+	if (user == null) {
+	    return IConstants.SESSION_EXPIRED;
+	}
 	int uid = user.getId();
 	
 	String submitName = "";

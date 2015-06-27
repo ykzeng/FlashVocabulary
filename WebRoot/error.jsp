@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false"%>
+<!DOCTYPE html>
 <!-- saved from url=(0045)http://www.zhihu.com/question/275580048902314 -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
@@ -27,7 +28,7 @@
      <hr>
      <div style="padding-bottom:20px;">
        <a href="LogoutAction" class="button" style="float:left;"><i class="icon-signin"></i> Login again</a>
-       <a href="javascript:;" class="button" style="float:right" id="js-history-back"><i class="icon-reply"></i> Back to last page</a>
+       <a onclick="history.go(-1);" class="button" style="float:right" id="js-history-back"><i class="icon-reply"></i> Back to last page</a>
      </div>
    </div>
   </div>

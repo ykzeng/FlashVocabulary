@@ -11,6 +11,7 @@ import org.apache.struts2.ServletActionContext;
 import com.flashvocabulary.dto.User;
 import com.flashvocabulary.dto.Wordlib;
 import com.flashvocabulary.service.WordLibService;
+import com.flashvocabulary.utils.IConstants;
 import com.opensymphony.xwork2.Action;
 
 public class ToChooseWordLibAction implements Action {
@@ -22,7 +23,9 @@ public class ToChooseWordLibAction implements Action {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");
-		int uid = user.getId();
+		if (user == null) {
+		    return IConstants.SESSION_EXPIRED;
+		}
 		int currentlibID = user.getCurrentLib();
 		//String nowLibName = wordLibService.getLibNameByLibid(currentlibID);
 		List<Wordlib> wordlib = new ArrayList<Wordlib>();

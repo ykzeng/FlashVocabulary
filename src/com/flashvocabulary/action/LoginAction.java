@@ -1,8 +1,6 @@
 package com.flashvocabulary.action;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.swing.Icon;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -14,9 +12,6 @@ import com.flashvocabulary.service.WordLibService;
 import com.flashvocabulary.utils.IConstants;
 import com.flashvocabulary.utils.WebUtils;
 import com.opensymphony.xwork2.Action;
-import com.opensymphony.xwork2.ActionContext;
-
-import net.sf.json.JSONArray;
 
 public class LoginAction implements Action{
     private UserInfoService userInfoService = new UserInfoService();

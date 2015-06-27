@@ -1,10 +1,8 @@
 package com.flashvocabulary.action;
 
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
@@ -14,6 +12,7 @@ import net.sf.json.JSONArray;
 import com.flashvocabulary.dto.TodayWord;
 import com.flashvocabulary.dto.User;
 import com.flashvocabulary.service.TodayWordService;
+import com.flashvocabulary.utils.IConstants;
 import com.opensymphony.xwork2.Action;
 
 public class GetWordSetAction implements Action {
@@ -32,6 +31,9 @@ public class GetWordSetAction implements Action {
 	    lastTid = (Integer)session.getAttribute("lastTid");
 	}
 	User user = (User)session.getAttribute("user");
+	if (user == null) {
+	    return IConstants.SESSION_EXPIRED;
+	}
 	int uid = user.getId();
 	//lastID = request.getParameter("");
 	List<TodayWord> twList = todayWordservice.getUserTodayWordById(uid, lastTid);
