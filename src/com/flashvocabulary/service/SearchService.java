@@ -3,8 +3,6 @@ package com.flashvocabulary.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
-
 import com.flashvocabulary.dao.impl.UserCollectLibImpl;
 import com.flashvocabulary.dao.impl.WordDaoImpl;
 import com.flashvocabulary.dao.impl.WordlibDaoImpl;
