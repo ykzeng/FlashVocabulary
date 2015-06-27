@@ -14,19 +14,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="css/gh-buttons.css"/>
 	<link rel="stylesheet" type="text/css" href="css/basics.css">
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript">
 	function changelibview(divid)
 	{
 		for (var i = 0; i < 4; i++) {
-		var libid = document.getElementById("lib-div"+i);
+		var libid = ("lib-div"+i);
+        var a_id = ("#a"+i);
             if(divid==i)
             {
-            	libid.style.display=="block";
+            	document.getElementById(libid).style.display="block";
+                $(a_id).addClass("btn_active");
             }
             else
             {
-            	libid.style.display=="none";
+            	document.getElementById(libid).style.display="none";
+                if ($(a_id).hasClass("btn_active")) {
+                    $(a_id).removeClass("btn_active");
+                }
             }
             
         }
@@ -35,30 +42,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</script>
 </head>
 <body class="uni_background">
+<jsp:include  page="include/header.jsp"/>
     <div class="center_div">
     	 <div class="usercheckin-div">
-    	 <h1 style="font-size:40px;color:#707070">USER COLLECTION</h1><hr>
-    	 	<input type="submit" style="background:#e77e23;" id="sb1" value="CET-4" onclick="changelibview(0)">
-    	 	<input type="submit" style="background:green;" id="sb2" value="CET-6" onclick="changelibview(1)">
-    	 	<input type="submit" style="background:green;" id="sb3" value="GRE3000" onclick="changelibview(2)">
-    	 	<input type="submit" style="background:green;" id="sb4" value="TOEFL" onclick="changelibview(3)"> 
+             <div style="width:50%;float:left">
+                <h1 style="font-size:40px;color:#707070">USER COLLECTION</h1>
+             </div>
+        	 <div style="width:50%;overflow:hidden;padding-top:26px;">
+        	 	<ul class="button-group" style="float:right">
+                    <li><a id="a0" onclick="changelibview(0)" class="button pill">CET-4</a></li>
+                    <li><a id="a1" onclick="changelibview(1)" class="button pill">CET-6</a></li>
+                    <li><a id="a2" onclick="changelibview(2)" class="button pill">GRE3000</a></li>
+                    <li><a id="a3" onclick="changelibview(3)" class="button pill">TOEFL</a></li>
+                </ul>	
+        	 </div>
          </div>
-         <div id="lib-div0" style="display:block;">
-	         <center><h2>${libName1==null?"无":libName1}</h2></center>
-	         <center>${longSTR1}</center>
+         <div class="usercheckin-div">
+             <div id="lib-div0" class="collect_div">
+                 <center><h1>${libName1==null?"无":libName1}</h1></center>
+                 ${longSTR1}
+             </div>
+             <div id="lib-div1" class="collect_div" style="display:none;">
+                 <center><h1>${libName2==null?"无":libName2}</h1></center>
+                 ${longSTR2}
+             </div>
+             <div id="lib-div2" class="collect_div" style="display:none;">
+                 <center><h1>${libName3==null?"无":libName3}</h1></center>
+                 ${longSTR3}
+             </div>
+             <div id="lib-div3" class="collect_div" style="display:none;">
+                 <center><h1>${libName4==null?"无":libName4}</h1></center>
+                 ${longSTR4}
+             </div>
          </div>
-         <div id="lib-div1" style="display:none;">
-	         <center><h2>${libName2==null?"无":libName2}</h2></center>
-	         <center>${longSTR2}</center>
-         </div>
-         <div id="lib-div2" style="display:none;">
-	         <center><h2>${libName3==null?"无":libName3}</h2></center>
-	         <center>${longSTR3}</center>
-         </div>
-         <div id="lib-div3" style="display:none;">
-	         <center><h2>${libName4==null?"无":libName4}</h2></center>
-	         <center>${longSTR4}</center>
-         </div>
-         </div>
+    </div>
 </body>
 </html>

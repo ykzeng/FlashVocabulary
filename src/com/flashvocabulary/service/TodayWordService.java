@@ -317,72 +317,86 @@ public class TodayWordService {
 		try {
 			List<TodayWord> twList = todayWordDao.getEntrys("select * from tb_todayword where uid = ?", uid);
 			int len = twList.size();
-			int [] arr = new int[10];
-			arr[0] = new Random().nextInt(len);
-			if(len>=10 && len<30)
+			int [] arr = null;
+			if(len<10 && len >0)
 			{
-				for(int i=1;i<10;i++)
+				arr = new int[len];
+				arr = randomCommon(0, len-1, len);
+			}
+			else if(len >= 10)
+			{
+				arr = new int[10];
+				arr = randomCommon(0, len-1, 10);
+			}
+			
+//			int [] arr = new int[10];
+//			arr[0] = new Random().nextInt(len);
+//			if(len>=10 && len<30)
+//			{
+//				for(int i=1;i<10;i++)
+//				{
+//					arr[i] = arr[0] + i;
+//					if(arr[i]>=len)
+//					{
+//						arr[i] = arr[i]-10;
+//					}
+//				}	
+//				
+//			}
+//			else if(len >= 30 && arr[0]>=0 && arr[0]<len/2)
+//			{
+//				for(int i=1;i<10;i++)
+//				{
+//					arr[i] = arr[0] + i + 1 + len/5;
+//				}	
+//			}
+//			else if(len>30 && len <=100 && arr[0]>=len/2)
+//			{
+//				for(int i=1;i<10;i++)
+//				{
+//					arr[i] = arr[0] - i - 1 - len/(i+3);
+//				}	
+//			}
+//			else if(len>100 && arr[0]>=len/2)
+//			{
+//				for(int i=1;i<10;i++)
+//				{
+//					arr[i] = arr[0] - i - 3 - len/(i+3);
+//				}	
+//			}
+//			else
+//			{
+//				for(int i=1;i<len;i++)
+//				{
+//					arr[i] = arr[0] + i;
+//				}
+//				for(int j=len;j<10;j++)
+//				{
+//					arr[j] = 0;
+//				}
+//			}
+			if(arr!=null)
+			{
+				List<TodayWord> twTemp = new ArrayList<TodayWord>();
+				for(int i=0;i<10;i++)
 				{
-					arr[i] = arr[0] + i;
-					if(arr[i]>=len)
-					{
-						arr[i] = arr[i]-10;
-					}
-				}	
+					twTemp.add(twList.get(arr[i]));
+				}
 				
-			}
-			else if(len >= 30 && arr[0]>=0 && arr[0]<len/2)
-			{
-				for(int i=1;i<10;i++)
+				wl = getWordGroupInfo1(twTemp);
+				
+				JSONArray jsonArray = new JSONArray();
+				JSONObject jsonObject = new JSONObject();
+				for(int j=0;j<10;j++)
 				{
-					arr[i] = arr[0] + i + 1 + len/5;
-				}	
-			}
-			else if(len>30 && len <=100 && arr[0]>=len/2)
-			{
-				for(int i=1;i<10;i++)
-				{
-					arr[i] = arr[0] - i - 1 - len/(i+3);
-				}	
-			}
-			else if(len>100 && arr[0]>=len/2)
-			{
-				for(int i=1;i<10;i++)
-				{
-					arr[i] = arr[0] - i - 3 - len/(i+3);
-				}	
-			}
-			else
-			{
-				for(int i=1;i<len;i++)
-				{
-					arr[i] = arr[0] + i;
+					jsonObject.put("wordID", wl.get(j).getId());
+					jsonObject.put("word", wl.get(j).getWord());
+					jsonObject.put("phonetics", wl.get(j).getPhonetics());
+					jsonObject.put("trans", wl.get(j).getTranslation());
+					jsonArray.add(jsonObject);
 				}
-				for(int j=len;j<10;j++)
-				{
-					arr[j] = 0;
-				}
+				return jsonArray;
 			}
-			
-			List<TodayWord> twTemp = new ArrayList<TodayWord>();
-			for(int i=0;i<10;i++)
-			{
-				twTemp.add(twList.get(arr[i]));
-			}
-			
-			wl = getWordGroupInfo1(twTemp);
-			
-			JSONArray jsonArray = new JSONArray();
-			JSONObject jsonObject = new JSONObject();
-			for(int j=0;j<10;j++)
-			{
-				jsonObject.put("wordID", wl.get(j).getId());
-				jsonObject.put("word", wl.get(j).getWord());
-				jsonObject.put("phonetics", wl.get(j).getPhonetics());
-				jsonObject.put("trans", wl.get(j).getTranslation());
-				jsonArray.add(jsonObject);
-			}
-			return jsonArray;
 			
 		} catch (Exception e) {
 
@@ -391,5 +405,35 @@ public class TodayWordService {
 		return null;
 		
 	}
+	
+	 /**
+		 * 随机指定范围内N个不重复的数
+		 * 最简单最基本的方法
+		 * @param min 指定范围最小值
+		 * @param max 指定范围最大值
+		 * @param n 随机数个数
+		 */
+		public static int[] randomCommon(int min, int max, int n){
+			if (n > (max - min + 1) || max < min) {
+	            return null;
+	        }
+			int[] result = new int[n];
+			int count = 0;
+			while(count < n) {
+				int num = (int) (Math.random() * (max - min)) + min;
+				boolean flag = true;
+				for (int j = 0; j < n; j++) {
+					if(num == result[j]){
+						flag = false;
+						break;
+					}
+				}
+				if(flag){
+					result[count] = num;
+					count++;
+				}
+			}
+			return result;
+		}
 
 }

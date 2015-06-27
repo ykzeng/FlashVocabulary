@@ -49,9 +49,9 @@ public class UserCollectLibService {
 	 * @param int(单词ID).
 	 * @return boolean
 	 */
-	public boolean isWordInUserCollectLib(int wid)  //@代号：ljt 
+	public boolean isWordInUserCollectLib(int wid,int uid)  //@代号：ljt 
 	{
-		return userCollectLibDao.isWordInUserCollectLib(wid);
+		return userCollectLibDao.isWordInUserCollectLib(wid,uid);
 	}
 	
 	

@@ -51,14 +51,18 @@ public class GetWordDetailsAction implements Action {
 		String [] synonyms = word.getSynonym().split("\\|");
 		String synonymSTR = getOLLI(synonyms);
 		
-		List<WordSentenceView> wsvlist = sentenceService.getSentencesByWord(wordName);
+		List<WordSentenceView> wsvlist = null;
+		wsvlist = sentenceService.getSentencesByWord(wordName);
 		WordSentenceView wsv = null;
 		String sentenceSTR = "<ol class=\"sentence_list\">";
-		for (int i = 0; i < wsvlist.size(); i++) {
-			wsv = wsvlist.get(i);
-			sentenceSTR += "<li><span>"+wsv.getSentence()
-					+"</span><br><p>"+wsv.getTranslation()
-					+"</p></li>";
+		if(wsvlist != null)
+		{
+			for (int i = 0; i < wsvlist.size(); i++) {
+				wsv = wsvlist.get(i);
+				sentenceSTR += "<li><span>"+wsv.getSentence()
+						+"</span><br><p>"+wsv.getTranslation()
+						+"</p></li>";
+			}
 		}
 		sentenceSTR += "</ol>";
 		

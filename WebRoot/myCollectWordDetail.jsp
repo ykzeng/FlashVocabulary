@@ -19,7 +19,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" type="text/css" href="css/basics.css"></link>
 </head>
 <body class="uni_background">
-		<a class="right_side" href="answer.html"><img src="images/right-arrow.png"/></a>
 	<div class="flashcard">
     	<div class="word_label">
 			<h1>${word}</h1>

@@ -45,11 +45,11 @@ public class UserCollectLibImpl extends BaseDaoImpl<UserCollectLib> {
 	 * @param int(单词ID).
 	 * @return boolean
 	 */
-	public boolean isWordInUserCollectLib(int wid)  //@代号：ljt 
+	public boolean isWordInUserCollectLib(int wid,int uid)  //@代号：ljt 
 	{
 		try {
 			UserCollectLib ucl =null;
-			ucl = getEntry("select * from tb_usercollectlib where wid = ?", wid);
+			ucl = getEntry("select * from tb_usercollectlib where wid = ? and uid=?", wid,uid);
 			if(ucl == null || ucl.getWid() != wid)
 			{
 				return false;

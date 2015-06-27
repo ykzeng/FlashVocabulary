@@ -7,6 +7,9 @@
 			<result name="loginPwdFailure">message.jsp</result>
 			<result name="loginConnFailure">message.jsp</result>
 		</action>
+		<action name="LogoutAction" class="com.flashvocabulary.action.LoginAction" method="logout">
+			<result name="logout">userLogin.jsp</result>
+		</action>
 		<action name="RegisterAction" class="com.flashvocabulary.action.RegisterAction" method="execute">
 			<result name="registerSuccess">userLogin.jsp</result>
 			<result name="registerFailure">message.jsp</result>
