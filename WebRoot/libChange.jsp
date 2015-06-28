@@ -21,5 +21,25 @@
     </div>
     </div>
     </form>
+    <div class="popup_div" id="wait_div">
+    <div class="page">
+    <div class="error">
+      <h1 class="header">
+          FlashVocabulary
+      </h1>
+      <div class="content" style="padding-bottom:0px;">
+       <p>
+         <strong>Wait for a minute...</strong>
+       </p>
+       <p>
+          We are switching the word lib for you...
+       </p>
+       <p style="text-align:center;">
+          <i class="icon-spinner icon-spin icon-2x pull-center"></i>
+       </p>
+     </div>
+    </div>
+</div>
+</div>
     <jsp:include  page="include/footer.jsp"/>
 </body></html>

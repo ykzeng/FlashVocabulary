@@ -69,10 +69,11 @@ public class TodayWordService {
 			transElection = get3RandomTranEletion(wordID,position);
 						
 			sentenceAndtrans = sentenceAndtransList.get(i);
-			
-			String tempStr = sentenceAndtrans.split("</p></li><li><span>")[0].split("<li><span>")[1];//substring(10);
-			wordSentence = tempStr.split("</span><br/><p>")[0];
-			sentenceTran = tempStr.split("</span><br/><p>")[1].split("</p></li>")[0];
+			if (sentenceAndtrans != null && sentenceAndtrans != "") {
+				String tempStr = sentenceAndtrans.split("</p></li><li><span>")[0].split("<li><span>")[1];//substring(10);
+				wordSentence = tempStr.split("</span><br/><p>")[0];
+				sentenceTran = tempStr.split("</span><br/><p>")[1].split("</p></li>")[0];
+			}
 			
 			jsonObject.put("spell", spell);
 			jsonObject.put("idOfTodayWordLib", idOfTodayWordLib);

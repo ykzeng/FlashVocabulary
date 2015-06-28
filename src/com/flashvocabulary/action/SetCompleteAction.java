@@ -35,7 +35,7 @@ public class SetCompleteAction implements Action {
 	HttpSession session = null;
 	try {
 		session=request.getSession();
-		User user = (User)session.getAttribute("User");
+		User user = (User)session.getAttribute("user");
 		if (user == null) {
 		    return IConstants.SESSION_EXPIRED;
 		}
