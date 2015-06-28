@@ -18,11 +18,10 @@
       <a href="LoginAction" class="logo_title_a" style="font-size:1em;">
         FlashVocabulary
       </a>
-      - 404
     </h1>
     <div class="content">
      <p>
-       <strong>Oops...You probably came to nowhere...</strong>
+       <strong>Oops...Here are some messages for you:</strong>
      </p>
      <ul style="list-style:none;padding-left:0px;">
      	<li>${message}</li>

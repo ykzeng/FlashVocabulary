@@ -19,6 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" type="text/css" href="css/basics.css"></link>
 </head>
 <body class="uni_background">
+<jsp:include  page="include/header.jsp"/>
 	<div class="flashcard">
     	<div class="word_label">
 			<h1>${word}</h1>
@@ -44,5 +45,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			${sentenceSTR!=null?sentenceSTR:"Empty"}
 		</div>
     </div>
+    <jsp:include  page="include/footer.jsp"/>
 </body>
 </html>
