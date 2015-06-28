@@ -103,4 +103,19 @@ public class TwelveClockService {
 			// TODO: handle exception
 		}
 	}
+	
+	public void resetOneUserTodayWord(int uid)
+	{
+		//ArrayList<TodayWord> todayWordList = null;
+		try {
+//			todayWordList = (ArrayList<TodayWord>)todayWordDao.
+//					getEntrys("select * from tb_todayword where uid = ?", uid);
+//			for (TodayWord todayWord : todayWordList)
+//			{
+				todayWordDao.excSql("delete from tb_todayword where uid = ?", uid);
+			//}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 }

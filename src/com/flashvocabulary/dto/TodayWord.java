@@ -7,17 +7,18 @@ public class TodayWord implements BaseEntry {
 	private int wid;
 	private int isCheck;
 	
-	public TodayWord(int id,int uid,int wid,int isCheck)
-	{
-		this.id = id;
-		this.uid = uid;
-		this.wid = wid;
-		this.isCheck = isCheck;
-	}
 	public TodayWord(){}
 	
 	public TodayWord(int uid,int wid,int isCheck)
 	{
+		this.uid = uid;
+		this.wid = wid;
+		this.isCheck = isCheck;
+	}
+	
+	public TodayWord(int id,int uid,int wid,int isCheck)
+	{
+		this.id = id;
 		this.uid = uid;
 		this.wid = wid;
 		this.isCheck = isCheck;

@@ -22,10 +22,10 @@ public class RegisterAction implements Action{
 	try {
 		if(!userInfoService.isAcountExisted(user.getUname()))
 		{
-			user.setCurrentLib(1);
+			user.setCurrentLib(12);  //12为默认词库Default
 			user.setDailyCount(30);
 			userInfoService.userRegister(user);
-			request.setAttribute("message", "注册成功！");
+			request.getSession().setAttribute("user", user);
 			return IConstants.REGISTER_SUCCESS;
 		}
 		else

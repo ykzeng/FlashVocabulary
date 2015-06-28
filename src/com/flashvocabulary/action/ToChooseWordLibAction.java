@@ -27,7 +27,7 @@ public class ToChooseWordLibAction implements Action {
 		    return IConstants.SESSION_EXPIRED;
 		}
 		int currentlibID = user.getCurrentLib();
-		//String nowLibName = wordLibService.getLibNameByLibid(currentlibID);
+		
 		List<Wordlib> wordlib = new ArrayList<Wordlib>();
 		wordlib = wordLibService.getAllWordLib();
 		
@@ -49,7 +49,7 @@ public class ToChooseWordLibAction implements Action {
 			libname = wordLibService.getLibNameByLibid(libId);
 			description = Lib.getDescription();
 			wordCount = wordLibService.getLibCountById(libId);
-			imgSrc = "images/gre_3k.jpg";
+			imgSrc = Lib.getImg();
 			
 			if(libId==currentlibID)
 			{
@@ -73,17 +73,6 @@ public class ToChooseWordLibAction implements Action {
 		request.setAttribute("longSTR", longSTR);
 		return "ToChooseWordLib";
 			
-//			<div>
-//            <div>
-//                <img src="images/gre_3k.jpg">
-//            </div>
-//            <div>
-//                <h3>GRE 3000</h3>
-//                <p>A really good book for GRE test taker</p>
-//                Total: <span>2957</span><br></br>
-//                <input style="background:#e77e23;" type="submit" value="Using" disabled="true" name="${nihao}"/>
-//            </div>
-//        </div>
 		
 	}
 

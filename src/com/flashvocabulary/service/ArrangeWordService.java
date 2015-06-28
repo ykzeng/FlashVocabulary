@@ -24,7 +24,7 @@ public class ArrangeWordService {
 	}
 	
 	public void ArrangeWord(Integer UserId) {
-		ArrayList<UserLib> userLibList = userLibDao.getEntryByUserId(UserId);
+		ArrayList<UserLib> userLibList = userLibDao.getEntrysByUserId(UserId);
 		ArrayList<Integer> wordsList = new ArrayList<Integer>();
 		int dailyCount = userDao.getDailyCount(UserId);
 		int i=0;

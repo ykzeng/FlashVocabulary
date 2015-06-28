@@ -2,7 +2,6 @@ package com.flashvocabulary.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 import org.apache.struts2.ServletActionContext;
 

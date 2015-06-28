@@ -29,7 +29,7 @@ public class WordLibService {
 	{
 		ArrayList<Wordlib> wordlibList = null;
 		try {
-			wordlibList = (ArrayList<Wordlib>)wordlibDao.getAllEntrys();	
+			wordlibList = (ArrayList<Wordlib>)wordlibDao.getEntrys("select * from tb_wordlib where id != 12");	
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -45,7 +45,7 @@ public class WordLibService {
 	public void setUserLib(int uid,int libId)
 	{
 		ArrayList<UserLib> userLibsList = new ArrayList<UserLib>();
-		userLibsList = userlibDao.getEntryByUserId(uid);
+		userLibsList = userlibDao.getEntrysByUserId(uid);
 		
 		for (UserLib userLib : userLibsList)
 		{
@@ -63,11 +63,16 @@ public class WordLibService {
 			try {
 				userlibDao.saveEntry(userLib);	
 			} catch (Exception e) {
-				// TODO: handle exception
+				
 				e.printStackTrace();
 			}
 		}
 		
 		userInfoService.setUserCurrentLib(uid, libId);
+		
+		TwelveClockService twelveClockService = new TwelveClockService();
+		twelveClockService.resetOneUserTodayWord(uid);
+		ArrangeWordService arrangeWordService  =new ArrangeWordService();
+		arrangeWordService.ArrangeWord(uid);
 	}
 }

@@ -37,7 +37,7 @@ public class ChooseWordLib {
 	public void setUserLib(int uid,int libId)
 	{
 		ArrayList<UserLib> userLibsList = new ArrayList<UserLib>();
-		userLibsList = userlibDao.getEntryByUserId(uid);
+		userLibsList = userlibDao.getEntrysByUserId(uid);
 		
 		for (UserLib userLib : userLibsList)
 		{

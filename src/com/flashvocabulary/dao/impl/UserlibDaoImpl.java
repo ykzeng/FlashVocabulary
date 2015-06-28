@@ -5,7 +5,7 @@ import com.flashvocabulary.dto.UserLib;
 import java.util.ArrayList;
 
 public class UserlibDaoImpl extends BaseDaoImpl<UserLib> implements BaseDao<UserLib> {
-	public ArrayList<UserLib> getEntryByUserId(Integer userId)
+	public ArrayList<UserLib> getEntrysByUserId(Integer userId)
 	{
 		ArrayList<UserLib> userLibList = new ArrayList<UserLib>();
 		try {

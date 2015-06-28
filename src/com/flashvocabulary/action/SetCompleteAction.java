@@ -19,7 +19,7 @@ import com.flashvocabulary.utils.WebUtils;
 import com.opensymphony.xwork2.Action;
 
 public class SetCompleteAction implements Action {
-    private static final long serialVersionUID = 1L;
+    //private static final long serialVersionUID = 1L;
     private FinishAGroupService finishAGroupDao;
     
     public SetCompleteAction() {
