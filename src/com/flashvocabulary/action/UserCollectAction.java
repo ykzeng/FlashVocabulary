@@ -1,18 +1,11 @@
 package com.flashvocabulary.action;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.apache.struts2.ServletActionContext;
-
 import com.flashvocabulary.dto.User;
-import com.flashvocabulary.dto.Word;
 import com.flashvocabulary.service.UserCollectLibService;
-import com.flashvocabulary.service.WordLibService;
 import com.flashvocabulary.utils.IConstants;
 import com.opensymphony.xwork2.Action;
 

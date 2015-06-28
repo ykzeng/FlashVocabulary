@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 
 import com.flashvocabulary.dto.User;
-import com.flashvocabulary.service.ChooseWordLib;
 import com.flashvocabulary.service.UserInfoService;
 import com.flashvocabulary.utils.IConstants;
 import com.flashvocabulary.utils.WebUtils;

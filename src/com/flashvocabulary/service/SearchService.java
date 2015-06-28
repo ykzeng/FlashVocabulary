@@ -49,6 +49,19 @@ public class SearchService {
 		return null;
 	}
 	
+	public String maybeWords(String word)
+	{
+		String ret="";
+		List<Word> wl= wordDao.getEntrysByWordLike(word);
+		if(wl!=null && wl.size()>0)
+		{
+			for (int i = 0; i < wl.size(); i++) {
+				ret+=wl.get(i).getWord()+"|";
+			}
+		}
+		return ret!=""?ret.substring(0, ret.length()-1):"";
+	}
+	
 	//搜索结果类
 	public class searchResult  //@代号：ljt 
 	{

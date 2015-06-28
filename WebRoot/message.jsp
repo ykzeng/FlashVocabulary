@@ -24,7 +24,7 @@
        <strong>Oops...Here are some messages for you:</strong>
      </p>
      <ul style="list-style:none;padding-left:0px;">
-     	<li>${message}</li>
+     	<li><h3>${message}</h3></li>
      	<li>${message2}</li>
      	<li>${message3}</li>
      	<li>${message4}</li>

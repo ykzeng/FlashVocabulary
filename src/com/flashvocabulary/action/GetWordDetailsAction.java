@@ -10,7 +10,6 @@ import org.apache.struts2.ServletActionContext;
 import com.flashvocabulary.dto.User;
 import com.flashvocabulary.dto.Word;
 import com.flashvocabulary.dto.WordSentenceView;
-import com.flashvocabulary.service.SearchService;
 import com.flashvocabulary.service.SentenceService;
 import com.flashvocabulary.service.WordService;
 import com.flashvocabulary.utils.IConstants;

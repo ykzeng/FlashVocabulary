@@ -1,11 +1,8 @@
 package com.flashvocabulary.action;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.apache.struts2.ServletActionContext;
-
 import com.flashvocabulary.dto.User;
 import com.flashvocabulary.service.CheckInService;
 import com.flashvocabulary.service.UserCollectLibService;
