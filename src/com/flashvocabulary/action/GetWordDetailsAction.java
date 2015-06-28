@@ -29,12 +29,8 @@ public class GetWordDetailsAction implements Action {
 		if (user == null) {
 		    return IConstants.SESSION_EXPIRED;
 		}
-		int uid = user.getId();
-		//HttpSession session = request.getSession();
-		//User user = (User)session.getAttribute("user");
-		//int uid = user.getId();
+
 		int wid = Integer.parseInt(request.getParameter("wid"));
-		//int libId = Integer.parseInt(request.getParameter("libid"));
 		Word word = wordService.getWordInfo(wid);
 		String wordName = word.getWord();
 		

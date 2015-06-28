@@ -10,6 +10,7 @@
 			<result name="loginSuccess">index.jsp</result>
 			<result name="loginPwdFailure">message.jsp</result>
 			<result name="loginConnFailure">message.jsp</result>
+			<result name="tochoosewordlib" type="redirectAction">ToChooseWordLibAction</result>
 		</action>
 		<action name="LogoutAction" class="com.flashvocabulary.action.LoginAction" method="logout">
 			<result name="logout">userLogin.jsp</result>

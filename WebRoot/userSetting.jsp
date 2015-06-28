@@ -7,6 +7,29 @@
 <title>FV-Settings</title>
 <link rel="stylesheet" type="text/css" href="css/basics.css">
 <script type="text/javascript">
+	function validate()
+	{
+		var newPWD = document.getElementById("newpwd");
+		var orgPWD = document.getElementById("orgpwd");
+		var VorgPWD = orgPWD.innerText;
+		var VnewPWD = newPWD.innerText;
+		if(VnewPWD==null || VnewPWD=="")
+		{
+			if(VorgPWD!=null || VorgPWD!="")
+			{
+				alert(" password cannot be empty!");
+			}
+		}
+		else
+		{
+			var newPWD2 = document.getElementById("newpwd2");	
+			var VnewPWD2 = newPWD2.innerText;
+			if(VnewPWD2 != VnewPWD)
+			{
+				alert("2 password should be same!");
+			}
+		}
+	}
 </script>
 </head>
 
@@ -20,16 +43,16 @@
         <div class="row">
 		<div class="head"><h3>密码修改</h3></div>
 		<div class="inputarea">
-		<p>当&nbsp;前&nbsp;密&nbsp;码:&nbsp;&nbsp;&nbsp;<input type="password" name="originalPassword"/><p>
-		<p>新&nbsp;&nbsp;&nbsp;密&nbsp;&nbsp;&nbsp;&nbsp;码:&nbsp;&nbsp;&nbsp;<input type="password" name="newPassword"/></p>
-		<p>新密码确认:&nbsp;&nbsp;&nbsp;<input type="password" name="confirmNewPassword"/></p>
+		<p>当&nbsp;前&nbsp;密&nbsp;码:&nbsp;&nbsp;&nbsp;<input type="password" name="originalPassword" id="orgpwd"/><p>
+		<p>新&nbsp;&nbsp;&nbsp;密&nbsp;&nbsp;&nbsp;&nbsp;码:&nbsp;&nbsp;&nbsp;<input type="password" name="newPassword" id="newpwd"/></p>
+		<p>新密码确认:&nbsp;&nbsp;&nbsp;<input type="password" name="confirmNewPassword" id="newpwd2"/></p>
         </div>
 		<hr>
 		<div class="head"><h3>新词设置</h3></div>
 		<div class="inputarea">
         <p>当前每日新词数:&nbsp;&nbsp;<%=((User)request.getSession().getAttribute("user")).getDailyCount() %></p>
 		<p>设置新词数为:&nbsp;&nbsp;<input type="text" name="newWordNum"/></p>
-		<input style="background:#e77e23;" type="submit" value="确认修改" name="saveChange"/>
+		<input style="background:#e77e23;" type="submit" value="确认修改" name="saveChange" onclick="validate()"/>
         </div> 
         </div>
     </div>
