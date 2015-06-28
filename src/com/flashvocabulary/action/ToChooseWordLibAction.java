@@ -69,16 +69,10 @@ public class ToChooseWordLibAction implements Action {
 				inputname = libId;
 				longSTR += "<div><div><img src=\""+ imgSrc + "\"></div><div><h3>"
 						+libname+"</h3><p>"+description+"</p>Total: <span>"
-						+wordCount+"</span><br></br><input "+inputcolor
+						+wordCount+"</span><br></br><input onclick=\"toWait()\" "+inputcolor
 						+"type=\"submit\" value=\""+inputvalue+"\""+disable+"\" name=\"lib"
 						+inputname+"\"/></div></div>";
 			}
-			inputname = libId;
-			longSTR += "<div><div><img src=\""+ imgSrc + "\"></div><div><h3>"
-					+libname+"</h3><p>"+description+"</p>Total: <span>"
-					+wordCount+"</span><br></br><input onclick=\"toWait()\" "+inputcolor
-					+"type=\"submit\" value=\""+inputvalue+"\""+disable+"\" name=\"lib"
-					+inputname+"\"/></div></div>";
 			request.setAttribute("longSTR", longSTR);
 			return "ToChooseWordLib";
 		}
