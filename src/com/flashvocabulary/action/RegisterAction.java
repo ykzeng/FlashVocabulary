@@ -18,6 +18,14 @@ public class RegisterAction implements Action{
 	
 	HttpServletRequest request = ServletActionContext.getRequest();
 	User user = new User(request.getParameter("uname"),request.getParameter("pwd"));
+	if ((user.getUname().equals("")) || (user.getUname() == null)) {
+	    request.setAttribute("message", "请输入合法的账号名！");
+	    return IConstants.WARNING;
+	}
+	else if ((user.getPwd().equals("")) || (user.getPwd() == null)) {
+	    request.setAttribute("message", "请输入合法的密码！");
+	    return IConstants.WARNING;
+	}
 	//WebUtils.write2Bean(request, User.class);
 	try {
 		if(!userInfoService.isAcountExisted(user.getUname()))

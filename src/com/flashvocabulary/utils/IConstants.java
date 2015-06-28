@@ -15,6 +15,9 @@ public class IConstants {
     public static String SAVE_SUCCESS = "saveChangeSuccess";
     public static String FAILURE = "failure";
     public static String LOGOUT = "logout";
+    public static String NO_UNAME = "noUname"; 
+    public static String NO_PWD = "noPwd";
+    public static String WARNING = "warningMessage";
     
     public static Integer[] reciteIntervals = {1, 2, 4, 7, 15};
 	public static Integer defaultGroupLength = 7;

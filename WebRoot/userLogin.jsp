@@ -24,13 +24,13 @@
 				<h3>UserName</h3>
 			</div>
 			<div class="input_div">
-				<input type="text" name="uname" value="zengyukun"/>
+				<input type="text" name="uname" value=""/>
 			</div>
 			<div style="width:100%">
 				<h3>Password</h3>
 			</div>
 			<div class="input_div">
-				<input type="password" name="pwd" value="doubi"/>
+				<input type="password" name="pwd" value=""/>
 			</div>
 			<div class="input_div" style="margin-top:40px;">
 				<input type="submit" value="Login" style="width:90.5%;background-color:#28a956;border-color:#1fae52;color:white;cursor:pointer;"/>
