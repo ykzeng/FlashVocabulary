@@ -9,25 +9,25 @@
 <script type="text/javascript">
 	function validate()
 	{
-		var newPWD = document.getElementById("newpwd");
-		var orgPWD = document.getElementById("orgpwd");
-		var VorgPWD = orgPWD.innerText;
-		var VnewPWD = newPWD.innerText;
-		if(VnewPWD==null || VnewPWD=="")
+		var VorgPWD = document.getElementById("orgpwd").value;
+		var VnewPWD = document.getElementById("newpwd").value;
+		if((VnewPWD==null) || (VnewPWD=="") || (VorgPWD==null) || (VorgPWD=="") )
 		{
-			if(VorgPWD!=null || VorgPWD!="")
-			{
-				alert(" password cannot be empty!");
-			}
+			alert(" password cannot be empty!");
 		}
-		else
+		else if ((VorgPWD != null)&&(VorgPWD!=""))
 		{
-			var newPWD2 = document.getElementById("newpwd2");	
-			var VnewPWD2 = newPWD2.innerText;
+			var VnewPWD2 = document.getElementById("newpwd2").value;
 			if(VnewPWD2 != VnewPWD)
 			{
 				alert("2 password should be same!");
 			}
+			else{
+				document.getElementById("submitForm").submit();
+			}
+		}
+		else{
+			alert(" password cannot be empty!");
 		}
 	}
 </script>
@@ -35,7 +35,7 @@
 
 <body class="uni_background">
 	<jsp:include  page="include/header.jsp"/>
-	<form action="UserSettingAction" method="POST">
+	<form action="UserSettingAction" method="POST" id="submitForm">
     <div class="center_div_small">
     <div class="usersetting-div">
         <h1 style="font-size:40px;color:#707070">USER SETTING</h1>
@@ -52,7 +52,7 @@
 		<div class="inputarea">
         <p>当前每日新词数:&nbsp;&nbsp;<%=((User)request.getSession().getAttribute("user")).getDailyCount() %></p>
 		<p>设置新词数为:&nbsp;&nbsp;<input type="text" name="newWordNum"/></p>
-		<input style="background:#e77e23;" type="submit" value="确认修改" name="saveChange" onclick="validate()"/>
+		<input style="background:#e77e23;" type="button" value="确认修改" name="saveChange" onclick="validate()"/>
         </div> 
         </div>
     </div>

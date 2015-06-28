@@ -36,17 +36,17 @@ public class UserSettingAction implements Action {
 				if(flag==1)
 				{
 					user.setPwd(newPassword);
-					request.setAttribute("message", "修改成功！");	
+					request.setAttribute("message", "修改成功！");
 				}
 				else if(flag == 0)
 				{
 					request.setAttribute("message", "原始密码输入有误！");
-					return IConstants.FAILURE;
+					return IConstants.WARNING;
 				}
 				else
 				{
 					request.setAttribute("message", "修改失败！");
-					return IConstants.FAILURE;
+					return IConstants.WARNING;
 				}
 			}
 			else if(newWordNum != null)
