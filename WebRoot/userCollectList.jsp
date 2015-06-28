@@ -59,19 +59,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </div>
          <div class="usercheckin-div">
              <div id="lib-div0" class="collect_div">
-                 <center><h1>${libName1==null?"无":libName1}</h1></center>
+                 <center><h1>${libName1==null?"Empty":libName1}</h1></center>
                  ${longSTR1}
              </div>
              <div id="lib-div1" class="collect_div" style="display:none;">
-                 <center><h1>${libName2==null?"无":libName2}</h1></center>
+                 <center><h1>${libName2==null?"Empty":libName2}</h1></center>
                  ${longSTR2}
              </div>
              <div id="lib-div2" class="collect_div" style="display:none;">
-                 <center><h1>${libName3==null?"无":libName3}</h1></center>
+                 <center><h1>${libName3==null?"Empty":libName3}</h1></center>
                  ${longSTR3}
              </div>
              <div id="lib-div3" class="collect_div" style="display:none;">
-                 <center><h1>${libName4==null?"无":libName4}</h1></center>
+                 <center><h1>${libName4==null?"Empty":libName4}</h1></center>
                  ${longSTR4}
              </div>
          </div>

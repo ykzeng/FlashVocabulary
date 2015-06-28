@@ -33,14 +33,22 @@ public class LoginAction implements Action{
 	try {
 		if((userFromDB = userInfoService.userLogin(user)) != null){
 		    	int uid = userFromDB.getId();
-			ArrangeWordService arrangeWordService = new ArrangeWordService();
-			if (arrangeWordService.isFirstLogin(uid)) {
-			    arrangeWordService.ArrangeWord(uid);
-			}
-		    	
-			setIndexParam(request, userFromDB);
-			
-			return IConstants.LOGIN_SUCCESS;
+		    if(userFromDB.getCurrentLib()!=12)
+		    {
+				ArrangeWordService arrangeWordService = new ArrangeWordService();
+				if (arrangeWordService.isFirstLogin(uid)) {
+				    arrangeWordService.ArrangeWord(uid);
+				}
+			    	
+				setIndexParam(request, userFromDB);
+				
+				return IConstants.LOGIN_SUCCESS;
+		    }
+		    else
+		    {
+		    	request.getSession().setAttribute("user", userFromDB);
+		    	return IConstants.TOCHOOSELIB;
+		    }
 		}
 		else 
 		{

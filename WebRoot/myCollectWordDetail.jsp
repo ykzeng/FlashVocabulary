@@ -27,22 +27,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div class="sentence_card" style="margin-top:4%;">
 				<h3>Translations</h3>
-				${longTranSTR}
+				${longTranSTR!=null?longTranSTR:"Empty"}
 			</div>
 		<div class="trans_container">
 			<div class="trans_card">
 				<h3>Synonyms</h3>
-				${synonymSTR==null?"暂无":synonymSTR}
+				${synonymSTR!=null?synonymSTR:"Empty"}
 			</div>
 			<div class="trans_card" style="float:right">
 				<h3>Antonyms</h3>
-				${antonymSTR==null?"暂无":antonymSTR}
+				${antonymSTR!=null?antonymSTR:"Empty"}
 			</div>
 		</div>
 
 		<div class="sentence_card">
 			<h2>Usages</h2>
-			${sentenceSTR}
+			${sentenceSTR!=null?sentenceSTR:"Empty"}
 		</div>
     </div>
     <jsp:include  page="include/footer.jsp"/>

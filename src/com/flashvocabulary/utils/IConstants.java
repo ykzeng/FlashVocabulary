@@ -18,6 +18,7 @@ public class IConstants {
     public static String NO_UNAME = "noUname"; 
     public static String NO_PWD = "noPwd";
     public static String WARNING = "warningMessage";
+    public static String TOCHOOSELIB = "tochoosewordlib";
     
     public static Integer[] reciteIntervals = {1, 2, 4, 7, 15};
 	public static Integer defaultGroupLength = 7;
