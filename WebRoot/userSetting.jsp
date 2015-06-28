@@ -7,29 +7,6 @@
 <title>FV-Settings</title>
 <link rel="stylesheet" type="text/css" href="css/basics.css">
 <script type="text/javascript">
-	function validate()
-	{
-		var VorgPWD = document.getElementById("orgpwd").value;
-		var VnewPWD = document.getElementById("newpwd").value;
-		if((VnewPWD==null) || (VnewPWD=="") || (VorgPWD==null) || (VorgPWD=="") )
-		{
-			alert(" password cannot be empty!");
-		}
-		else if ((VorgPWD != null)&&(VorgPWD!=""))
-		{
-			var VnewPWD2 = document.getElementById("newpwd2").value;
-			if(VnewPWD2 != VnewPWD)
-			{
-				alert("2 password should be same!");
-			}
-			else{
-				document.getElementById("submitForm").submit();
-			}
-		}
-		else{
-			alert(" password cannot be empty!");
-		}
-	}
 </script>
 </head>
 
@@ -52,7 +29,7 @@
 		<div class="inputarea">
         <p>当前每日新词数:&nbsp;&nbsp;<%=((User)request.getSession().getAttribute("user")).getDailyCount() %></p>
 		<p>设置新词数为:&nbsp;&nbsp;<input type="text" name="newWordNum"/></p>
-		<input style="background:#e77e23;" type="button" value="确认修改" name="saveChange" onclick="validate()"/>
+		<input style="background:#e77e23;" type="submit" value="确认修改" name="saveChange"/>
         </div> 
         </div>
     </div>

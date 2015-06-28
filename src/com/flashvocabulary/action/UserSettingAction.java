@@ -30,8 +30,13 @@ public class UserSettingAction implements Action {
 			String originalPassword = request.getParameter("originalPassword");
 			String newPassword = request.getParameter("newPassword");
 			String newWordNum = request.getParameter("newWordNum").trim();
+			String againPwd = request.getParameter("confirmNewPassword");
 			if(originalPassword!=null && newPassword!=null && !originalPassword.equals("") && !newPassword.equals(""))
 			{
+				if (!againPwd.equals(newPassword)) {
+				    request.setAttribute("message", "两次新密码输入不一致！");
+				    return IConstants.WARNING;
+				}
 				int flag = userInfoService.modifyUserPassword(uid, originalPassword, newPassword);
 				if(flag==1)
 				{
@@ -54,6 +59,10 @@ public class UserSettingAction implements Action {
 				userInfoService.setDailyNewWordCount(uid, Integer.parseInt(newWordNum));
 				user.setDailyCount(Integer.parseInt(newWordNum));
 				request.setAttribute("message", "新词设置成功："+"  "+userInfoService.getDailyNewWordCount(uid));
+			}
+			else {
+			    request.setAttribute("message", "密码和单词量至少一项不能为空！");
+			    return IConstants.WARNING;
 			}
 			return IConstants.SAVE_SUCCESS;
 			
