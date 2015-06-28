@@ -1,11 +1,8 @@
 package com.flashvocabulary.action;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.apache.struts2.ServletActionContext;
-
 import com.flashvocabulary.dto.User;
 import com.flashvocabulary.service.UserInfoService;
 import com.flashvocabulary.utils.IConstants;
@@ -18,7 +15,6 @@ public class UserSettingAction implements Action {
 	public String execute() throws Exception {
 		
 		HttpServletRequest request = ServletActionContext.getRequest();
-		//HttpServletResponse response = ServletActionContext.getResponse();
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");
 		if (user == null) {

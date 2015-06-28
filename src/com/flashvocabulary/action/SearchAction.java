@@ -1,6 +1,5 @@
 package com.flashvocabulary.action;
 
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,14 +45,20 @@ public class SearchAction implements Action{
 		}
 		else
 		{
-			request.setAttribute("message", "获取详细信息失败");
-			request.getRequestDispatcher("/message.jsp").forward(request, response);
-			return IConstants.FAILURE;
+			String maybewords = searchservice.maybeWords(word);
+			if(maybewords==null || maybewords.equals(""))
+			{
+				request.setAttribute("message", "获取详细信息失败");
+			}
+			else
+			{
+				request.setAttribute("message", "You can search these similar words : <br><strong>"+maybewords+"</strong>");
+			}
+			return IConstants.WARNING;
 		}
 		
 	} catch (Exception e) {
-		request.setAttribute("message", "获取详细信息失败");
-		request.getRequestDispatcher("/message.jsp").forward(request, response);
+		request.setAttribute("message", "连接错误！");
 		return IConstants.WARNING;
 	}
     }

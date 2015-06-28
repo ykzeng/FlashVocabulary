@@ -15,7 +15,6 @@ import com.flashvocabulary.dto.TodayWord;
 import com.flashvocabulary.dto.User;
 import com.flashvocabulary.service.FinishAGroupService;
 import com.flashvocabulary.utils.IConstants;
-import com.flashvocabulary.utils.WebUtils;
 import com.opensymphony.xwork2.Action;
 
 public class SetCompleteAction implements Action {
