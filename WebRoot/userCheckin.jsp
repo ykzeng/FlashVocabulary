@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'userCheckin.jsp' starting page</title>
+    <title>FV-UserCheckin</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -66,5 +66,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </div>
     </div>
     </form>
+    <jsp:include  page="include/footer.jsp"/>
   </body>
 </html>

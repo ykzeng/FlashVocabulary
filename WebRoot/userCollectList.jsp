@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 	<base href="<%=basePath%>">
-    <title>My JSP 'userCollectList.jsp' starting page</title>
+    <title>FV-Collections</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -76,5 +76,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              </div>
          </div>
     </div>
+    <jsp:include  page="include/footer.jsp"/>
 </body>
 </html>

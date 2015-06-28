@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	xmlns:c="http://java.sun.com/jstl/core">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<title>无标题文档</title>
+<title>FV-WordDetails</title>
 <link rel="stylesheet" type="text/css" href="css/basics.css"></link>
 </head>
 <body class="uni_background">

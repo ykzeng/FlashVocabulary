@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-<title>无标题文档</title>
+<title>FV-Word</title>
 <link rel="stylesheet" type="text/css" href="css/gh-buttons.css"/>
 <link rel="stylesheet" type="text/css" href="css/basics.css"></link>
 </head>

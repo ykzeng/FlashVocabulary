@@ -42,26 +42,36 @@ public class ToChooseWordLibAction implements Action {
 		int inputname = -1;
 		int wordCount = 0;
 		String longSTR = "";
-		for(int i=0;i<wordlib.size();i++)
+		
+		if(wordlib!=null)
 		{
-			Lib = wordlib.get(i);
-			libId = Lib.getId();
-			libname = wordLibService.getLibNameByLibid(libId);
-			description = Lib.getDescription();
-			wordCount = wordLibService.getLibCountById(libId);
-			imgSrc = Lib.getImg();
-			
-			if(libId==currentlibID)
+			for(int i=0;i<wordlib.size();i++)
 			{
-				inputcolor = "style=\"background:#e77e23;\"";
-				inputvalue = "Using";
-				disable = " disabled=\"true\"";
-			}
-			else
-			{
-				inputcolor = "";
-				inputvalue =  "Switch";
-				disable = "";
+				Lib = wordlib.get(i);
+				libId = Lib.getId();
+				libname = wordLibService.getLibNameByLibid(libId);
+				description = Lib.getDescription();
+				wordCount = wordLibService.getLibCountById(libId);
+				imgSrc = Lib.getImg();
+				
+				if(libId==currentlibID)
+				{
+					inputcolor = "style=\"background:#e77e23;\"";
+					inputvalue = "Using";
+					disable = " disabled=\"true\"";
+				}
+				else
+				{
+					inputcolor = "";
+					inputvalue =  "Switch";
+					disable = "";
+				}
+				inputname = libId;
+				longSTR += "<div><div><img src=\""+ imgSrc + "\"></div><div><h3>"
+						+libname+"</h3><p>"+description+"</p>Total: <span>"
+						+wordCount+"</span><br></br><input "+inputcolor
+						+"type=\"submit\" value=\""+inputvalue+"\""+disable+"\" name=\"lib"
+						+inputname+"\"/></div></div>";
 			}
 			inputname = libId;
 			longSTR += "<div><div><img src=\""+ imgSrc + "\"></div><div><h3>"
@@ -69,10 +79,12 @@ public class ToChooseWordLibAction implements Action {
 					+wordCount+"</span><br></br><input onclick=\"toWait()\" "+inputcolor
 					+"type=\"submit\" value=\""+inputvalue+"\""+disable+"\" name=\"lib"
 					+inputname+"\"/></div></div>";
+			request.setAttribute("longSTR", longSTR);
+			return "ToChooseWordLib";
 		}
-		request.setAttribute("longSTR", longSTR);
-		return "ToChooseWordLib";
-			
+		
+		request.setAttribute("message", "连接不成功！");
+		return IConstants.FAILURE;
 		
 	}
 

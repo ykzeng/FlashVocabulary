@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="renderer" content="webkit">
-  <title>FlashVocabulary</title>
+  <title>FlashVocabulary-Error</title>
   <link rel="stylesheet" type="text/css" href="css/gh-buttons.css"/>
   <link rel="stylesheet" href="css/basics.css">
   <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">

@@ -52,6 +52,7 @@
 		</action>
 		<action name="ToChooseWordLibAction" class="com.flashvocabulary.action.ToChooseWordLibAction" method="execute"> 
 			<result name="ToChooseWordLib">libChange.jsp</result>
+			<result name="failure">message.jsp</result>
 		</action>
 		<action name="ChooseWordLibAction" class="com.flashvocabulary.action.ChooseWordLibAction" method="execute"> 
 			<result name="chooseSuccess" type="redirectAction">UserHomeAction</result>

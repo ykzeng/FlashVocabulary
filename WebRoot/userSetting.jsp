@@ -4,7 +4,7 @@
 <!-- saved from url=(0059)file:///R:/Workspace/Front-End/FlashVocabulary/recital.html -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>无标题文档</title>
+<title>FV-Settings</title>
 <link rel="stylesheet" type="text/css" href="css/basics.css">
 <script type="text/javascript">
 </script>
@@ -35,4 +35,5 @@
     </div>
     </div>
     </form>
+    <jsp:include  page="include/footer.jsp"/>
 </body></html>

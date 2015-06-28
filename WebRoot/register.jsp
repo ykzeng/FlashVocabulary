@@ -4,8 +4,8 @@
 <!-- saved from url=(0059)file:///R:/Workspace/Front-End/FlashVocabulary/recital.html -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>User register</title>
-<link rel="stylesheet" type="text/css" href="css/basics.css">
+<title>FV-UserRegister</title>
+<link rel="stylesheet" type="text/css" href="css/basics.css"/>
 </head>
 
 <body class="uni_background">
