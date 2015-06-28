@@ -46,12 +46,12 @@ public class LoginAction implements Action{
 		    }
 		    else
 		    {
+		    	request.getSession().setAttribute("user", userFromDB);
 		    	return IConstants.TOCHOOSELIB;
 		    }
 		}
 		else 
 		{
-			request.getSession().setAttribute("user", userFromDB);
 			request.setAttribute("message", "你的用户名或密码有误！！");
 			return IConstants.LOGIN_PWD_FAILURE;
 		}
