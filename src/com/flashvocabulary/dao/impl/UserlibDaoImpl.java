@@ -16,6 +16,7 @@ public class UserlibDaoImpl extends BaseDaoImpl<UserLib> implements BaseDao<User
 		}
 		return userLibList;
 	}
+	
 	public UserLib getEntryByUidAndWid(Integer uid,Integer wid)
 	{
 		UserLib userLib = null;

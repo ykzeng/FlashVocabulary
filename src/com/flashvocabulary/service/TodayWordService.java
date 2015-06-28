@@ -278,7 +278,7 @@ public class TodayWordService {
 			values[1] = (Integer)(todayWordDao.excSql_retValue("select count(*) from tb_todayword " +
 					"where uid = ? and ischeck = 0",new ScalarHandler(), uid));
 			
-			TodayWord tw = todayWordDao.getEntry("select top 1 * from tb_todayword where uid = ?", uid);
+			//TodayWord tw = todayWordDao.getEntry("select top 1 * from tb_todayword where uid = ?", uid);
 			int libID = userInfoService.getCurrentUserInfo(uid).getCurrentLib();
 					//wordDao.getEntry(tw.getWid()).getLib_id();
 			values[2] = (Integer)wordDao.excSql_retValue("select count(*) from tb_word where lib_id = ?",new ScalarHandler() ,libID);

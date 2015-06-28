@@ -46,13 +46,15 @@ public class WordLibService {
 	{
 		ArrayList<UserLib> userLibsList = new ArrayList<UserLib>();
 		userLibsList = userlibDao.getEntrysByUserId(uid);
-		
-		for (UserLib userLib : userLibsList)
+		if(userLibsList!=null && userLibsList.size()>0)
 		{
-			try {
-				userlibDao.deleteEntry(userLib.getId());
-			} catch (Exception e) {
-				
+			for (UserLib userLib : userLibsList)
+			{
+				try {
+					userlibDao.deleteEntry(userLib.getId());
+				} catch (Exception e) {
+					
+				}
 			}
 		}
 		

@@ -13,12 +13,12 @@ import com.opensymphony.xwork2.Action;
 
 public class RegisterAction implements Action{
     private UserInfoService userInfoService = new UserInfoService();
-    private ChooseWordLib chooseWordLib = new ChooseWordLib();
     @Override
     public String execute() throws Exception {
-	// TODO Auto-generated method stub
+	
 	HttpServletRequest request = ServletActionContext.getRequest();
-	User user=WebUtils.write2Bean(request, User.class);
+	User user = new User(request.getParameter("uname"),request.getParameter("pwd"));
+	//WebUtils.write2Bean(request, User.class);
 	try {
 		if(!userInfoService.isAcountExisted(user.getUname()))
 		{
