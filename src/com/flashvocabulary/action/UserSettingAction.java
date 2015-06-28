@@ -68,7 +68,7 @@ public class UserSettingAction implements Action {
 			
 		}
 		request.setAttribute("message", "连接错误！");
-		return IConstants.FAILURE;
+		return IConstants.WARNING;
 	}
 
 }

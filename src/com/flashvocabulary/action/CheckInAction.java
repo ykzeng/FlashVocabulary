@@ -39,17 +39,17 @@ public class CheckInAction implements Action{
 				else
 				{
 					request.setAttribute("message", "输入不能为空！");
-					return IConstants.FAILURE;
+					return IConstants.WARNING;
 				}
 			}
 			else
 			{
 				request.setAttribute("message", "你今天已经打过卡了！");
-				return IConstants.FAILURE;
+				return IConstants.WARNING;
 			}
 		}
 		request.setAttribute("message", "打卡失败!");
-		return IConstants.FAILURE;
+		return IConstants.WARNING;
 				
 	}
 }
