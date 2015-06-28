@@ -29,7 +29,9 @@ public class WordLibService {
 	{
 		ArrayList<Wordlib> wordlibList = null;
 		try {
-			wordlibList = (ArrayList<Wordlib>)wordlibDao.getEntrys("select * from tb_wordlib where id != 12");	
+			//12为默认的空库。
+			wordlibList = (ArrayList<Wordlib>)wordlibDao.getEntrys("select * from tb_wordlib where id != 12");
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
