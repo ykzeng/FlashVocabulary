@@ -8,7 +8,7 @@
 
 
 
-	  <property name="app.name"      value="InstrumentManaSys"/>
+	  <property name="app.name"      value="FlashVocabulary"/>
 	  <property name="app.path"      value="/${app.name}"/>
 	  <property name="app.version"   value="0.1-dev"/>
 	  <property name="war.name"      value="${app.name}.war"/>
