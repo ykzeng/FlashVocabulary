@@ -24,7 +24,7 @@ public class RegisterAction implements Action{
 		{
 			user.setCurrentLib(12);  //12为默认词库Default
 			user.setDailyCount(30);
-			userInfoService.userRegister(user);
+			user = userInfoService.userRegister(user);
 			request.getSession().setAttribute("user", user);
 			return IConstants.REGISTER_SUCCESS;
 		}
