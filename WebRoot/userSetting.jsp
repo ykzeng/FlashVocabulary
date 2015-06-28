@@ -5,8 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>FV-Settings</title>
+<link rel="stylesheet" href="css/gh-buttons.css">
 <link rel="stylesheet" type="text/css" href="css/basics.css">
 <script type="text/javascript">
+	function submit_setting(){
+		document.getElementById("submitForm").submit();
+		return;
+	}
 </script>
 </head>
 
@@ -24,12 +29,11 @@
 		<p>新&nbsp;&nbsp;&nbsp;密&nbsp;&nbsp;&nbsp;&nbsp;码:&nbsp;&nbsp;&nbsp;<input type="password" name="newPassword" id="newpwd"/></p>
 		<p>新密码确认:&nbsp;&nbsp;&nbsp;<input type="password" name="confirmNewPassword" id="newpwd2"/></p>
         </div>
-		<hr>
 		<div class="head"><h3>新词设置</h3></div>
 		<div class="inputarea">
         <p>当前每日新词数:&nbsp;&nbsp;<%=((User)request.getSession().getAttribute("user")).getDailyCount() %></p>
 		<p>设置新词数为:&nbsp;&nbsp;<input type="text" name="newWordNum"/></p>
-		<input style="background:#e77e23;" type="submit" value="确认修改" name="saveChange"/>
+		<button class="button icon edit bold_btn" name="saveChange" value="确认修改" onclick="submit_setting()">Submit Settings</button>
         </div> 
         </div>
     </div>

@@ -90,7 +90,7 @@
         var c_trans = new Array();
         c_trans = wordToShow.c_trans.split("|");
         document.getElementById("detail_trans").innerHTML = "";
-        for (var i = 0; i < c_trans.length; i++) {
+        for (var i = 0; i < c_trans.length - 1; i++) {
             var newLi = document.createElement("li");
             var text = document.createTextNode(c_trans[i]);
             newLi.appendChild(text);
@@ -102,7 +102,7 @@
         var syn = new Array();
         syn = wordToShow.synonyms.split("|");
         document.getElementById("detail_syn").innerHTML = "";
-        for (var i = 0; i < syn.length; i++) {
+        for (var i = 0; i < syn.length - 1; i++) {
             var newLi = document.createElement("li");
             var text = document.createTextNode(syn[i]);
             newLi.appendChild(text);
@@ -112,7 +112,7 @@
         var anto = new Array();
         anto = wordToShow.antonyms.split("|");
         document.getElementById("detail_anto").innerHTML = "";
-        for (var i = 0; i < anto.length; i++) {
+        for (var i = 0; i < anto.length - 1; i++) {
             var newLi = document.createElement("li");
             var text = document.createTextNode(anto[i]);
             newLi.appendChild(text);

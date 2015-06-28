@@ -54,7 +54,7 @@ public class UserSettingAction implements Action {
 					return IConstants.WARNING;
 				}
 			}
-			else if(newWordNum != null)
+			else if(!newWordNum.equals(""))
 			{
 				userInfoService.setDailyNewWordCount(uid, Integer.parseInt(newWordNum));
 				user.setDailyCount(Integer.parseInt(newWordNum));
