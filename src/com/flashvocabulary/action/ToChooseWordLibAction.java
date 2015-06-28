@@ -78,7 +78,7 @@ public class ToChooseWordLibAction implements Action {
 		}
 		
 		request.setAttribute("message", "连接不成功！");
-		return IConstants.FAILURE;
+		return IConstants.WARNING;
 		
 	}
 

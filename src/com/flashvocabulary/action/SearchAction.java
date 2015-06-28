@@ -54,7 +54,7 @@ public class SearchAction implements Action{
 	} catch (Exception e) {
 		request.setAttribute("message", "获取详细信息失败");
 		request.getRequestDispatcher("/message.jsp").forward(request, response);
-		return IConstants.FAILURE;
+		return IConstants.WARNING;
 	}
     }
     

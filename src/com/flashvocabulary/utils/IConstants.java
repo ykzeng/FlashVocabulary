@@ -13,7 +13,7 @@ public class IConstants {
     public static String ADD_SUCCESS = "addSuccess";
     public static String GET_COLLECTION = "getCollection";
     public static String SAVE_SUCCESS = "saveChangeSuccess";
-    public static String FAILURE = "failure";
+    public static String FAILURE = "warningMessage";
     public static String LOGOUT = "logout";
     public static String NO_UNAME = "noUname"; 
     public static String NO_PWD = "noPwd";
