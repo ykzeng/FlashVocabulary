@@ -27,6 +27,10 @@
     }
     function getWordSet(data){
         var wordSet = data.wordSet;
+        if (wordSet.length == 0) {
+            alert("Your mission today is completed, let's check in!");
+            window.location.href="ToCheckInAction";
+        }
         var totalCount = wordSet.length - 1;
 
         setContent(wordSet[0]);
