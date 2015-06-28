@@ -58,7 +58,8 @@ public class UserSettingAction implements Action {
 			return IConstants.SAVE_SUCCESS;
 			
 		}
-		return null;
+		request.setAttribute("message", "连接错误！");
+		return IConstants.FAILURE;
 	}
 
 }

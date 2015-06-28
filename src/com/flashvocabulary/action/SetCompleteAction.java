@@ -72,7 +72,8 @@ public class SetCompleteAction implements Action {
 	
 	finishAGroupDao.writeToTodayWords(todayWordsList);
 	finishAGroupDao.writeToUserLib(todayWordsList);
-	return null;
+	request.setAttribute("message", "连接错误！");
+	return IConstants.FAILURE;
 	//跳转
     }
     
