@@ -20,9 +20,9 @@
         <div class="row">
 		<div class="head"><h3>密码修改</h3></div>
 		<div class="inputarea">
-		<p>当前密码:&nbsp;&nbsp;<input type="password" name="originalPassword"/><p>
-		<p>新密码:&nbsp;&nbsp;<input type="password" name="newPassword"/></p>
-		<p>新密码确认:&nbsp;&nbsp;<input type="password" name="confirmNewPassword"/></p>
+		<p>当&nbsp;前&nbsp;密&nbsp;码:&nbsp;&nbsp;&nbsp;<input type="password" name="originalPassword"/><p>
+		<p>新&nbsp;&nbsp;&nbsp;密&nbsp;&nbsp;&nbsp;&nbsp;码:&nbsp;&nbsp;&nbsp;<input type="password" name="newPassword"/></p>
+		<p>新密码确认:&nbsp;&nbsp;&nbsp;<input type="password" name="confirmNewPassword"/></p>
         </div>
 		<hr>
 		<div class="head"><h3>新词设置</h3></div>

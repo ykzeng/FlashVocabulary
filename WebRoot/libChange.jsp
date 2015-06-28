@@ -7,6 +7,10 @@
 <title>无标题文档</title>
 <link rel="stylesheet" type="text/css" href="css/basics.css">
 <script type="text/javascript">
+	function toWait(){
+		document.getElementById("popup_div").style.display = "block";
+		return;
+	}
 </script>
 </head>
 
@@ -21,9 +25,9 @@
     </div>
     </div>
     </form>
-    <div class="popup_div" id="wait_div">
-    <div class="page">
-    <div class="error">
+    <div id="popup_div" class="popup_div" style="display:none">
+    <div class="page" style="opacity:1;">
+    <div class="error" style="z-index:10001;">
       <h1 class="header">
           FlashVocabulary
       </h1>
